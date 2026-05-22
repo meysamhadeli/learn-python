@@ -2010,5 +2010,4 @@ Please follow this [contribution guideline](./CONTRIBUTION.md) to submit a pull 
 - [Official Python Docs](https://docs.python.org/3/)
 - [Awesome Python](https://github.com/vinta/awesome-python)
 - [FastAPI Tutorial](https://fastapi.tiangolo.com/)
-- [Real Python Tutorials](https://realpython.com/)
 - [Python Type Hints Cheat Sheet](https://mypy.readthedocs.io/en/stable/cheat_sheet_py3.html)
