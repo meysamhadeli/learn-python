@@ -1,6 +1,3 @@
-Here is the final, complete `learn-python.md` file with all improvements:
-
-```markdown
 # Learn Python
 
 Hey, welcome to the course, and thanks for learning Python. I hope this course provides a great learning experience.
@@ -37,7 +34,7 @@ Hey, welcome to the course, and thanks for learning Python. I hope this course p
 - [Chapter IV: Concurrency](#chapter-iv-concurrency)
     - [The GIL](#the-gil-global-interpreter-lock)
     - [Threading](#threading-for-io-bound-tasks)
-    - [Async/Await](#asyncawait-deep-dive)
+    - [Async/Await](#asyncawait)
     - [Multiprocessing](#multiprocessing-for-cpu-bound-work)
     - [Free-Threading](#free-threading-python-313)
     - [Decision Matrix](#decision-matrix-for-2026)
@@ -47,7 +44,7 @@ Hey, welcome to the course, and thanks for learning Python. I hope this course p
 - [Contribution](#contribution)
 - [Project References](#project-references)
 
----
+
 
 # Getting Started
 
