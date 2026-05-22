@@ -1599,11 +1599,9 @@ def handle_api_response(response):
             return "Unknown response"
 ```
 
-## Concurrency
-
-In this tutorial, we will learn about concurrency in Python. This is one of the most important topics for building high-performance applications.
-
 # Chapter IV: Concurrency
+
+> In this tutorial, we will learn about concurrency in Python. This is one of the most important topics for building high-performance applications.
 
 ### The GIL (Global Interpreter Lock)
 
