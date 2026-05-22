@@ -2,8 +2,6 @@
 
 Hey, welcome to the course, and thanks for learning Python. I hope this course provides a great learning experience.
 
-Please leave a ⭐ as motivation if this was helpful!_
-
 # Table of Contents
 
 - [Getting Started](#getting-started)
