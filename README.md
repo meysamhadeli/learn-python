@@ -4,48 +4,50 @@ Hey, welcome to the course, and thanks for learning Python. I hope this course p
 
 Please leave a ⭐ as motivation if this was helpful!_
 
-# Table of contents
+# Table of Contents
 
-- **Getting Started**
-    - What is Python?
-    - Why learn Python?
-    - Installation and Setup
-- **Chapter I**
-    - Hello World
-    - Variables and Data Types
-    - String Formatting
-    - Flow Control
-    - Functions
-    - Modules
-    - Packages
-    - Virtual Environments
-    - Useful Commands
-    - Build & Packaging
-- **Chapter II**
-    - Lists and Tuples
-    - Dictionaries and Sets
-    - List Comprehensions
-- **Chapter III**
-    - Type Hints
-    - Classes & Magic Methods
-    - Errors and Exceptions
-    - Iterators & Generators
-    - Decorators (Advanced)
-    - Context Managers (Advanced)
-    - Pattern Matching
-- **Chapter IV**
-    - Concurrency
-    - Threading
-    - Async/Await (Deep Dive)
-    - Multiprocessing
-    - Free-Threading (Python 3.13+)
-- **Appendix**
-    - Next Steps (Web & AI Focus)
-    - References
+- [Getting Started](#getting-started)
+    - [What is Python?](#what-is-python)
+    - [Why learn Python?](#why-learn-python)
+    - [Installation and Setup](#installation-and-setup)
+- [Chapter I: Basics](#chapter-i-basics)
+    - [Hello World](#hello-world)
+    - [Variables and Data Types](#variables-and-data-types)
+    - [String Formatting](#string-formatting)
+    - [Flow Control](#flow-control)
+    - [Functions](#functions)
+    - [Modules](#modules)
+    - [Packages](#packages)
+    - [Virtual Environments](#virtual-environments)
+    - [Useful Commands](#useful-commands)
+    - [Build & Packaging](#build--packaging)
+- [Chapter II: Data Structures](#chapter-ii-data-structures)
+    - [Lists and Tuples](#lists-and-tuples)
+    - [Dictionaries and Sets](#dictionaries-and-sets)
+    - [List Comprehensions](#list-comprehensions)
+- [Chapter III: Advanced Features](#chapter-iii-advanced-features)
+    - [Type Hints](#type-hints)
+    - [Classes & Magic Methods](#classes--magic-methods)
+    - [Errors and Exceptions](#errors-and-exceptions)
+    - [Iterators & Generators](#iterators--generators)
+    - [Decorators](#decorators-advanced)
+    - [Context Managers](#context-managers-advanced)
+    - [Pattern Matching](#pattern-matching-python-310)
+- [Chapter IV: Concurrency](#chapter-iv-concurrency)
+    - [The GIL](#the-gil-global-interpreter-lock)
+    - [Threading](#threading-for-io-bound-tasks)
+    - [Async/Await](#asyncawait-deep-dive)
+    - [Multiprocessing](#multiprocessing-for-cpu-bound-work)
+    - [Free-Threading](#free-threading-python-313)
+    - [Decision Matrix](#decision-matrix-for-2026)
+- [Appendix](#appendix)
+    - [Next Steps (AI & Web)](#next-steps-ai--web)
 - [Support](#support)
-- [Contribution](#contribution) 
+- [Contribution](#contribution)
+- [Project References](#project-references)
 
 ---
+# Getting Started
 
 ## What is Python?
 
@@ -152,6 +154,8 @@ _Feel free to use any other code editor you prefer._
 Make sure to install the **Python extension** by Microsoft. It provides IntelliSense, linting, debugging, and more.
 
 This is it for the installation and setup of Python. Let's start the course and write our first hello world!
+
+# Chapter I: Basics
 
 ## Hello World
 
@@ -830,6 +834,8 @@ myproject/
     └── test_main.py
 ```
 
+# Chapter II: Data Structures
+
 ## Lists and Tuples
 
 In this tutorial, we will learn about lists and tuples.
@@ -1074,6 +1080,8 @@ unique_lens = {len(word) for word in ["hi", "hello", "hi"]}
 # Dict comprehension
 word_lens = {word: len(word) for word in ["hi", "hello"]}
 ```
+
+# Chapter III: Advanced Features
 
 ## Type Hints
 
@@ -1597,6 +1605,8 @@ def handle_api_response(response):
 
 In this tutorial, we will learn about concurrency in Python. This is one of the most important topics for building high-performance applications.
 
+# Chapter IV: Concurrency
+
 ### The GIL (Global Interpreter Lock)
 
 The GIL is a mutex that prevents multiple threads from executing Python bytecode simultaneously. This means **threads are not useful for CPU-bound work** in standard Python.
@@ -1805,9 +1815,9 @@ print(f"Time with free-threading: {time.time() - start:.2f}s")
 | CPU bound | `multiprocessing` | `threading` (finally!) |
 | Mixed CPU + I/O | `asyncio` + `run_in_executor()` | `threading` |
 
-## Appendix
+# Appendix
 
-### Next Steps (Web & AI Focus)
+### Next Steps (AI & Web)
 
 Congratulations on completing the course! Here's where to go next:
 
@@ -1834,7 +1844,7 @@ Congratulations on completing the course! Here's where to go next:
 4. **PyTorch** or **TensorFlow** - Deep learning
 
 
-## Support
+# Support
 
 If you like my work, feel free to:
 
@@ -1842,13 +1852,13 @@ If you like my work, feel free to:
 
 Thanks a bunch for supporting me!
 
-## Contribution
+# Contribution
 
 Thanks to all [contributors](https://github.com/meysamhadeli/learn-python/graphs/contributors), you're awesome and this wouldn't be possible without you! The goal is to build a categorized, community-driven collection of very well-known resources.
 
 Please follow this [contribution guideline](./CONTRIBUTION.md) to submit a pull request or create the issue.
 
-## Project References & Credits
+# Project References
 
 - [Official Python Docs](https://docs.python.org/3/)
 - [Awesome Python](https://github.com/vinta/awesome-python)
