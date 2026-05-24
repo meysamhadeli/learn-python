@@ -1,0 +1,38 @@
+{
+  "name": "learn-python",
+  "version": "1.0.0",
+  "description": "Hey, welcome to the course, and thanks for learning Python. I hope this course provides a great learning experience.",
+  "private": true,
+  "scripts": {
+    "docs:sync": "python scripts/sync_docs.py",
+    "docs:dev": "npm run docs:sync && vuepress dev docs --clean-cache",
+    "docs:build": "npm run docs:sync && vuepress build docs --clean-cache",
+    "docs:preview": "python -m http.server 4173 -d docs/.vuepress/dist",
+    "docs:start": "npm run docs:dev"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/meysamhadeli/learn-python.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/meysamhadeli/learn-python/issues"
+  },
+  "homepage": "https://meysamhadeli.github.io/learn-python/",
+  "devDependencies": {
+    "@iconify/json": "^2.2.478",
+    "@mathjax/src": "^4.1.2",
+    "@vuepress/bundler-vite": "^2.0.0-rc.30",
+    "@vuepress/shiki-twoslash": "^2.0.0-rc.130",
+    "gsap": "^3.15.0",
+    "ogl": "^1.0.11",
+    "pinyin-pro": "^3.28.1",
+    "postprocessing": "^6.39.1",
+    "swiper": "^12.1.4",
+    "three": "^0.184.0",
+    "vuepress": "^2.0.0-rc.30",
+    "vuepress-theme-plume": "^1.0.0-rc.201"
+  }
+}

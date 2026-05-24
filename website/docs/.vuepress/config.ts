@@ -1,0 +1,62 @@
+import { viteBundler } from '@vuepress/bundler-vite'
+import { defineUserConfig } from 'vuepress'
+import { plumeTheme } from 'vuepress-theme-plume'
+import { contributionSidebar, courseSidebar } from './sidebar'
+
+const repoName = 'learn-python'
+const repoOwner = 'meysamhadeli'
+const isProd = process.env.NODE_ENV === 'production' || process.env.GITHUB_ACTIONS === 'true'
+
+export default defineUserConfig({
+  lang: 'en-US',
+  title: 'Learn Python',
+  description: 'A practical Learn Python course published with VuePress Theme Plume.',
+  base: isProd ? `/${repoName}/` : '/',
+  cleanUrls: true,
+  head: [
+    ['meta', { name: 'theme-color', content: '#3776ab' }],
+  ],
+  bundler: viteBundler(),
+  theme: plumeTheme({
+    hostname: `https://${repoOwner}.github.io`,
+    docsRepo: `${repoOwner}/${repoName}`,
+    docsBranch: 'main',
+    docsDir: 'docs',
+    editLink: true,
+    lastUpdated: true,
+    contributors: false,
+    changelog: false,
+    search: {
+      provider: 'local',
+    },
+    navbar: [
+      {
+        text: 'Course',
+        link: '/',
+      },
+      {
+        text: 'Contribution',
+        link: '/contribution/',
+      },
+      {
+        text: 'Notebook',
+        link: '/files/learn-python.ipynb',
+      },
+      {
+        text: 'GitHub',
+        link: `https://github.com/${repoOwner}/${repoName}`,
+      },
+    ],
+    sidebar: {
+      '/contribution/': contributionSidebar,
+      '/': courseSidebar,
+    },
+    outline: false,
+    aside: false,
+    footer: {
+      message: 'Built with VuePress Theme Plume',
+      copyright: 'Copyright © 2026 Meysam Hadeli',
+    },
+  }),
+})
+

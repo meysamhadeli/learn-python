@@ -203,6 +203,12 @@ cython_debug/
 # Temporary file for partial code execution
 tempCodeRunnerFile.py
 
+# Node.js / VuePress
+website/node_modules/
+website/docs/.vuepress/.cache/
+website/docs/.vuepress/.temp/
+website/docs/.vuepress/dist/
+
 # Ruff stuff:
 .ruff_cache/
 

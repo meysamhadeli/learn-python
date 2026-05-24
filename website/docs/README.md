@@ -1,8 +1,12 @@
+---
+title: Learn Python
+---
+
 # Learn Python
 
 Hey, welcome to the course, and thanks for learning Python. I hope this course provides a great learning experience.
 
-> 💡 Tip: Use [learn-python.ipynb](learn-python.ipynb) in VS Code to run and debug code interactively!
+> 💡 Tip: Use [learn-python.ipynb](/files/learn-python.ipynb) in VS Code to run and debug code interactively!
 
 # Table of Contents
 
@@ -1791,7 +1795,7 @@ Thanks a bunch for supporting me!
 
 Thanks to all [contributors](https://github.com/meysamhadeli/learn-python/graphs/contributors), you're awesome and this wouldn't be possible without you!
 
-Please follow this [contribution guideline](./CONTRIBUTION.md) to submit a pull request or create the issue.
+Please follow this [contribution guideline](/contribution/) to submit a pull request or create the issue.
 
 # Project References
 
