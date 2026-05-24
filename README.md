@@ -12,16 +12,8 @@ Hey, welcome to the course, and thanks for learning Python. I hope this course p
 - [Chapter I: Core Python](#chapter-i-core-python)
     - [Hello World](#hello-world)
     - [Variables](#variables)
-    - [Built-in Types](#built-in-types)
-        - [Numeric Types (int, float, complex)](#numeric-types)
-        - [Text Type (str)](#text-type)
-        - [Boolean Type (bool)](#boolean-type)
-        - [None Type (None)](#none-type)
+    - [Built-in Data Types](#built-in-data-types)
     - [Data Structures](#data-structures)
-        - [Lists](#lists)
-        - [Tuples](#tuples)
-        - [Dictionaries](#dictionaries)
-        - [Sets](#sets)
     - [Type Conversion](#type-conversion)
     - [Operators](#operators)
     - [Falsy Values](#falsy-values)
@@ -266,13 +258,11 @@ x, y, z = 1, 2.5, "three"
 MAX_CONNECTIONS = 100
 ```
 
-## Built-in Types
+## Built-in Data Types
 
 Python has several built-in types that are fundamental to the language. These represent single values.
 
-### Numeric Types
-
-#### int
+### int
 
 Integer of arbitrary precision (no overflow! Python can handle huge numbers).
 
@@ -282,7 +272,7 @@ big_number = 10 ** 100  # Googol, Python handles it effortlessly
 negative = -15
 ```
 
-#### float
+### float
 
 Double-precision floating-point.
 
@@ -292,7 +282,7 @@ small = 1.5e-4  # 0.00015
 negative_float = -0.5
 ```
 
-#### complex
+### complex
 
 Complex numbers with real and imaginary parts. Uses `j` for the imaginary unit.
 
@@ -303,9 +293,7 @@ print(c1.real)  # 3.0 (real part)
 print(c1.imag)  # 4.0 (imaginary part)
 ```
 
-### Text Type
-
-#### str (String)
+### str (String)
 
 Strings are sequences of Unicode characters. They can be created with single, double, or triple quotes.
 
@@ -326,10 +314,7 @@ print(text[0])  # 'P'
 print(text[-1]) # 'n'
 print(len(text)) # 6
 ```
-
-### Boolean Type
-
-#### bool
+### bool
 
 Boolean values: `True` or `False`.
 
@@ -341,9 +326,7 @@ is_done = False
 is_adult = age >= 18
 ```
 
-### None Type
-
-#### None
+### None
 
 `None` represents the absence of a value.
 
@@ -1844,7 +1827,7 @@ Thanks a bunch for supporting me!
 
 # Contribution
 
-Thanks to all [contributors](https://github.com/meysamhadeli/learn-python/graphs/contributors), you're awesome and this wouldn't be possible without you!
+Thanks to all [contributors](https://github.com/test/learn-python/graphs/contributors), you're awesome and this wouldn't be possible without you!
 
 Please follow this [contribution guideline](./CONTRIBUTION.md) to submit a pull request or create the issue.
 
