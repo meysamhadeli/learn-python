@@ -1827,7 +1827,7 @@ Thanks a bunch for supporting me!
 
 # Contribution
 
-Thanks to all [contributors](https://github.com/test/learn-python/graphs/contributors), you're awesome and this wouldn't be possible without you!
+Thanks to all [contributors](https://github.com/meysamhadeli/learn-python/graphs/contributors), you're awesome and this wouldn't be possible without you!
 
 Please follow this [contribution guideline](./CONTRIBUTION.md) to submit a pull request or create the issue.
 
