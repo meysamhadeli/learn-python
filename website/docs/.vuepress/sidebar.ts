@@ -3,615 +3,257 @@
 
 export const courseSidebar = [
   {
-    text: "Course Home",
-    link: "/",
-  },
-  {
     text: "Getting Started",
-    link: "/#getting-started",
-    items: [
-      {
-        text: "What is Python?",
-        link: "/#what-is-python",
-      },
-      {
-        text: "Why learn Python?",
-        link: "/#why-learn-python",
-        items: [
-          {
-            text: "1. The Language of AI and the Future",
-            link: "/#1-the-language-of-ai-and-the-future",
-          },
-          {
-            text: "2. Web Development Powerhouse",
-            link: "/#2-web-development-powerhouse",
-          },
-          {
-            text: "3. Easy to learn, powerful to master",
-            link: "/#3-easy-to-learn-powerful-to-master",
-          },
-          {
-            text: "4. Huge Ecosystem",
-            link: "/#4-huge-ecosystem",
-          },
-          {
-            text: "5. Career opportunities",
-            link: "/#5-career-opportunities",
-          },
-        ],
-      },
-      {
-        text: "Installation and Setup",
-        link: "/#installation-and-setup",
-        items: [
-          {
-            text: "Download",
-            link: "/#download",
-          },
-          {
-            text: "Installation",
-            link: "/#installation",
-          },
-          {
-            text: "VS Code",
-            link: "/#vs-code",
-          },
-          {
-            text: "Extension",
-            link: "/#extension",
-          },
-        ],
-      },
-    ],
-    collapsed: false,
+    link: "/getting-started/",
   },
   {
-    text: "Chapter I: Core Python",
-    link: "/#chapter-i-core-python",
+    text: "I — The Basics",
+    collapsed: false,
+    link: "/01-the-basics/",
     items: [
       {
         text: "Hello World",
-        link: "/#hello-world",
-        items: [
-          {
-            text: "Structure of a Python program",
-            link: "/#structure-of-a-python-program",
-          },
-        ],
+        link: "/01-the-basics/hello-world",
       },
       {
         text: "Variables",
-        link: "/#variables",
+        link: "/01-the-basics/variables",
       },
       {
         text: "Built-in Data Types",
-        link: "/#built-in-data-types",
-        items: [
-          {
-            text: "int",
-            link: "/#int",
-          },
-          {
-            text: "float",
-            link: "/#float",
-          },
-          {
-            text: "complex",
-            link: "/#complex",
-          },
-          {
-            text: "str (String)",
-            link: "/#str-string",
-          },
-          {
-            text: "bool",
-            link: "/#bool",
-          },
-          {
-            text: "None",
-            link: "/#none",
-          },
-        ],
-      },
-      {
-        text: "Data Structures",
-        link: "/#data-structures",
-        items: [
-          {
-            text: "Lists",
-            link: "/#lists",
-          },
-          {
-            text: "Tuples",
-            link: "/#tuples",
-          },
-          {
-            text: "Dictionaries",
-            link: "/#dictionaries",
-          },
-          {
-            text: "Sets",
-            link: "/#sets",
-          },
-        ],
-      },
-      {
-        text: "Type Conversion",
-        link: "/#type-conversion",
-      },
-      {
-        text: "Operators",
-        link: "/#operators",
-        items: [
-          {
-            text: "Arithmetic Operators",
-            link: "/#arithmetic-operators",
-          },
-          {
-            text: "Comparison Operators",
-            link: "/#comparison-operators",
-          },
-          {
-            text: "Logical Operators",
-            link: "/#logical-operators",
-          },
-          {
-            text: "Assignment Operators",
-            link: "/#assignment-operators",
-          },
-          {
-            text: "Membership Operators",
-            link: "/#membership-operators",
-          },
-          {
-            text: "Operator Precedence",
-            link: "/#operator-precedence",
-          },
-        ],
-      },
-      {
-        text: "Falsy Values",
-        link: "/#falsy-values",
+        link: "/01-the-basics/built-in-data-types",
       },
       {
         text: "String Formatting",
-        link: "/#string-formatting",
+        link: "/01-the-basics/string-formatting",
       },
       {
-        text: "Flow Control",
-        link: "/#flow-control",
-        items: [
-          {
-            text: "If/Else",
-            link: "/#ifelse",
-          },
-          {
-            text: "Match/Case (Python 3.10+)",
-            link: "/#matchcase-python-310",
-          },
-          {
-            text: "Loops",
-            link: "/#loops",
-          },
-        ],
+        text: "Operators",
+        link: "/01-the-basics/operators",
       },
       {
-        text: "Functions",
-        link: "/#functions",
-        items: [
-          {
-            text: "Simple declaration",
-            link: "/#simple-declaration",
-          },
-          {
-            text: "Parameters and arguments",
-            link: "/#parameters-and-arguments",
-          },
-          {
-            text: "Default arguments",
-            link: "/#default-arguments",
-          },
-          {
-            text: "Keyword arguments",
-            link: "/#keyword-arguments",
-          },
-          {
-            text: "Variable arguments (args and kwargs)",
-            link: "/#variable-arguments-args-and-kwargs",
-          },
-          {
-            text: "Return values",
-            link: "/#return-values",
-          },
-          {
-            text: "Lambda functions",
-            link: "/#lambda-functions",
-          },
-          {
-            text: "Docstrings",
-            link: "/#docstrings",
-          },
-        ],
-      },
-      {
-        text: "Modules",
-        link: "/#modules",
-        items: [
-          {
-            text: "What are modules?",
-            link: "/#what-are-modules",
-          },
-          {
-            text: "Creating a module",
-            link: "/#creating-a-module",
-          },
-          {
-            text: "Importing modules",
-            link: "/#importing-modules",
-          },
-          {
-            text: "The name variable",
-            link: "/#the-name-variable",
-          },
-          {
-            text: "Standard library modules",
-            link: "/#standard-library-modules",
-          },
-        ],
-      },
-      {
-        text: "Packages",
-        link: "/#packages",
-        items: [
-          {
-            text: "What are packages?",
-            link: "/#what-are-packages",
-          },
-          {
-            text: "Creating a package",
-            link: "/#creating-a-package",
-          },
-          {
-            text: "Using a package",
-            link: "/#using-a-package",
-          },
-        ],
-      },
-      {
-        text: "Virtual Environments",
-        link: "/#virtual-environments",
-        items: [
-          {
-            text: "What are virtual environments?",
-            link: "/#what-are-virtual-environments",
-          },
-          {
-            text: "Creating a virtual environment",
-            link: "/#creating-a-virtual-environment",
-          },
-          {
-            text: "Activating",
-            link: "/#activating",
-          },
-          {
-            text: "Deactivating",
-            link: "/#deactivating",
-          },
-          {
-            text: "Managing dependencies",
-            link: "/#managing-dependencies",
-          },
-        ],
-      },
-      {
-        text: "Useful Commands",
-        link: "/#useful-commands",
-        items: [
-          {
-            text: "Running scripts",
-            link: "/#running-scripts",
-          },
-          {
-            text: "Virtual environments",
-            link: "/#virtual-environments-1",
-          },
-          {
-            text: "Package management",
-            link: "/#package-management",
-          },
-          {
-            text: "Code formatting and linting",
-            link: "/#code-formatting-and-linting",
-          },
-        ],
-      },
-      {
-        text: "Build & Packaging",
-        link: "/#build--packaging",
-        items: [
-          {
-            text: "The pyproject.toml file",
-            link: "/#the-pyprojecttoml-file",
-          },
-          {
-            text: "Building packages",
-            link: "/#building-packages",
-          },
-          {
-            text: "Project structure",
-            link: "/#project-structure",
-          },
-        ],
+        text: "Falsy Values",
+        link: "/01-the-basics/falsy-values",
       },
     ],
-    collapsed: false,
   },
   {
-    text: "Chapter II: Advanced Features",
-    link: "/#chapter-ii-advanced-features",
+    text: "II — Data Structures",
+    collapsed: false,
+    link: "/02-data-structures/",
     items: [
       {
-        text: "List Comprehensions",
-        link: "/#list-comprehensions",
-        items: [
-          {
-            text: "Basic syntax",
-            link: "/#basic-syntax",
-          },
-          {
-            text: "With condition",
-            link: "/#with-condition",
-          },
-          {
-            text: "With conditional expression",
-            link: "/#with-conditional-expression",
-          },
-          {
-            text: "Nested comprehensions",
-            link: "/#nested-comprehensions",
-          },
-          {
-            text: "Set and dict comprehensions",
-            link: "/#set-and-dict-comprehensions",
-          },
-        ],
+        text: "Lists",
+        link: "/02-data-structures/lists",
+      },
+      {
+        text: "Tuples",
+        link: "/02-data-structures/tuples",
+      },
+      {
+        text: "Dictionaries",
+        link: "/02-data-structures/dictionaries",
+      },
+      {
+        text: "Sets",
+        link: "/02-data-structures/sets",
+      },
+      {
+        text: "Collections Module",
+        link: "/02-data-structures/collections-module",
+      },
+      {
+        text: "Comprehensions",
+        link: "/02-data-structures/comprehensions",
+      },
+      {
+        text: "Type Conversion",
+        link: "/02-data-structures/type-conversion",
+      },
+    ],
+  },
+  {
+    text: "III — Control Flow",
+    collapsed: false,
+    link: "/03-control-flow/",
+    items: [
+      {
+        text: "If / Else",
+        link: "/03-control-flow/if-else",
+      },
+      {
+        text: "Match / Case",
+        link: "/03-control-flow/match-case",
+      },
+      {
+        text: "Loops",
+        link: "/03-control-flow/loops",
+      },
+    ],
+  },
+  {
+    text: "IV — Functions",
+    collapsed: false,
+    link: "/04-functions/",
+    items: [
+      {
+        text: "Defining Functions",
+        link: "/04-functions/defining-functions",
+      },
+      {
+        text: "Parameters & Arguments",
+        link: "/04-functions/parameters-arguments",
+      },
+      {
+        text: "Lambda Functions",
+        link: "/04-functions/lambda-functions",
+      },
+      {
+        text: "Scoping Rules",
+        link: "/04-functions/scoping-rules",
       },
       {
         text: "Type Hints",
-        link: "/#type-hints",
-        items: [
-          {
-            text: "Basic type hints",
-            link: "/#basic-type-hints",
-          },
-          {
-            text: "Union types (Python 3.10+)",
-            link: "/#union-types-python-310",
-          },
-          {
-            text: "Optional types",
-            link: "/#optional-types",
-          },
-          {
-            text: "TypedDict",
-            link: "/#typeddict",
-          },
-          {
-            text: "Generics (Python 3.12+)",
-            link: "/#generics-python-312",
-          },
-        ],
+        link: "/04-functions/type-hints",
+      },
+    ],
+  },
+  {
+    text: "V — Modules & Packaging",
+    collapsed: false,
+    link: "/05-modules/",
+    items: [
+      {
+        text: "Modules",
+        link: "/05-modules/modules",
       },
       {
-        text: "Classes & Magic Methods",
-        link: "/#classes--magic-methods",
-        items: [
-          {
-            text: "Defining a class",
-            link: "/#defining-a-class",
-          },
-          {
-            text: "Magic methods",
-            link: "/#magic-methods",
-          },
-          {
-            text: "Data classes (Python 3.7+)",
-            link: "/#data-classes-python-37",
-          },
-        ],
+        text: "File I/O & JSON",
+        link: "/05-modules/file-io-json",
       },
       {
-        text: "Errors and Exceptions",
-        link: "/#errors-and-exceptions",
-        items: [
-          {
-            text: "Try-Except",
-            link: "/#try-except",
-          },
-          {
-            text: "Raising exceptions",
-            link: "/#raising-exceptions",
-          },
-          {
-            text: "Custom exceptions",
-            link: "/#custom-exceptions",
-          },
-        ],
+        text: "Packages",
+        link: "/05-modules/packages",
       },
+      {
+        text: "Virtual Environments",
+        link: "/05-modules/virtual-environments",
+      },
+      {
+        text: "Useful Commands",
+        link: "/05-modules/useful-commands",
+      },
+      {
+        text: "Build & Packaging",
+        link: "/05-modules/build-packaging",
+      },
+    ],
+  },
+  {
+    text: "VI — OOP",
+    collapsed: false,
+    link: "/06-oop/",
+    items: [
+      {
+        text: "Classes",
+        link: "/06-oop/classes",
+      },
+      {
+        text: "Inheritance",
+        link: "/06-oop/inheritance",
+      },
+      {
+        text: "Abstract Base Classes",
+        link: "/06-oop/abstract-base-classes",
+      },
+      {
+        text: "Magic Methods",
+        link: "/06-oop/magic-methods",
+      },
+      {
+        text: "Dataclasses",
+        link: "/06-oop/dataclasses",
+      },
+    ],
+  },
+  {
+    text: "VII — Errors & Exceptions",
+    link: "/07-errors-exceptions/",
+  },
+  {
+    text: "VIII — Pythonic Patterns",
+    collapsed: false,
+    link: "/08-pythonic-patterns/",
+    items: [
       {
         text: "Iterators & Generators",
-        link: "/#iterators--generators",
-        items: [
-          {
-            text: "Iterators",
-            link: "/#iterators",
-          },
-          {
-            text: "Generators",
-            link: "/#generators",
-          },
-          {
-            text: "Generator expressions",
-            link: "/#generator-expressions",
-          },
-          {
-            text: "Reading large files",
-            link: "/#reading-large-files",
-          },
-        ],
+        link: "/08-pythonic-patterns/iterators-generators",
+      },
+      {
+        text: "itertools & functools",
+        link: "/08-pythonic-patterns/itertools-functools",
       },
       {
         text: "Decorators",
-        link: "/#decorators",
-        items: [
-          {
-            text: "Basic decorator",
-            link: "/#basic-decorator",
-          },
-          {
-            text: "Decorators with arguments",
-            link: "/#decorators-with-arguments",
-          },
-          {
-            text: "Authentication decorator",
-            link: "/#authentication-decorator",
-          },
-        ],
+        link: "/08-pythonic-patterns/decorators",
       },
       {
         text: "Context Managers",
-        link: "/#context-managers",
-        items: [
-          {
-            text: "Using context managers",
-            link: "/#using-context-managers",
-          },
-          {
-            text: "Custom context manager",
-            link: "/#custom-context-manager",
-          },
-          {
-            text: "Function-based context manager",
-            link: "/#function-based-context-manager",
-          },
-        ],
+        link: "/08-pythonic-patterns/context-managers",
       },
       {
-        text: "Pattern Matching (Python 3.10+)",
-        link: "/#pattern-matching-python-310",
-        items: [
-          {
-            text: "Matching with guards",
-            link: "/#matching-with-guards",
-          },
-          {
-            text: "Matching classes",
-            link: "/#matching-classes",
-          },
-          {
-            text: "Matching JSON-like data",
-            link: "/#matching-json-like-data",
-          },
-        ],
+        text: "Pattern Matching",
+        link: "/08-pythonic-patterns/pattern-matching",
       },
     ],
-    collapsed: false,
   },
   {
-    text: "Chapter III: Concurrency",
-    link: "/#chapter-iii-concurrency",
+    text: "IX — Concurrency",
+    collapsed: false,
+    link: "/09-concurrency/",
     items: [
       {
-        text: "The GIL (Global Interpreter Lock)",
-        link: "/#the-gil-global-interpreter-lock",
+        text: "The GIL",
+        link: "/09-concurrency/the-gil",
       },
       {
-        text: "Threading (for I/O-bound tasks)",
-        link: "/#threading-for-io-bound-tasks",
-        items: [
-          {
-            text: "Thread pool",
-            link: "/#thread-pool",
-          },
-        ],
+        text: "Async / Await",
+        link: "/09-concurrency/async-await",
       },
       {
-        text: "Async/Await",
-        link: "/#asyncawait",
-        items: [
-          {
-            text: "Basic async example",
-            link: "/#basic-async-example",
-          },
-          {
-            text: "Running multiple tasks",
-            link: "/#running-multiple-tasks",
-          },
-          {
-            text: "Async HTTP requests",
-            link: "/#async-http-requests",
-          },
-          {
-            text: "Async vs Threads",
-            link: "/#async-vs-threads",
-          },
-        ],
+        text: "Threading",
+        link: "/09-concurrency/threading",
       },
       {
-        text: "Multiprocessing (for CPU-bound work)",
-        link: "/#multiprocessing-for-cpu-bound-work",
-        items: [
-          {
-            text: "Sharing data between processes",
-            link: "/#sharing-data-between-processes",
-          },
-        ],
+        text: "Multiprocessing",
+        link: "/09-concurrency/multiprocessing",
       },
       {
-        text: "Free-Threading (Python 3.13+)",
-        link: "/#free-threading-python-313",
+        text: "Free-Threading",
+        link: "/09-concurrency/free-threading",
       },
       {
-        text: "Decision Matrix for 2026",
-        link: "/#decision-matrix-for-2026",
+        text: "Decision Matrix",
+        link: "/09-concurrency/decision-matrix",
       },
     ],
-    collapsed: false,
   },
   {
     text: "Appendix",
-    link: "/#appendix",
+    collapsed: false,
+    link: "/appendix/",
     items: [
       {
-        text: "Next Steps (AI & Web)",
-        link: "/#next-steps-ai--web",
-        items: [
-          {
-            text: "Web Development",
-            link: "/#web-development",
-          },
-          {
-            text: "AI & Data Science",
-            link: "/#ai--data-science",
-          },
-        ],
+        text: "AI & Data Science",
+        link: "/appendix/ai-data-science",
+      },
+      {
+        text: "Web Development",
+        link: "/appendix/web-development",
       },
     ],
-    collapsed: false,
   },
-  {
-    text: "Support",
-    link: "/#support",
-  },
-  {
-    text: "Contribution",
-    link: "/#contribution",
-  },
-  {
-    text: "Project References",
-    link: "/#project-references",
-  },
-]
+];
 
 export const contributionSidebar = [
   {
@@ -622,4 +264,4 @@ export const contributionSidebar = [
     text: "Course Home",
     link: "/",
   },
-]
+];

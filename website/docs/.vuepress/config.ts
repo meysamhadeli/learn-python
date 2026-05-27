@@ -50,8 +50,8 @@ export default defineUserConfig({
       '/contribution/': contributionSidebar,
       '/': courseSidebar,
     },
-    outline: false,
-    aside: false,
+    outline: true,
+    aside: true,
     footer: {
       message: 'Built with VuePress Theme Plume',
       copyright: 'Copyright © 2026 Meysam Hadeli',
