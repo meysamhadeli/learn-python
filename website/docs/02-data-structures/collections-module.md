@@ -1,5 +1,9 @@
 # Collections Module
 
+The `collections` module exists because Python's basic containers are powerful, but some recurring problems deserve more specialized tools. This page introduces those tools so you can choose clearer abstractions instead of forcing every problem into a plain list or dictionary.
+
+Read these types as practical upgrades for common situations, not as features you must memorize all at once.
+
 `collections` provides specialized container types that solve common patterns more cleanly than plain dicts and lists.
 
 ## defaultdict

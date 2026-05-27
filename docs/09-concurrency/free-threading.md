@@ -1,5 +1,9 @@
 # Free-Threading (Python 3.13+)
 
+Free-threading is one of the biggest recent changes in CPython, but it should be approached as an evolving runtime option, not as a blanket replacement for every concurrency strategy. The model is promising, but the ecosystem is still adapting.
+
+This page is meant to help you understand what changes conceptually once the GIL is removed and what practical cautions still remain.
+
 ## The Experimental GIL-Free Build
 
 Python 3.13 ships with an **experimental free-threaded build** that removes the GIL, allowing Python threads to execute genuinely in parallel on multiple CPU cores. This is the most significant change to CPython's threading model in its history.

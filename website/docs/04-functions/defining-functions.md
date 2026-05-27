@@ -1,5 +1,9 @@
 # Defining Functions
 
+Function definitions are where Python code starts becoming reusable instead of purely sequential. A function gives a piece of logic a name, a boundary, and a clear interface.
+
+As you read, keep separating three concerns: what goes into the function, what happens inside it, and what comes back out.
+
 ## The `def` Statement
 
 Functions are defined with `def`, followed by a name, parentheses for parameters, a colon, and an indented body. They are **first-class objects** — you can assign them to variables, pass them as arguments, and return them from other functions.

@@ -1,5 +1,9 @@
 # Dictionaries
 
+Dictionaries are one of Python's most important data structures because they let you attach meaning to values through keys. When you need lookup by name, ID, or label, a dictionary is often the most natural fit.
+
+This page is easiest to understand if you think of a dictionary as a mapping from keys to values rather than as a sequence with positions.
+
 ## What is a Dictionary?
 
 A dictionary is a **mutable mapping** of unique keys to values. As of Python 3.7+, dictionaries preserve **insertion order**. Lookup by key is O(1) on average (backed by a hash table). Keys must be hashable — strings, numbers, and tuples of hashables all work; lists and dicts cannot be keys.

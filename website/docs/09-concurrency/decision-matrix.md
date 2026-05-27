@@ -1,5 +1,9 @@
 # Concurrency Decision Matrix
 
+This page is the synthesis step for the chapter. Instead of learning one tool in isolation, you use it to choose an approach based on workload, coordination needs, and runtime constraints.
+
+If the earlier concurrency pages explain how each tool works, this page explains how to decide between them in practice.
+
 ## Which Tool for Which Problem?
 
 | Workload Type | Recommended Tool | Reason |

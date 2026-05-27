@@ -1,5 +1,9 @@
 # Comprehensions
 
+Comprehensions are a compact way to build collections from other iterables. They are one of Python's most recognizable idioms, but they work best when they stay readable and focused on a single transformation.
+
+The goal here is to understand why comprehensions feel natural in Python, and also where a normal loop is the better choice.
+
 ## What Are Comprehensions?
 
 Comprehensions are concise expressions for building new collections by transforming and filtering existing iterables. They replace verbose `for` loops and are generally faster because they are optimized at the bytecode level.

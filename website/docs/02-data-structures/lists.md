@@ -1,5 +1,9 @@
 # Lists
 
+Lists are usually the first real collection Python learners rely on heavily. They are flexible, easy to read, and useful in everyday code, but they also introduce important ideas like mutation, shared references, and performance tradeoffs.
+
+As you read this page, focus on when a list is the right default choice and when another container would express your intent more clearly.
+
 ## What is a List?
 
 A list is an **ordered, mutable** sequence of objects. Lists can hold any mix of types and can grow or shrink at runtime. They are Python's most versatile built-in collection.

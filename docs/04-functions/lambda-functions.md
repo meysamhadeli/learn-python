@@ -1,5 +1,9 @@
 # Lambda Functions
 
+Lambda functions are small anonymous functions used mostly where a short function is needed temporarily. They are convenient, but they are intentionally limited, and Python style guides expect you to prefer named functions once logic becomes substantial.
+
+The real lesson here is not "use lambda everywhere." It is learning when a one-line function improves clarity and when it hides meaning.
+
 ## What is a Lambda?
 
 A **lambda** is an anonymous, single-expression function. It is written `lambda parameters: expression` and can be defined inline wherever a function object is expected. The expression is evaluated and returned automatically — no `return` keyword.

@@ -1,5 +1,9 @@
 # The GIL
 
+The GIL is one of the most discussed parts of Python concurrency, but it is often explained too vaguely. The important question is not simply whether the GIL exists, but what kinds of workloads it limits and what kinds it does not.
+
+Read this page as a decision aid: it helps explain why threads behave differently for CPU-bound work and I/O-bound work in CPython.
+
 ## What is the GIL?
 
 The **Global Interpreter Lock (GIL)** is a mutex in CPython — the standard Python interpreter — that allows only one thread to execute Python bytecode at a time. It exists to protect CPython's internal data structures (reference counts, memory allocator) from concurrent modification, which would otherwise cause crashes and memory corruption.

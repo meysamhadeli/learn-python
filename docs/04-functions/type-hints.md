@@ -1,5 +1,9 @@
 # Type Hints
 
+Type hints add structure to Python code without changing Python into a statically typed language. They are best understood as communication tools for readers, editors, and type checkers rather than runtime enforcement.
+
+This page is about learning what hints express well, where they help maintainability, and why they remain optional in normal Python execution.
+
 ## What Are Type Hints?
 
 Introduced in PEP 484, **type hints** are optional annotations that document the expected types of function parameters and return values. Python **does not enforce them at runtime** — they are purely informational for developers and static analysis tools like `mypy`, `pyright`, and IDEs.

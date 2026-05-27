@@ -13,6 +13,15 @@ _private = "convention only"
 
 Python follows **snake_case** for variable and function names (e.g. `user_name`, `total_price`), as specified in [PEP 8](https://peps.python.org/pep-0008/).
 
+The official tutorial introduces assignment very early because it is one of the main differences beginners notice when coming from other languages: you do not write a declaration like `string name;` or `let name;` first. You simply bind a name to a value.
+
+```python
+language = "Python"
+year = 1991
+```
+
+After that assignment, the names `language` and `year` can be reused anywhere in the current scope.
+
 ## Variables Are References
 
 This is one of Python's most important concepts: a variable is **not a box that holds a value** — it is a **label that points to an object** in memory. When you write `x = 42`, Python creates the integer object `42` in memory and makes `x` point to it.
@@ -40,6 +49,22 @@ y.append(99)
 print(x)        # unaffected
 ```
 
+This reference model explains a lot of Python behavior:
+
+- assigning one list to another name does **not** make a copy
+- changing a mutable object through one name is visible through every name pointing to it
+- rebinding a name does not change the old object; it only changes what the name points to
+
+```python
+items = [1, 2, 3]
+other = items
+items = [10, 20, 30]
+
+print(other)  # [1, 2, 3]
+```
+
+Here, `other` still points to the original list. Reassigning `items` did not rewrite that old list.
+
 ## Multiple Assignment
 
 Python lets you assign multiple variables in one line using **tuple unpacking**:
@@ -51,6 +76,8 @@ a = b = c = 0               # all three point to the same object
 # Swap without a temporary variable — a Python idiom
 x, y = y, x
 ```
+
+This works because Python evaluates the full right-hand side first, then performs the assignments. That is why swapping values is safe and does not overwrite one side too early.
 
 ## Constants
 
@@ -69,6 +96,8 @@ from typing import Final
 MAX_RETRIES: Final = 3
 ```
 
+For course code and small scripts, the naming convention is usually enough. In larger codebases, `Final` helps readers and type checkers understand your intent.
+
 ## Deleting Variables
 
 Use `del` to remove a variable name from the current scope:
@@ -80,3 +109,11 @@ del temp
 ```
 
 This does not necessarily destroy the object — Python's garbage collector reclaims memory when an object has no more references pointing to it.
+
+Most beginners do not need `del` often. It appears more in cases like:
+
+- removing items from containers
+- cleaning up names in a narrow scope
+- demonstrating how references work
+
+The main lesson is that names and objects are related, but they are not the same thing.

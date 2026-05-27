@@ -1,5 +1,9 @@
 # Match / Case (Python 3.10+)
 
+`match` is Python's structural pattern matching feature. It is more powerful than a classic switch statement because it can both test values and unpack structure at the same time.
+
+The main question to keep in mind is when `match` makes intent clearer than a chain of `if` and `elif` statements.
+
 ## Overview
 
 `match`/`case` is Python's **structural pattern matching** — introduced in PEP 634. It is similar to `switch` in other languages but far more powerful: it can destructure sequences, mappings, and class instances, check types, bind variables, and apply guards — all in a single expression.

@@ -1,5 +1,9 @@
 # Tuples
 
+Tuples often look like simpler lists, but their role is different. They are most useful when the shape of the data should stay fixed, such as coordinates, records, return values, and dictionary keys.
+
+The key idea is not just that tuples are immutable. It is that immutability communicates intent to the reader.
+
 ## What is a Tuple?
 
 A tuple is an **ordered, immutable** sequence. Once created, its contents cannot change. Tuples are slightly more memory-efficient than lists and can be used as dictionary keys or set members (because they are hashable, provided all their elements are also hashable).

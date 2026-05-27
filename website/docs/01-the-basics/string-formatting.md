@@ -18,6 +18,17 @@ print(f"Length: {len(name)}")
 print(f"{'even' if age % 2 == 0 else 'odd'}")
 ```
 
+This style is usually the clearest because the variable names stay close to the text they belong to. You read the final sentence almost the same way the user will see it.
+
+```python
+product = "Keyboard"
+price = 49.99
+
+print(f"{product} costs ${price}")
+```
+
+Any valid expression can go inside the braces, but do not overdo it. Short expressions are helpful; long expressions can make the string hard to read. When formatting becomes complex, compute values first and format second.
+
 ## Format Specification Mini-Language
 
 After a colon inside `{}` you can specify how the value should be formatted:
@@ -46,6 +57,15 @@ print(f"{ratio:.1%}")   # 75.6%
 print(f"{0.000123:.2e}")  # 1.23e-04
 ```
 
+This formatting system is especially useful when output should look aligned or predictable, such as tables, reports, prices, percentages, or scientific values.
+
+```python
+item = "Book"
+price = 12.5
+
+print(f"{item:<10} ${price:>6.2f}")
+```
+
 ## Debugging with `=`
 
 Python 3.8+ added a handy `=` specifier that prints the expression and its value — great for quick debugging:
@@ -57,6 +77,8 @@ print(f"{x=}")          # x=42
 print(f"{y=}")          # y=[1, 2, 3]
 print(f"{x * 2 + 1=}")  # x * 2 + 1=85
 ```
+
+This is excellent for short investigations because you see both the expression and the result in one place. It reduces the guesswork when debugging small programs.
 
 ## Other Formatting Approaches
 
@@ -71,6 +93,8 @@ print("{name} is {age}".format(name="Alice", age=30))
 print("Hello, %s! You are %d years old." % ("Alice", 30))
 ```
 
+You will still see these older styles in tutorials, libraries, and legacy code. Knowing them helps you read existing Python even if you choose f-strings for new work.
+
 For **logging**, the `%`-style is intentionally used because `logging` can skip the formatting entirely when the log level is disabled:
 
 ```python
@@ -78,3 +102,9 @@ import logging
 logging.debug("User %s logged in from %s", username, ip_address)
 # String is only formatted if DEBUG level is active
 ```
+
+Practical rule:
+
+- use f-strings for everyday output
+- recognize `.format()` when reading older code
+- keep `%` formatting in mind for logging APIs

@@ -82,45 +82,45 @@ SIDEBAR_STRUCTURE = [
         ],
     },
     {
-        'text': 'V — Modules & Packaging',
+        'text': 'V — OOP',
         'collapsed': False,
-        'link': '/05-modules/',
+        'link': '/05-oop/',
         'items': [
-            {'text': 'Modules',              'link': '/05-modules/modules'},
-            {'text': 'File I/O & JSON',      'link': '/05-modules/file-io-json'},
-            {'text': 'Packages',             'link': '/05-modules/packages'},
-            {'text': 'Virtual Environments', 'link': '/05-modules/virtual-environments'},
-            {'text': 'Useful Commands',      'link': '/05-modules/useful-commands'},
-            {'text': 'Build & Packaging',    'link': '/05-modules/build-packaging'},
+            {'text': 'Classes',               'link': '/05-oop/classes'},
+            {'text': 'Inheritance',           'link': '/05-oop/inheritance'},
+            {'text': 'Abstract Base Classes', 'link': '/05-oop/abstract-base-classes'},
+            {'text': 'Magic Methods',         'link': '/05-oop/magic-methods'},
+            {'text': 'Dataclasses',           'link': '/05-oop/dataclasses'},
         ],
     },
     {
-        'text': 'VI — OOP',
+        'text': 'VI — Advanced Python Techniques',
         'collapsed': False,
-        'link': '/06-oop/',
+        'link': '/06-advanced-python-techniques/',
         'items': [
-            {'text': 'Classes',               'link': '/06-oop/classes'},
-            {'text': 'Inheritance',           'link': '/06-oop/inheritance'},
-            {'text': 'Abstract Base Classes', 'link': '/06-oop/abstract-base-classes'},
-            {'text': 'Magic Methods',         'link': '/06-oop/magic-methods'},
-            {'text': 'Dataclasses',           'link': '/06-oop/dataclasses'},
+            {'text': 'Iterators & Generators','link': '/06-advanced-python-techniques/iterators-generators'},
+            {'text': 'itertools & functools',  'link': '/06-advanced-python-techniques/itertools-functools'},
+            {'text': 'Decorators',            'link': '/06-advanced-python-techniques/decorators'},
+            {'text': 'Context Managers',      'link': '/06-advanced-python-techniques/context-managers'},
+            {'text': 'Pattern Matching',      'link': '/06-advanced-python-techniques/pattern-matching'},
         ],
     },
     {
-        'text': 'VII — Errors & Exceptions',
-        'link': '/07-errors-exceptions/',
+        'text': 'VII — Modules & Packaging',
+        'collapsed': False,
+        'link': '/07-modules/',
+        'items': [
+            {'text': 'Modules',              'link': '/07-modules/modules'},
+            {'text': 'File I/O & JSON',      'link': '/07-modules/file-io-json'},
+            {'text': 'Packages',             'link': '/07-modules/packages'},
+            {'text': 'Virtual Environments', 'link': '/07-modules/virtual-environments'},
+            {'text': 'Useful Commands',      'link': '/07-modules/useful-commands'},
+            {'text': 'Build & Packaging',    'link': '/07-modules/build-packaging'},
+        ],
     },
     {
-        'text': 'VIII — Pythonic Patterns',
-        'collapsed': False,
-        'link': '/08-pythonic-patterns/',
-        'items': [
-            {'text': 'Iterators & Generators','link': '/08-pythonic-patterns/iterators-generators'},
-            {'text': 'itertools & functools',  'link': '/08-pythonic-patterns/itertools-functools'},
-            {'text': 'Decorators',            'link': '/08-pythonic-patterns/decorators'},
-            {'text': 'Context Managers',      'link': '/08-pythonic-patterns/context-managers'},
-            {'text': 'Pattern Matching',      'link': '/08-pythonic-patterns/pattern-matching'},
-        ],
+        'text': 'VIII — Errors & Exceptions',
+        'link': '/08-errors-exceptions/',
     },
     {
         'text': 'IX — Concurrency',
@@ -176,6 +176,43 @@ def to_ts(value: object, indent: int = 0) -> str:
     return json.dumps(value, ensure_ascii=False)
 
 
+def _doc_rel_from_sidebar_link(link: str) -> str:
+    normalized = link.strip('/')
+    if not normalized:
+        raise ValueError('Sidebar link cannot be empty')
+    if link.endswith('/'):
+        return f'{normalized}/index.md'
+    return f'{normalized}.md'
+
+
+def _first_heading_text(path: Path) -> str | None:
+    for line in path.read_text(encoding='utf-8').splitlines():
+        if line.startswith('# '):
+            return line[2:].strip()
+    return None
+
+
+def _anchor_id(text: str) -> str:
+    slug = re.sub(r'[^a-z0-9]+', '-', text.lower()).strip('-')
+    return slug or 'section'
+
+
+def _anchor_for_doc(rel_path: str) -> str | None:
+    path = SOURCE_DOCS_DIR / rel_path
+    if not path.exists():
+        return None
+    heading = _first_heading_text(path)
+    if not heading:
+        return None
+    return _anchor_id(heading)
+
+
+def _inject_anchor(md_text: str, anchor: str | None) -> str:
+    if not anchor:
+        return md_text
+    return f'<a id="{anchor}"></a>\n\n{md_text}'
+
+
 # ---------------------------------------------------------------------------
 # Sync steps
 # ---------------------------------------------------------------------------
@@ -218,12 +255,14 @@ def copy_notebook() -> None:
 # Ordered list of doc files to concatenate for the root README.md
 README_DOCS_ORDER = [
     'getting-started/index.md',
+    '01-the-basics/index.md',
     '01-the-basics/hello-world.md',
     '01-the-basics/variables.md',
     '01-the-basics/built-in-data-types.md',
     '01-the-basics/string-formatting.md',
     '01-the-basics/operators.md',
     '01-the-basics/falsy-values.md',
+    '02-data-structures/index.md',
     '02-data-structures/lists.md',
     '02-data-structures/tuples.md',
     '02-data-structures/dictionaries.md',
@@ -231,55 +270,83 @@ README_DOCS_ORDER = [
     '02-data-structures/collections-module.md',
     '02-data-structures/comprehensions.md',
     '02-data-structures/type-conversion.md',
+    '03-control-flow/index.md',
     '03-control-flow/if-else.md',
     '03-control-flow/match-case.md',
     '03-control-flow/loops.md',
+    '04-functions/index.md',
     '04-functions/defining-functions.md',
     '04-functions/parameters-arguments.md',
     '04-functions/lambda-functions.md',
     '04-functions/scoping-rules.md',
     '04-functions/type-hints.md',
-    '05-modules/modules.md',
-    '05-modules/file-io-json.md',
-    '05-modules/packages.md',
-    '05-modules/virtual-environments.md',
-    '05-modules/useful-commands.md',
-    '05-modules/build-packaging.md',
-    '06-oop/classes.md',
-    '06-oop/inheritance.md',
-    '06-oop/abstract-base-classes.md',
-    '06-oop/magic-methods.md',
-    '06-oop/dataclasses.md',
-    '07-errors-exceptions/index.md',
-    '08-pythonic-patterns/iterators-generators.md',
-    '08-pythonic-patterns/itertools-functools.md',
-    '08-pythonic-patterns/decorators.md',
-    '08-pythonic-patterns/context-managers.md',
-    '08-pythonic-patterns/pattern-matching.md',
+    '05-oop/index.md',
+    '05-oop/classes.md',
+    '05-oop/inheritance.md',
+    '05-oop/abstract-base-classes.md',
+    '05-oop/magic-methods.md',
+    '05-oop/dataclasses.md',
+    '06-advanced-python-techniques/index.md',
+    '06-advanced-python-techniques/iterators-generators.md',
+    '06-advanced-python-techniques/itertools-functools.md',
+    '06-advanced-python-techniques/decorators.md',
+    '06-advanced-python-techniques/context-managers.md',
+    '06-advanced-python-techniques/pattern-matching.md',
+    '07-modules/index.md',
+    '07-modules/modules.md',
+    '07-modules/file-io-json.md',
+    '07-modules/packages.md',
+    '07-modules/virtual-environments.md',
+    '07-modules/useful-commands.md',
+    '07-modules/build-packaging.md',
+    '08-errors-exceptions/index.md',
+    '09-concurrency/index.md',
     '09-concurrency/the-gil.md',
     '09-concurrency/async-await.md',
     '09-concurrency/threading.md',
     '09-concurrency/multiprocessing.md',
     '09-concurrency/free-threading.md',
     '09-concurrency/decision-matrix.md',
+    'appendix/index.md',
     'appendix/ai-data-science.md',
     'appendix/web-development.md',
 ]
 
+def build_course_toc() -> str:
+    lines = ['## Table of Contents', '']
+    for section in SIDEBAR_STRUCTURE:
+        section_rel = _doc_rel_from_sidebar_link(section['link'])
+        section_anchor = _anchor_for_doc(section_rel)
+        if section_anchor:
+            lines.append(f"- [{section['text']}](#{section_anchor})")
+        else:
+            lines.append(f"- {section['text']}")
+        for item in section.get('items', []):
+            item_rel = _doc_rel_from_sidebar_link(item['link'])
+            item_anchor = _anchor_for_doc(item_rel)
+            if item_anchor:
+                lines.append(f"  - [{item['text']}](#{item_anchor})")
+            else:
+                lines.append(f"  - {item['text']}")
+    return '\n'.join(lines)
+
+
 README_HEADER = """\
 # Learn Python
 
-> Learn Python from scratch — step by step, at your own pace. Every concept is short, focused, and shown with real code you can run right away. Plain language first, working examples second, no walls of theory in between. Open a topic, read it, run it, and move on.
+> Learn Python from scratch with short lessons, clear explanations, and runnable examples.
 
-- **Documentation site** — the full content is published at **[learn-python-dev.netlify.app](https://learn-python-dev.netlify.app/)** with a sidebar, search, and per-chapter navigation.
+- :page_facing_up: **Documentation site** — the full content is published at **[learn-python-dev.netlify.app](https://learn-python-dev.netlify.app/)** with a sidebar, search, and per-chapter navigation.
 
-- **Interactive notebook** — [learn-python.ipynb](learn-python.ipynb) in VS Code lets you run and edit every code block inline.
+- :notebook: **Interactive notebook** — [learn-python.ipynb](learn-python.ipynb) in VS Code lets you run and edit every code block inline.
 
 > [!NOTE]
 > After editing any file in `docs/`, run this to update the website content:
 > ```bash
 > python website/scripts/sync_docs.py
 > ```
+
+{toc}
 
 ---
 
@@ -298,12 +365,13 @@ def _bump_headings(text: str) -> str:
 
 def write_root_readme() -> None:
     """Regenerate the root README.md from docs/ files in sidebar order."""
-    parts = [README_HEADER]
+    parts = [README_HEADER.format(toc=build_course_toc())]
     for rel in README_DOCS_ORDER:
         path = SOURCE_DOCS_DIR / rel
         if not path.exists():
             continue
         content = _bump_headings(path.read_text(encoding='utf-8').strip())
+        content = _inject_anchor(content, _anchor_for_doc(rel))
         parts.append(content + '\n\n---\n\n')
     README_PATH.write_text(''.join(parts), encoding='utf-8')
     print('  wrote root README.md')
@@ -368,17 +436,21 @@ def write_notebook() -> None:
     cells = [
         _nb_cell('markdown', (
             '# Learn Python\n\n'
-            'Interactive notebook — run any cell with **Shift+Enter**.\n\n'
-            '> Generated from the `docs/` folder. '
-            'Run `python website/scripts/sync_docs.py` to regenerate.'
+            '> 💡 Learn Python from scratch with short lessons, clear explanations, and runnable examples.\n\n'
+            '- :page_facing_up: **Documentation site** — the full content is published at **[learn-python-dev.netlify.app](https://learn-python-dev.netlify.app/)** with a sidebar, search, and per-chapter navigation.\n\n'
+            '- :notebook: **Interactive notebook** — [learn-python.ipynb](learn-python.ipynb) in VS Code lets you run and edit every code block inline.\n\n'
+            '> [!NOTE]\n'
+            '> After editing any file in `docs/`, run `python website/scripts/sync_docs.py` to regenerate this notebook.'
         )),
+        _nb_cell('markdown', build_course_toc()),
     ]
 
     for rel in README_DOCS_ORDER:
         path = SOURCE_DOCS_DIR / rel
         if not path.exists():
             continue
-        for c in _parse_md_to_cells(path.read_text(encoding='utf-8')):
+        md_text = _inject_anchor(path.read_text(encoding='utf-8'), _anchor_for_doc(rel))
+        for c in _parse_md_to_cells(md_text):
             cells.append(_nb_cell(c['type'], c['source']))
 
     notebook = {

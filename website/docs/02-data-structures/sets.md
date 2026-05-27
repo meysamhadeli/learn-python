@@ -1,5 +1,9 @@
 # Sets
 
+Sets are designed for uniqueness and fast membership testing. They are less about storing values in order and more about answering questions like "have I seen this before?" or "what values overlap between these groups?"
+
+That is why sets become especially useful in validation, deduplication, and comparison tasks.
+
 ## What is a Set?
 
 A set is an **unordered collection of unique, hashable objects**. Sets are backed by a hash table, giving O(1) average-case performance for membership tests, insertion, and deletion. Because sets are unordered, they do not support indexing or slicing.

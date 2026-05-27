@@ -1,5 +1,9 @@
 # If / Else
 
+Conditional logic is how a program starts making decisions. The important skill is not just writing conditions, but reading them clearly and predicting which branch will run for a given input.
+
+This page connects directly to truthiness from Chapter I, because Python conditions often depend on values that are not literally `True` or `False`.
+
 ## Basic Conditional
 
 Python uses indentation to delimit blocks — there are no curly braces. The `elif` keyword replaces `else if`:

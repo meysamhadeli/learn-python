@@ -1,5 +1,9 @@
 # Threading
 
+Threads are useful when a program spends much of its time waiting on external work such as network I/O, file I/O, or blocking library calls. They are less useful when pure Python code is trying to saturate CPU cores.
+
+This page should be read together with the GIL page, because thread behavior makes the most sense once that runtime constraint is clear.
+
 ## When to Use Threads
 
 Python threads are best for **I/O-bound** work — network requests, database queries, file reads — where the program spends most of its time waiting. Because of the GIL, threads do **not** parallelize CPU-bound computation; use `multiprocessing` for that.

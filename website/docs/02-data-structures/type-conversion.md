@@ -1,5 +1,9 @@
 # Type Conversion
 
+Type conversion is where many beginner bugs become visible. Input usually arrives as strings, APIs may return one type while your logic expects another, and containers can often be converted from one form to another depending on the operation you need.
+
+This page is really about making type changes explicit, predictable, and easy to reason about.
+
 ## Explicit vs Implicit Conversion
 
 Python performs **almost no implicit type coercion**. Unlike JavaScript (where `"5" + 1 = "51"`) or C (where types are silently cast), Python raises a `TypeError` when you mix incompatible types:

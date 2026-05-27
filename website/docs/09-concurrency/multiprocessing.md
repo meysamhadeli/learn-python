@@ -1,5 +1,9 @@
 # Multiprocessing
 
+Multiprocessing trades simplicity of shared memory for real parallel execution across CPU cores. That tradeoff matters because it changes both performance and program design.
+
+The main lesson here is when the extra process overhead is justified by CPU-bound workloads.
+
 ## When to Use Multiprocessing
 
 `multiprocessing` creates separate OS processes — each has its own Python interpreter and its own GIL. This enables **true CPU parallelism** across multiple cores, which is impossible with threads due to the GIL.

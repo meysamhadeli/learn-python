@@ -119,93 +119,93 @@ export const courseSidebar = [
     ],
   },
   {
-    text: "V — Modules & Packaging",
+    text: "V — OOP",
     collapsed: false,
-    link: "/05-modules/",
-    items: [
-      {
-        text: "Modules",
-        link: "/05-modules/modules",
-      },
-      {
-        text: "File I/O & JSON",
-        link: "/05-modules/file-io-json",
-      },
-      {
-        text: "Packages",
-        link: "/05-modules/packages",
-      },
-      {
-        text: "Virtual Environments",
-        link: "/05-modules/virtual-environments",
-      },
-      {
-        text: "Useful Commands",
-        link: "/05-modules/useful-commands",
-      },
-      {
-        text: "Build & Packaging",
-        link: "/05-modules/build-packaging",
-      },
-    ],
-  },
-  {
-    text: "VI — OOP",
-    collapsed: false,
-    link: "/06-oop/",
+    link: "/05-oop/",
     items: [
       {
         text: "Classes",
-        link: "/06-oop/classes",
+        link: "/05-oop/classes",
       },
       {
         text: "Inheritance",
-        link: "/06-oop/inheritance",
+        link: "/05-oop/inheritance",
       },
       {
         text: "Abstract Base Classes",
-        link: "/06-oop/abstract-base-classes",
+        link: "/05-oop/abstract-base-classes",
       },
       {
         text: "Magic Methods",
-        link: "/06-oop/magic-methods",
+        link: "/05-oop/magic-methods",
       },
       {
         text: "Dataclasses",
-        link: "/06-oop/dataclasses",
+        link: "/05-oop/dataclasses",
       },
     ],
   },
   {
-    text: "VII — Errors & Exceptions",
-    link: "/07-errors-exceptions/",
-  },
-  {
-    text: "VIII — Pythonic Patterns",
+    text: "VI — Advanced Python Techniques",
     collapsed: false,
-    link: "/08-pythonic-patterns/",
+    link: "/06-advanced-python-techniques/",
     items: [
       {
         text: "Iterators & Generators",
-        link: "/08-pythonic-patterns/iterators-generators",
+        link: "/06-advanced-python-techniques/iterators-generators",
       },
       {
         text: "itertools & functools",
-        link: "/08-pythonic-patterns/itertools-functools",
+        link: "/06-advanced-python-techniques/itertools-functools",
       },
       {
         text: "Decorators",
-        link: "/08-pythonic-patterns/decorators",
+        link: "/06-advanced-python-techniques/decorators",
       },
       {
         text: "Context Managers",
-        link: "/08-pythonic-patterns/context-managers",
+        link: "/06-advanced-python-techniques/context-managers",
       },
       {
         text: "Pattern Matching",
-        link: "/08-pythonic-patterns/pattern-matching",
+        link: "/06-advanced-python-techniques/pattern-matching",
       },
     ],
+  },
+  {
+    text: "VII — Modules & Packaging",
+    collapsed: false,
+    link: "/07-modules/",
+    items: [
+      {
+        text: "Modules",
+        link: "/07-modules/modules",
+      },
+      {
+        text: "File I/O & JSON",
+        link: "/07-modules/file-io-json",
+      },
+      {
+        text: "Packages",
+        link: "/07-modules/packages",
+      },
+      {
+        text: "Virtual Environments",
+        link: "/07-modules/virtual-environments",
+      },
+      {
+        text: "Useful Commands",
+        link: "/07-modules/useful-commands",
+      },
+      {
+        text: "Build & Packaging",
+        link: "/07-modules/build-packaging",
+      },
+    ],
+  },
+  {
+    text: "VIII — Errors & Exceptions",
+    link: "/08-errors-exceptions/",
   },
   {
     text: "IX — Concurrency",

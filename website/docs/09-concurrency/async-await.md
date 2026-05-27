@@ -1,5 +1,9 @@
 # Async / Await
 
+`async` and `await` are best understood as a model for cooperative I/O concurrency, not as a universal speed feature. They help when many tasks spend time waiting, but they do not automatically improve CPU-heavy work.
+
+This page is mainly about learning the event-loop mental model so that coroutine behavior feels predictable instead of mysterious.
+
 ## How asyncio Works
 
 Python's `asyncio` library provides a single-threaded **event loop** that runs cooperative coroutines. A **coroutine** is a function defined with `async def` — it can `await` other coroutines, pausing execution without blocking the thread. When a coroutine awaits I/O, the event loop runs other ready coroutines instead of sitting idle.

@@ -1,5 +1,9 @@
 # Scoping Rules (LEGB)
 
+Scoping rules explain where Python looks for names and why some assignments behave differently than beginners expect. This is one of the most important mental models in the language because it affects functions, closures, imports, and debugging.
+
+If a name lookup or reassignment has ever felt surprising, LEGB is usually the reason.
+
 ## The LEGB Rule
 
 When Python encounters a name (variable, function, class), it searches four scopes in order until it finds the name or raises a `NameError`:

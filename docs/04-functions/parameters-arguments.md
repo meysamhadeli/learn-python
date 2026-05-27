@@ -1,5 +1,9 @@
 # Parameters & Arguments
 
+This page explains one of the most important parts of Python function design: how callers provide data to a function and how the function definition controls that calling style.
+
+The details matter because many real bugs come from argument ordering, mutable defaults, or APIs that are technically valid but hard to call correctly.
+
 ## Positional Parameters
 
 The simplest parameters — arguments are matched left to right by position:

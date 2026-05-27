@@ -1,5 +1,9 @@
 # Loops
 
+Loops let you express repetition without duplicating code. In Python, the biggest shift for many learners is understanding that `for` usually means "loop over items" rather than "manually control an index."
+
+That design makes Python loops read more directly, but it also means you should pay attention to what object is being iterated and whether the loop is mutating data along the way.
+
 ## `for` Loops
 
 Python's `for` loop iterates over any **iterable** — lists, strings, ranges, dicts, files, generators, and anything that implements the iterator protocol:
