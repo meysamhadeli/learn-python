@@ -4,7 +4,7 @@
 
 - :page_facing_up: **Documentation site** — the full content is published at **[learn-python-dev.netlify.app](https://learn-python-dev.netlify.app/)** with a sidebar, search, and per-chapter navigation.
 
-- :notebook: **Interactive notebook** — [learn-python.ipynb](learn-python.ipynb) in VS Code lets you run and edit every code block inline.
+- :notebook: **Interactive notebook** — [Open learn-python.ipynb in VS Code](https://vscode.dev/github/meysamhadeli/learn-python/blob/main/learn-python.ipynb) to run and edit every code block inline.
 
 > [!NOTE]
 > After editing any file in `docs/`, run this to update the website content:
