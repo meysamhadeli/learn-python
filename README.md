@@ -1,8 +1,6 @@
 # Learn Python
 
-Welcome! This repo teaches you Python from scratch — step by step, with simple explanations and real code examples you can run right away.
-
-Every concept is explained in plain language and shown with concrete examples you can run immediately. There are no walls of theory before the code.
+> Welcome! This repo will take you from zero to confident in Python, with step-by-step lessons, plain‑language explanations, and real code examples that you can run right away.
 
 
 - **Documentation site** — the full content is published at **[learn-python-dev.netlify.app](https://learn-python-dev.netlify.app/)** with a sidebar, search, and per-chapter navigation.
