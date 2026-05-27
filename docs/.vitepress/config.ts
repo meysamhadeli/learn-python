@@ -1,0 +1,254 @@
+import { defineConfig } from 'vitepress'
+
+export default defineConfig({
+  title: 'Learn Python',
+  description: 'A comprehensive Python tutorial from basics to concurrency',
+  themeConfig: {
+    nav: [
+      { text: 'Getting Started', link: '/' },
+      { text: 'GitHub', link: 'https://github.com/meysamhadeli/learn-python' },
+    ],
+    sidebar: [
+      {
+        text: 'Getting Started',
+        link: '/',
+      },
+      {
+        text: 'I — The Basics',
+        collapsed: false,
+        link: '/01-the-basics/',
+        items: [
+          { text: 'Hello World', link: '/01-the-basics/hello-world' },
+          { text: 'Variables', link: '/01-the-basics/variables' },
+          { text: 'Built-in Data Types', link: '/01-the-basics/built-in-data-types' },
+          { text: 'String Formatting', link: '/01-the-basics/string-formatting' },
+          { text: 'Operators', link: '/01-the-basics/operators' },
+          { text: 'Falsy Values', link: '/01-the-basics/falsy-values' },
+        ],
+      },
+      {
+        text: 'II — Data Structures',
+        collapsed: false,
+        link: '/02-data-structures/',
+        items: [
+          { text: 'Lists', link: '/02-data-structures/lists' },
+          { text: 'Tuples', link: '/02-data-structures/tuples' },
+          { text: 'Dictionaries', link: '/02-data-structures/dictionaries' },
+          { text: 'Sets', link: '/02-data-structures/sets' },
+          { text: 'Collections Module', link: '/02-data-structures/collections-module' },
+          { text: 'Comprehensions', link: '/02-data-structures/comprehensions' },
+          { text: 'Type Conversion', link: '/02-data-structures/type-conversion' },
+        ],
+      },
+      {
+        text: 'III — Control Flow',
+        collapsed: false,
+        link: '/03-control-flow/',
+        items: [
+          { text: 'If / Else', link: '/03-control-flow/if-else' },
+          { text: 'Match / Case', link: '/03-control-flow/match-case' },
+          { text: 'Loops', link: '/03-control-flow/loops' },
+        ],
+      },
+      {
+        text: 'IV — Functions',
+        collapsed: false,
+        link: '/04-functions/',
+        items: [
+          { text: 'Defining Functions', link: '/04-functions/defining-functions' },
+          { text: 'Parameters & Arguments', link: '/04-functions/parameters-arguments' },
+          { text: 'Lambda Functions', link: '/04-functions/lambda-functions' },
+          { text: 'Scoping Rules', link: '/04-functions/scoping-rules' },
+          { text: 'Type Hints', link: '/04-functions/type-hints' },
+        ],
+      },
+      {
+        text: 'V — Modules & Packaging',
+        collapsed: false,
+        link: '/05-modules/',
+        items: [
+          { text: 'Modules', link: '/05-modules/modules' },
+          { text: 'File I/O & JSON', link: '/05-modules/file-io-json' },
+          { text: 'Packages', link: '/05-modules/packages' },
+          { text: 'Virtual Environments', link: '/05-modules/virtual-environments' },
+          { text: 'Useful Commands', link: '/05-modules/useful-commands' },
+          { text: 'Build & Packaging', link: '/05-modules/build-packaging' },
+        ],
+      },
+      {
+        text: 'VI — OOP',
+        collapsed: false,
+        link: '/06-oop/',
+        items: [
+          { text: 'Classes', link: '/06-oop/classes' },
+          { text: 'Inheritance', link: '/06-oop/inheritance' },
+          { text: 'Abstract Base Classes', link: '/06-oop/abstract-base-classes' },
+          { text: 'Magic Methods', link: '/06-oop/magic-methods' },
+          { text: 'Dataclasses', link: '/06-oop/dataclasses' },
+        ],
+      },
+      {
+        text: 'VII — Errors & Exceptions',
+        link: '/07-errors-exceptions/',
+      },
+      {
+        text: 'VIII — Pythonic Patterns',
+        collapsed: false,
+        link: '/08-pythonic-patterns/',
+        items: [
+          { text: 'Iterators & Generators', link: '/08-pythonic-patterns/iterators-generators' },
+          { text: 'itertools & functools', link: '/08-pythonic-patterns/itertools-functools' },
+          { text: 'Decorators', link: '/08-pythonic-patterns/decorators' },
+          { text: 'Context Managers', link: '/08-pythonic-patterns/context-managers' },
+          { text: 'Pattern Matching', link: '/08-pythonic-patterns/pattern-matching' },
+        ],
+      },
+      {
+        text: 'IX — Concurrency',
+        collapsed: false,
+        link: '/09-concurrency/',
+        items: [
+          { text: 'The GIL', link: '/09-concurrency/the-gil' },
+          { text: 'Async / Await', link: '/09-concurrency/async-await' },
+          { text: 'Threading', link: '/09-concurrency/threading' },
+          { text: 'Multiprocessing', link: '/09-concurrency/multiprocessing' },
+          { text: 'Free-Threading', link: '/09-concurrency/free-threading' },
+          { text: 'Decision Matrix', link: '/09-concurrency/decision-matrix' },
+        ],
+      },
+      {
+        text: 'Appendix',
+        collapsed: false,
+        link: '/appendix/',
+        items: [
+          { text: 'AI & Data Science', link: '/appendix/ai-data-science' },
+          { text: 'Web Development', link: '/appendix/web-development' },
+        ],
+      },
+    ],
+    socialLinks: [
+      { icon: 'github', link: 'https://github.com/meysamhadeli/learn-python' },
+    ],
+  },
+})
+      {
+        text: 'I — The Basics',
+        collapsed: false,
+        items: [
+          { text: 'Overview', link: '/01-the-basics/' },
+          { text: 'Hello World', link: '/01-the-basics/hello-world' },
+          { text: 'Variables', link: '/01-the-basics/variables' },
+          { text: 'Built-in Data Types', link: '/01-the-basics/built-in-data-types' },
+          { text: 'String Formatting', link: '/01-the-basics/string-formatting' },
+          { text: 'Operators', link: '/01-the-basics/operators' },
+          { text: 'Falsy Values', link: '/01-the-basics/falsy-values' },
+        ],
+      },
+      {
+        text: 'II — Data Structures',
+        collapsed: false,
+        items: [
+          { text: 'Overview', link: '/02-data-structures/' },
+          { text: 'Lists', link: '/02-data-structures/lists' },
+          { text: 'Tuples', link: '/02-data-structures/tuples' },
+          { text: 'Dictionaries', link: '/02-data-structures/dictionaries' },
+          { text: 'Sets', link: '/02-data-structures/sets' },
+          { text: 'Collections Module', link: '/02-data-structures/collections-module' },
+          { text: 'Comprehensions', link: '/02-data-structures/comprehensions' },
+          { text: 'Type Conversion', link: '/02-data-structures/type-conversion' },
+        ],
+      },
+      {
+        text: 'III — Control Flow',
+        collapsed: false,
+        items: [
+          { text: 'Overview', link: '/03-control-flow/' },
+          { text: 'If / Else', link: '/03-control-flow/if-else' },
+          { text: 'Match / Case', link: '/03-control-flow/match-case' },
+          { text: 'Loops', link: '/03-control-flow/loops' },
+        ],
+      },
+      {
+        text: 'IV — Functions',
+        collapsed: false,
+        items: [
+          { text: 'Overview', link: '/04-functions/' },
+          { text: 'Defining Functions', link: '/04-functions/defining-functions' },
+          { text: 'Parameters & Arguments', link: '/04-functions/parameters-arguments' },
+          { text: 'Lambda Functions', link: '/04-functions/lambda-functions' },
+          { text: 'Scoping Rules', link: '/04-functions/scoping-rules' },
+          { text: 'Type Hints', link: '/04-functions/type-hints' },
+        ],
+      },
+      {
+        text: 'V — Modules & Packaging',
+        collapsed: false,
+        items: [
+          { text: 'Overview', link: '/05-modules/' },
+          { text: 'Modules', link: '/05-modules/modules' },
+          { text: 'File I/O & JSON', link: '/05-modules/file-io-json' },
+          { text: 'Packages', link: '/05-modules/packages' },
+          { text: 'Virtual Environments', link: '/05-modules/virtual-environments' },
+          { text: 'Useful Commands', link: '/05-modules/useful-commands' },
+          { text: 'Build & Packaging', link: '/05-modules/build-packaging' },
+        ],
+      },
+      {
+        text: 'VI — OOP',
+        collapsed: false,
+        items: [
+          { text: 'Overview', link: '/06-oop/' },
+          { text: 'Classes', link: '/06-oop/classes' },
+          { text: 'Inheritance', link: '/06-oop/inheritance' },
+          { text: 'Abstract Base Classes', link: '/06-oop/abstract-base-classes' },
+          { text: 'Magic Methods', link: '/06-oop/magic-methods' },
+          { text: 'Dataclasses', link: '/06-oop/dataclasses' },
+        ],
+      },
+      {
+        text: 'VII — Errors & Exceptions',
+        collapsed: false,
+        items: [
+          { text: 'Errors & Exceptions', link: '/07-errors-exceptions/' },
+        ],
+      },
+      {
+        text: 'VIII — Pythonic Patterns',
+        collapsed: false,
+        items: [
+          { text: 'Overview', link: '/08-pythonic-patterns/' },
+          { text: 'Iterators & Generators', link: '/08-pythonic-patterns/iterators-generators' },
+          { text: 'itertools & functools', link: '/08-pythonic-patterns/itertools-functools' },
+          { text: 'Decorators', link: '/08-pythonic-patterns/decorators' },
+          { text: 'Context Managers', link: '/08-pythonic-patterns/context-managers' },
+          { text: 'Pattern Matching', link: '/08-pythonic-patterns/pattern-matching' },
+        ],
+      },
+      {
+        text: 'IX — Concurrency',
+        collapsed: false,
+        items: [
+          { text: 'Overview', link: '/09-concurrency/' },
+          { text: 'The GIL', link: '/09-concurrency/the-gil' },
+          { text: 'Async / Await', link: '/09-concurrency/async-await' },
+          { text: 'Threading', link: '/09-concurrency/threading' },
+          { text: 'Multiprocessing', link: '/09-concurrency/multiprocessing' },
+          { text: 'Free-Threading', link: '/09-concurrency/free-threading' },
+          { text: 'Decision Matrix', link: '/09-concurrency/decision-matrix' },
+        ],
+      },
+      {
+        text: 'Appendix',
+        collapsed: false,
+        items: [
+          { text: 'Overview', link: '/appendix/' },
+          { text: 'AI & Data Science', link: '/appendix/ai-data-science' },
+          { text: 'Web Development', link: '/appendix/web-development' },
+        ],
+      },
+    ],
+    socialLinks: [
+      { icon: 'github', link: 'https://github.com/your-username/learn-python' },
+    ],
+  },
+})

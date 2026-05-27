@@ -1,0 +1,27 @@
+{
+  "name": "learn-python",
+  "version": "1.0.0",
+  "description": "Hey, welcome to the course! This is a **~30-minute crash course** covering the most important Python concepts — enough to read, write, and reason about real Python code.",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/meysamhadeli/learn-python.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/meysamhadeli/learn-python/issues"
+  },
+  "homepage": "https://github.com/meysamhadeli/learn-python#readme",
+  "devDependencies": {
+    "vitepress": "^1.6.4"
+  }
+}
