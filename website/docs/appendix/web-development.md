@@ -143,13 +143,10 @@ def post_list(request):
     return JsonResponse(posts, safe=False)
 ```
 
-Django's admin panel (`/admin/`) provides a full CRUD UI for your models with zero extra code.
+Django's admin panel (`/admin/`) can give you a full CRUD-style interface for your models with very little extra setup.
 
 ## Choosing a Framework
 
 - **New REST API** → FastAPI (async, type-safe, auto-docs)
 - **Simple script/prototype** → Flask (minimal setup)
 - **Complex web application** → Django (ORM, admin, auth, form validation all included)
-
-# Run: flask run
-```

@@ -8,7 +8,7 @@ Python is a high-level, interpreted language created by Guido van Rossum in 1991
 
 **Short answer:** Python is the language of AI — and it's also great for web backends.
 
-- **AI/ML**: PyTorch, TensorFlow, Hugging Face, LangChain, OpenAI SDK — all Python-first.
+- **AI/ML**: PyTorch, TensorFlow, Hugging Face, LangChain, PydanticAI, OpenAI SDK — all Python-first.
 - **Web**: FastAPI (async, high-performance), Django (batteries-included), powers Instagram & Spotify.
 - **Ecosystem**: 300,000+ packages on PyPI for everything from scraping to DevOps.
 - **Jobs**: Python skills are in massive demand and only growing with the AI boom.

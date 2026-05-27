@@ -21,7 +21,7 @@ x = "hello"   # now x is a str — perfectly valid in Python
 
 Python has become the dominant language in several fields:
 
-- **AI & Machine Learning** — PyTorch, TensorFlow, scikit-learn, Hugging Face, LangChain, and the OpenAI SDK are all Python-first. If you want to work in AI, Python is non-negotiable.
+- **AI & Machine Learning** — PyTorch, TensorFlow, Hugging Face, LangChain, PydanticAI, and the OpenAI SDK are all Python-first. If you want to work in AI, Python is non-negotiable.
 - **Data Science** — NumPy, pandas, and matplotlib form the foundation of data analysis workflows worldwide.
 - **Web Development** — FastAPI, Django, and Flask power production backends at companies like Instagram, Spotify, and Dropbox.
 - **Automation & Scripting** — Python is the go-to for DevOps scripts, CLI tools, and task automation.

@@ -328,7 +328,41 @@ def build_course_toc() -> str:
                 lines.append(f"  - [{item['text']}](#{item_anchor})")
             else:
                 lines.append(f"  - {item['text']}")
+    lines.extend([
+        '- [Support](#support)',
+        '- [Contribution](#contribution)',
+        '- [Project References](#project-references)',
+    ])
     return '\n'.join(lines)
+
+
+README_FOOTER = """\
+<a id="support"></a>
+
+## Support
+
+If you like my work, feel free to:
+
+- ⭐ this repository. And we will be happy together :)
+
+Thanks a bunch for supporting me!
+
+<a id="contribution"></a>
+
+## Contribution
+
+Thanks to all [contributors](https://github.com/meysamhadeli/learn-python/graphs/contributors), you're awesome and this wouldn't be possible without you!
+
+Please follow this [contribution guideline](./CONTRIBUTION.md) to submit a pull request or create the issue.
+
+<a id="project-references"></a>
+
+## Project References
+
+- [Official Python Docs](https://docs.python.org/3/)
+- [FastAPI Tutorial](https://fastapi.tiangolo.com/)
+- [Python Type Hints Cheat Sheet](https://mypy.readthedocs.io/en/stable/cheat_sheet_py3.html)
+"""
 
 
 README_HEADER = """\
@@ -373,6 +407,7 @@ def write_root_readme() -> None:
         content = _bump_headings(path.read_text(encoding='utf-8').strip())
         content = _inject_anchor(content, _anchor_for_doc(rel))
         parts.append(content + '\n\n---\n\n')
+    parts.append(README_FOOTER)
     README_PATH.write_text(''.join(parts), encoding='utf-8')
     print('  wrote root README.md')
 
@@ -452,6 +487,8 @@ def write_notebook() -> None:
         md_text = _inject_anchor(path.read_text(encoding='utf-8'), _anchor_for_doc(rel))
         for c in _parse_md_to_cells(md_text):
             cells.append(_nb_cell(c['type'], c['source']))
+
+    cells.append(_nb_cell('markdown', README_FOOTER))
 
     notebook = {
         'cells': cells,

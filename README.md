@@ -2,9 +2,9 @@
 
 > Learn Python from scratch with short lessons, clear explanations, and runnable examples.
 
-- :page_facing_up: **Documentation site** — the full content is published at **[https://learn-python-dev.netlify.app](https://learn-python-dev.netlify.app/)** with a sidebar, search, and per-chapter navigation.
+- :page_facing_up: **Documentation site** — the full content is published at **[learn-python-dev.netlify.app](https://learn-python-dev.netlify.app/)** with a sidebar, search, and per-chapter navigation.
 
-- :notebook: **Interactive notebook** — Open **[learn-python.ipynb](https://vscode.dev/github/meysamhadeli/learn-python/blob/main/learn-python.ipynb)** in VS Code, to run and edit every code block inline.
+- :notebook: **Interactive notebook** — [Open learn-python.ipynb in VS Code](https://vscode.dev/github/meysamhadeli/learn-python/blob/main/learn-python.ipynb) to run and edit every code block inline.
 
 > [!NOTE]
 > After editing any file in `docs/`, run this to update the website content:
@@ -70,6 +70,9 @@
 - [Appendix](#appendix)
   - [AI & Data Science](#ai-data-science)
   - [Web Development](#web-development)
+- [Support](#support)
+- [Contribution](#contribution)
+- [Project References](#project-references)
 
 ---
 
@@ -85,7 +88,7 @@ Python is a high-level, interpreted language created by Guido van Rossum in 1991
 
 **Short answer:** Python is the language of AI — and it's also great for web backends.
 
-- **AI/ML**: PyTorch, TensorFlow, Hugging Face, LangChain, OpenAI SDK — all Python-first.
+- **AI/ML**: PyTorch, TensorFlow, Hugging Face, LangChain, PydanticAI, OpenAI SDK — all Python-first.
 - **Web**: FastAPI (async, high-performance), Django (batteries-included), powers Instagram & Spotify.
 - **Ecosystem**: 300,000+ packages on PyPI for everything from scraping to DevOps.
 - **Jobs**: Python skills are in massive demand and only growing with the AI boom.
@@ -5878,16 +5881,15 @@ Python dominates AI, machine learning, and data science. The core libraries are:
 |---------|---------|
 | `numpy` | Fast multi-dimensional arrays and math |
 | `pandas` | Tabular data manipulation (DataFrames) |
-| `matplotlib` | 2D plotting |
-| `scikit-learn` | Classical machine learning |
 | `pytorch` | Deep learning (Meta) — research and production |
 | `tensorflow` | Deep learning (Google) — production-focused |
-| `xgboost` | Gradient boosting for structured data |
+| `langchain` | Build LLM workflows, retrieval pipelines, and agent-style applications |
+| `pydantic-ai` | Build AI agents with typed inputs, outputs, and validation |
 
 Install the essentials:
 
 ```bash
-pip install numpy pandas matplotlib scikit-learn
+pip install numpy pandas langchain pydantic-ai
 ```
 
 ### NumPy — Fast Arrays
@@ -5968,56 +5970,54 @@ df.to_json("employees.json", orient="records")
 df3 = pd.read_json("employees.json")
 ```
 
-### Matplotlib — Plotting
+### LangChain — LLM Workflows
+
+LangChain helps you connect prompts, models, tools, and retrieved documents into larger LLM-powered workflows. It is commonly used for chatbots, retrieval-augmented generation (RAG), and agent-style applications.
 
 ```python
-import matplotlib.pyplot as plt
-import numpy as np
+from langchain_core.prompts import ChatPromptTemplate
+from langchain_openai import ChatOpenAI
 
-x = np.linspace(0, 2 * np.pi, 100)
+prompt = ChatPromptTemplate.from_messages([
+    ("system", "You are a concise Python tutor."),
+    ("human", "Explain {topic} in 3 short bullet points."),
+])
 
-fig, axes = plt.subplots(1, 2, figsize=(10, 4))
+model = ChatOpenAI(model="gpt-4o-mini")
+chain = prompt | model
 
-axes[0].plot(x, np.sin(x), label="sin(x)")
-axes[0].plot(x, np.cos(x), label="cos(x)")
-axes[0].set_title("Trigonometric Functions")
-axes[0].legend()
-axes[0].grid(True)
-
-data = np.random.randn(1000)
-axes[1].hist(data, bins=30, color="steelblue", edgecolor="white")
-axes[1].set_title("Normal Distribution")
-
-plt.tight_layout()
-plt.savefig("plot.png", dpi=150)
-plt.show()
+response = chain.invoke({"topic": "Python decorators"})
+print(response.content)
 ```
 
-### scikit-learn — Machine Learning
+The value of LangChain is composition: you can add memory, retrieval, tools, and output parsing without rewriting your whole application.
+
+### PydanticAI — Typed AI Agents
+
+PydanticAI focuses on building AI agents with strong typing and validation. That makes it a good fit when you want model output to match a Python schema instead of returning loose text.
 
 ```python
-from sklearn.datasets import load_iris
-from sklearn.model_selection import train_test_split
-from sklearn.ensemble import RandomForestClassifier
-from sklearn.metrics import accuracy_score, classification_report
+from dataclasses import dataclass
 
-## Load a dataset
-X, y = load_iris(return_X_y=True)
+from pydantic_ai import Agent
 
-## Split into training and test sets
-X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+@dataclass
+class StudyPlan:
+    topic: str
+    difficulty: str
+    next_step: str
 
-## Train a model
-model = RandomForestClassifier(n_estimators=100, random_state=42)
-model.fit(X_train, y_train)
+agent = Agent(
+    "openai:gpt-4o-mini",
+    output_type=StudyPlan,
+    system_prompt="You create short Python study plans.",
+)
 
-## Evaluate
-predictions = model.predict(X_test)
-print(f"Accuracy: {accuracy_score(y_test, predictions):.2%}")
-print(classification_report(y_test, predictions))
+result = agent.run_sync("Create a beginner study plan for list comprehensions.")
+print(result.output)
 ```
 
-All scikit-learn estimators follow the same API: `fit()`, `predict()`, `score()` — making it easy to swap algorithms.
+This style is useful when you want predictable, structured outputs that can be passed directly into Python code, APIs, or UIs.
 
 ---
 
@@ -6168,7 +6168,7 @@ def post_list(request):
     return JsonResponse(posts, safe=False)
 ```
 
-Django's admin panel (`/admin/`) provides a full CRUD UI for your models with zero extra code.
+Django's admin panel (`/admin/`) can give you a full CRUD-style interface for your models with very little extra setup.
 
 ### Choosing a Framework
 
@@ -6176,8 +6176,30 @@ Django's admin panel (`/admin/`) provides a full CRUD UI for your models with ze
 - **Simple script/prototype** → Flask (minimal setup)
 - **Complex web application** → Django (ORM, admin, auth, form validation all included)
 
-## Run: flask run
-```
-
 ---
 
+<a id="support"></a>
+
+## Support
+
+If you like my work, feel free to:
+
+- ⭐ this repository. And we will be happy together :)
+
+Thanks a bunch for supporting me!
+
+<a id="contribution"></a>
+
+## Contribution
+
+Thanks to all [contributors](https://github.com/meysamhadeli/learn-python/graphs/contributors), you're awesome and this wouldn't be possible without you!
+
+Please follow this [contribution guideline](./CONTRIBUTION.md) to submit a pull request or create the issue.
+
+<a id="project-references"></a>
+
+## Project References
+
+- [Official Python Docs](https://docs.python.org/3/)
+- [FastAPI Tutorial](https://fastapi.tiangolo.com/)
+- [Python Type Hints Cheat Sheet](https://mypy.readthedocs.io/en/stable/cheat_sheet_py3.html)
