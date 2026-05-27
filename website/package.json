@@ -20,7 +20,7 @@
   "bugs": {
     "url": "https://github.com/meysamhadeli/learn-python/issues"
   },
-  "homepage": "https://meysamhadeli.github.io/learn-python/",
+  "homepage": "https://github.com/meysamhadeli/learn-python",
   "devDependencies": {
     "@iconify/json": "^2.2.478",
     "@mathjax/src": "^4.1.2",

@@ -6,6 +6,7 @@ title: Learn Python
 
 Hey, welcome to the course, and thanks for learning Python. I hope this course provides a great learning experience.
 
+
 > 💡 Tip: Use [learn-python.ipynb](/files/learn-python.ipynb) in VS Code to run and debug code interactively!
 
 # Table of Contents

@@ -5,25 +5,24 @@ import { contributionSidebar, courseSidebar } from './sidebar'
 
 const repoName = 'learn-python'
 const repoOwner = 'meysamhadeli'
-const isProd = process.env.NODE_ENV === 'production' || process.env.GITHUB_ACTIONS === 'true'
+const siteUrl = process.env.SITE_URL || process.env.URL || process.env.DEPLOY_PRIME_URL
 
 export default defineUserConfig({
   lang: 'en-US',
   title: 'Learn Python',
   description: 'A practical Learn Python course published with VuePress Theme Plume.',
-  base: isProd ? `/${repoName}/` : '/',
-  cleanUrls: true,
+  base: '/',
   head: [
     ['meta', { name: 'theme-color', content: '#3776ab' }],
   ],
   bundler: viteBundler(),
   theme: plumeTheme({
-    hostname: `https://${repoOwner}.github.io`,
+    hostname: siteUrl,
     docsRepo: `${repoOwner}/${repoName}`,
     docsBranch: 'main',
-    docsDir: 'docs',
+    docsDir: 'website/docs',
     editLink: true,
-    lastUpdated: true,
+    lastUpdated: {},
     contributors: false,
     changelog: false,
     search: {

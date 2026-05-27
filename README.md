@@ -2,7 +2,6 @@
 
 Hey, welcome to the course, and thanks for learning Python. I hope this course provides a great learning experience.
 
-> 🌐 **Read online**: [meysamhadeli.github.io/learn-python/](https://meysamhadeli.github.io/learn-python/)
 
 > 💡 Tip: Use [learn-python.ipynb](learn-python.ipynb) in VS Code to run and debug code interactively!
 
