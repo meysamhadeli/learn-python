@@ -150,12 +150,12 @@ If any page in this chapter feels slower than expected, that is a good sign. The
 
 ### Sections
 
-- [Hello World](./hello-world)
-- [Variables](./variables)
-- [Built-in Data Types](./built-in-data-types)
-- [String Formatting](./string-formatting)
-- [Operators](./operators)
-- [Falsy Values](./falsy-values)
+- [Hello World](#hello-world)
+- [Variables](#variables)
+- [Built-in Data Types](#built-in-data-types)
+- [String Formatting](#string-formatting)
+- [Operators](#operators)
+- [Falsy Values](#falsy-values)
 
 ---
 
@@ -1038,13 +1038,13 @@ If Chapter I taught you what Python values are, this chapter teaches you how Pyt
 
 ### Sections
 
-- [Lists](./lists)
-- [Tuples](./tuples)
-- [Dictionaries](./dictionaries)
-- [Sets](./sets)
-- [Collections Module](./collections-module)
-- [Comprehensions](./comprehensions)
-- [Type Conversion](./type-conversion)
+- [Lists](#lists)
+- [Tuples](#tuples)
+- [Dictionaries](#dictionaries)
+- [Sets](#sets)
+- [Collections Module](#collections-module)
+- [Comprehensions](#comprehensions)
+- [Type Conversion](#type-conversion)
 
 ---
 
@@ -1816,9 +1816,9 @@ The main skill here is learning to read code as execution flow: what happens fir
 
 ### Sections
 
-- [If / Else](./if-else)
-- [Match / Case](./match-case)
-- [Loops](./loops)
+- [If / Else](#if-else)
+- [Match / Case](#match-case)
+- [Loops](#loops)
 
 ---
 
@@ -2225,11 +2225,11 @@ Once these ideas feel natural, later topics like modules, classes, and decorator
 
 ### Sections
 
-- [Defining Functions](./defining-functions)
-- [Parameters & Arguments](./parameters-arguments)
-- [Lambda Functions](./lambda-functions)
-- [Scoping Rules](./scoping-rules)
-- [Type Hints](./type-hints)
+- [Defining Functions](#defining-functions)
+- [Parameters & Arguments](#parameters-arguments)
+- [Lambda Functions](#lambda-functions)
+- [Scoping Rules](#scoping-rules)
+- [Type Hints](#type-hints)
 
 ---
 
@@ -2915,11 +2915,11 @@ Python supports OOP well, but it also stays flexible, so the real skill is learn
 
 ### Sections
 
-- [Classes](./classes)
-- [Inheritance](./inheritance)
-- [Abstract Base Classes](./abstract-base-classes)
-- [Magic Methods](./magic-methods)
-- [Dataclasses](./dataclasses)
+- [Classes](#classes)
+- [Inheritance](#inheritance)
+- [Abstract Base Classes](#abstract-base-classes)
+- [Magic Methods](#magic-methods)
+- [Dataclasses](#dataclasses)
 
 ---
 
@@ -3639,11 +3639,11 @@ Advanced Python is not about writing the shortest code possible. It is about cho
 
 ### Sections
 
-- [Iterators & Generators](./iterators-generators)
-- [itertools & functools](./itertools-functools)
-- [Decorators](./decorators)
-- [Context Managers](./context-managers)
-- [Pattern Matching](./pattern-matching)
+- [Iterators & Generators](#iterators-generators)
+- [itertools & functools](#itertools-functools)
+- [Decorators](#decorators)
+- [Context Managers](#context-managers)
+- [Pattern Matching](#pattern-matching)
 
 ---
 
@@ -4492,12 +4492,12 @@ That structure matters because maintainable Python is not just about syntax; it 
 
 ### Sections
 
-- [Modules](./modules)
-- [File I/O & JSON](./file-io-json)
-- [Packages](./packages)
-- [Virtual Environments](./virtual-environments)
-- [Useful Commands](./useful-commands)
-- [Build & Packaging](./build-packaging)
+- [Modules](#modules)
+- [File I/O & JSON](#file-io-json)
+- [Packages](#packages)
+- [Virtual Environments](#virtual-environments)
+- [Useful Commands](#useful-commands)
+- [Build & Packaging](#build-packaging)
 
 ---
 
@@ -5385,12 +5385,12 @@ By the end of the chapter, you should be able to choose an approach for a proble
 
 ### Sections
 
-- [The GIL](./the-gil)
-- [Async / Await](./async-await)
-- [Threading](./threading)
-- [Multiprocessing](./multiprocessing)
-- [Free-Threading](./free-threading)
-- [Decision Matrix](./decision-matrix)
+- [The GIL](#the-gil)
+- [Async / Await](#async-await)
+- [Threading](#threading)
+- [Multiprocessing](#multiprocessing)
+- [Free-Threading](#free-threading)
+- [Decision Matrix](#decision-matrix)
 
 ---
 
@@ -6085,8 +6085,8 @@ Additional Python ecosystems for specialized domains.
 
 ### Sections
 
-- [AI & Data Science](./ai-data-science)
-- [Web Development](./web-development)
+- [AI & Data Science](#ai-data-science)
+- [Web Development](#web-development)
 
 ---
 
