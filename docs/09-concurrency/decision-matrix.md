@@ -1,10 +1,8 @@
-# Concurrency Decision Matrix
+## Concurrency Decision Matrix
 
-This page is the synthesis step for the chapter. Instead of learning one tool in isolation, you use it to choose an approach based on workload, coordination needs, and runtime constraints.
+This page helps you choose the right concurrency tool based on your workload.
 
-If the earlier concurrency pages explain how each tool works, this page explains how to decide between them in practice.
-
-## Which Tool for Which Problem?
+### Which Tool for Which Problem?
 
 | Workload Type | Recommended Tool | Reason |
 |---------------|-----------------|--------|
@@ -14,9 +12,9 @@ If the earlier concurrency pages explain how each tool works, this page explains
 | CPU-bound, Python 3.13+ | free-threading (`python3.13t`) | True parallelism without process overhead |
 | Mixed: async event loop + CPU work | `asyncio` + `run_in_executor` | Offloads blocking code without freezing the event loop |
 
-## The `run_in_executor` Pattern
+### The `run_in_executor` Pattern
 
-The most common pattern for mixing `asyncio` with blocking code (CPU-bound or legacy sync libraries):
+The most common pattern for mixing `asyncio` with blocking code:
 
 ```python
 import asyncio
@@ -46,7 +44,7 @@ async def main():
 asyncio.run(main())
 ```
 
-## Flow Chart
+### Flow Chart
 
 Use this decision flow when choosing a concurrency strategy:
 
@@ -61,10 +59,10 @@ Use this decision flow when choosing a concurrency strategy:
 3. **Do you need to mix async with CPU work?**
    - Use `loop.run_in_executor(ProcessPoolExecutor(), ...)` to offload from the event loop
 
-## Quick Reference
+### Quick Reference
 
 ```python
-# asyncio — 1000 concurrent I/O tasks
+## asyncio — 1000 concurrent I/O tasks
 import asyncio, httpx
 
 async def main():
@@ -73,21 +71,21 @@ async def main():
             *[client.get(url) for url in urls]
         )
 
-# ThreadPoolExecutor — blocking I/O
+## ThreadPoolExecutor — blocking I/O
 from concurrent.futures import ThreadPoolExecutor
 import requests
 
 with ThreadPoolExecutor(max_workers=10) as pool:
     results = list(pool.map(requests.get, urls))
 
-# ProcessPoolExecutor — CPU
+## ProcessPoolExecutor — CPU
 from concurrent.futures import ProcessPoolExecutor
 
 with ProcessPoolExecutor() as pool:
     results = list(pool.map(compute, data_chunks))
 ```
 
-## Performance Expectations
+### Performance Expectations
 
 | Approach | Overhead | Scales to |
 |----------|---------|-----------|

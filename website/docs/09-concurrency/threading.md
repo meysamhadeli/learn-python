@@ -1,14 +1,14 @@
-# Threading
+## Threading
 
 Threads are useful when a program spends much of its time waiting on external work such as network I/O, file I/O, or blocking library calls. They are less useful when pure Python code is trying to saturate CPU cores.
 
 This page should be read together with the GIL page, because thread behavior makes the most sense once that runtime constraint is clear.
 
-## When to Use Threads
+### When to Use Threads
 
 Python threads are best for **I/O-bound** work — network requests, database queries, file reads — where the program spends most of its time waiting. Because of the GIL, threads do **not** parallelize CPU-bound computation; use `multiprocessing` for that.
 
-## `ThreadPoolExecutor` — Recommended
+### `ThreadPoolExecutor` — Recommended
 
 `concurrent.futures.ThreadPoolExecutor` is the high-level API. Prefer it over manual `threading.Thread` management:
 
@@ -42,7 +42,7 @@ with ThreadPoolExecutor(max_workers=3) as executor:
             print(f"{url} failed: {e}")
 ```
 
-## Manual Threads
+### Manual Threads
 
 Use `threading.Thread` when you need fine-grained control:
 
@@ -68,7 +68,7 @@ for t in threads:
 print(results)
 ```
 
-## Thread Safety with Locks
+### Thread Safety with Locks
 
 When multiple threads write to shared data, use a `Lock` to prevent race conditions:
 
@@ -95,7 +95,7 @@ print(counter)   # Always 50000 — safe with lock
 
 Without the lock, threads would read and write `counter` simultaneously, causing lost updates (the count would be unpredictably less than 50000).
 
-## Thread-Safe Queues
+### Thread-Safe Queues
 
 `queue.Queue` is the recommended way to communicate between threads — it is internally thread-safe:
 
@@ -124,7 +124,7 @@ t1.start(); t2.start()
 t1.join(); t2.join()
 ```
 
-## `threading.local()` — Thread-Local Storage
+### `threading.local()` — Thread-Local Storage
 
 `threading.local()` creates an object where each thread has its own isolated attribute values:
 

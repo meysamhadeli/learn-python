@@ -1,16 +1,16 @@
-# Multiprocessing
+## Multiprocessing
 
 Multiprocessing trades simplicity of shared memory for real parallel execution across CPU cores. That tradeoff matters because it changes both performance and program design.
 
 The main lesson here is when the extra process overhead is justified by CPU-bound workloads.
 
-## When to Use Multiprocessing
+### When to Use Multiprocessing
 
 `multiprocessing` creates separate OS processes — each has its own Python interpreter and its own GIL. This enables **true CPU parallelism** across multiple cores, which is impossible with threads due to the GIL.
 
 Use `multiprocessing` for **CPU-bound** tasks: numerical computation, image processing, data parsing, compression.
 
-## `ProcessPoolExecutor` — Recommended
+### `ProcessPoolExecutor` — Recommended
 
 ```python
 from concurrent.futures import ProcessPoolExecutor
@@ -32,7 +32,7 @@ if __name__ == "__main__":   # Required on Windows — guards against infinite s
 
 The `if __name__ == "__main__":` guard is **mandatory** on Windows. Without it, each spawned process re-imports the main module and recursively spawns more processes.
 
-## Low-Level `multiprocessing.Pool`
+### Low-Level `multiprocessing.Pool`
 
 ```python
 from multiprocessing import Pool
@@ -50,7 +50,7 @@ if __name__ == "__main__":
     print(sum(partial_sums))   # 499999500000
 ```
 
-## Sharing State Between Processes
+### Sharing State Between Processes
 
 Processes do **not** share memory by default — data is pickled and copied when passed to workers. Avoid shared state; prefer returning results. When you truly need shared state, use `multiprocessing.Value` and `multiprocessing.Array`:
 
@@ -75,7 +75,7 @@ if __name__ == "__main__":
     print(counter.value)   # 40000
 ```
 
-## `multiprocessing.Queue` for Communication
+### `multiprocessing.Queue` for Communication
 
 For producer-consumer patterns between processes:
 
@@ -102,7 +102,7 @@ if __name__ == "__main__":
     p1.join(); p2.join()
 ```
 
-## Performance Considerations
+### Performance Considerations
 
 - **Startup cost** — spawning a process is expensive (tens of milliseconds). Only worth it for tasks that take seconds, not microseconds.
 - **Serialization cost** — all arguments and results are pickled. Large data (big NumPy arrays) can negate the parallelism benefit. Use `shared_memory` (Python 3.8+) for large arrays.
