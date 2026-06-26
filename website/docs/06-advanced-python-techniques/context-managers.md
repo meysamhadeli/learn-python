@@ -6,40 +6,66 @@ Whenever code needs paired actions like open and close, acquire and release, or 
 
 ## What is a Context Manager?
 
-A context manager is an object that defines `__enter__` and `__exit__` methods. The `with` statement calls `__enter__` on entry and guarantees that `__exit__` is called on exit — even if an exception occurs. This makes resource management safe and explicit.
+A context manager is the object behind Python's `with` statement.
+
+Use `with` when code has a clear setup step and a matching cleanup step. Open a file, use it, then close it. Acquire a lock, use it, then release it. Start a timer, run code, then stop it.
+
+Read `with` like this:
+
+- enter setup
+- run the block
+- always clean up at the end
+
+That is why `with` is often easier to read than `try/finally`.
 
 ```python
-# Classic example: file handling
 with open("data.txt", "w", encoding="utf-8") as f:
     f.write("Hello!")
-# File is closed here — guaranteed, even if write() raised
 ```
+
+How to read that line:
+
+- `open("data.txt", "w", encoding="utf-8")` creates the resource
+- `as f` stores that resource in `f`
+- when the block ends, Python closes the file automatically
+
+This is roughly equivalent to:
+
+```python
+file = open("data.txt", "w", encoding="utf-8")
+try:
+    file.write("Hello!")
+finally:
+    file.close()
+```
+
+Under the hood, a context manager defines `__enter__` and `__exit__`. Python calls `__enter__` at the start of the block and `__exit__` at the end, even if an exception happens.
 
 ## Implementing with a Class
 
 ```python
-class DatabaseConnection:
-    def __init__(self, url: str):
-        self.url = url
-        self.conn = None
+class ManagedFile:
+    def __init__(self, filename: str, mode: str):
+        self.filename = filename
+        self.mode = mode
+        self.file = None
 
     def __enter__(self):
-        print(f"Connecting to {self.url}")
-        self.conn = self._connect(self.url)
-        return self.conn    # bound to the 'as' variable
+        self.file = open(self.filename, self.mode, encoding="utf-8")
+        return self.file
 
     def __exit__(self, exc_type, exc_val, exc_tb):
-        print("Closing connection")
-        if self.conn:
-            self.conn.close()
-        # Return True to suppress the exception; False (or None) to propagate it
+        if self.file:
+            self.file.close()
         return False
 
-with DatabaseConnection("postgresql://localhost/mydb") as conn:
-    conn.execute("SELECT 1")
+with ManagedFile("notes.txt", "w") as f:
+    f.write("Hello from a custom context manager")
 ```
 
-The `__exit__` method receives `(exc_type, exc_val, exc_tb)` — all `None` if no exception occurred. Return `True` to suppress the exception; return `False` or `None` to let it propagate.
+This custom class behaves like `open(...)`: `__enter__` prepares the resource and returns it, and `__exit__` cleans it up.
+
+The `__exit__` method receives `(exc_type, exc_val, exc_tb)`. If no exception happened, all three are `None`. Return `True` to suppress an exception. Return `False` or `None` to let it propagate.
 
 ## Implementing with `@contextmanager`
 
@@ -53,7 +79,7 @@ import time
 def timer(label: str = ""):
     start = time.perf_counter()
     try:
-        yield   # code inside the 'with' block runs here
+        yield
     finally:
         elapsed = time.perf_counter() - start
         print(f"{label or 'Elapsed'}: {elapsed:.4f}s")
@@ -63,7 +89,7 @@ with timer("Sum"):
 # Sum: 0.0234s
 ```
 
-Everything before `yield` is `__enter__`; everything in `finally` after `yield` is `__exit__`. Use `try/finally` to guarantee cleanup even when the `with` block raises.
+Everything before `yield` acts like `__enter__`. Everything after `yield` acts like `__exit__`. Use `try/finally` so cleanup still happens if the block raises an exception.
 
 ## Yielding a Value
 

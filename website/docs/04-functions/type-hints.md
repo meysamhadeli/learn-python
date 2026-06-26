@@ -17,6 +17,8 @@ def log(message: str) -> None:  # Returns nothing
 
 ### Common Types
 
+Built-in collection types can include their element types in brackets. For example, `list[int]` means "a list of integers" and `dict[str, str]` means "a dictionary with string keys and string values."
+
 ```python
 def process(value: int | str) -> str:  # Python 3.10+ union syntax
     return str(value)
@@ -36,17 +38,26 @@ def coordinates() -> tuple[float, float]:
 
 ### Generics
 
-Use generics when the return type depends on the input type:
+Generic types let you write reusable code while keeping type information consistent. Define a `TypeVar` when a value can be many concrete types, but those types should stay linked across parameters, return values, or class members.
 
 ```python
 from typing import TypeVar
 
 T = TypeVar('T')
 
+# T is only used for the input type here
+def log_value(value: T) -> None:
+    print(value)
+
+# T is used for both input and output here
 def first(items: list[T]) -> T | None:
     return items[0] if items else None
 
-# Type is preserved
+# Input can be any type that fills T
+log_value(123)
+log_value("hello")
+
+# Returned value keeps the element type from the input list
 value = first([1, 2, 3])     # value is int | None
 text = first(["a", "b"])     # text is str | None
 ```
