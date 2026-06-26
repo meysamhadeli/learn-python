@@ -1,14 +1,10 @@
 # The GIL
 
-The GIL is one of the most discussed parts of Python concurrency, but it is often explained too vaguely. The important question is not simply whether the GIL exists, but what kinds of workloads it limits and what kinds it does not.
-
-Read this page as a decision aid: it helps explain why threads behave differently for CPU-bound work and I/O-bound work in CPython.
+The GIL matters mainly when choosing between threads, processes, and async code.
 
 ## What is the GIL?
 
-The **Global Interpreter Lock (GIL)** is a mutex in CPython — the standard Python interpreter — that allows only one thread to execute Python bytecode at a time. It exists to protect CPython's internal data structures (reference counts, memory allocator) from concurrent modification, which would otherwise cause crashes and memory corruption.
-
-The GIL is a **CPython implementation detail**, not a language requirement. Other implementations — Jython (JVM), IronPython (.NET), PyPy-STM — do not have a GIL.
+The **Global Interpreter Lock (GIL)** in CPython allows only one thread to execute Python bytecode at a time.
 
 ## What the GIL Prevents
 
@@ -28,16 +24,14 @@ for t in threads:
 for t in threads:
     t.join()
 
-# counter may not be 4_000_000 — the GIL does NOT make compound operations atomic!
-# counter += 1 is three bytecodes: LOAD, ADD, STORE — threads can interleave between them
+# counter may not be 4_000_000
 ```
 
 ## The GIL is Released During I/O
 
-CPython releases the GIL whenever a thread performs I/O — network reads, file reads, `time.sleep()`. This is why threading works well for I/O-bound tasks: while one thread waits for a network response, other threads can execute Python code.
+CPython releases the GIL during I/O, so threads work well for network and file operations.
 
 ```python
-# Threads work well here — GIL is released during urlopen
 from concurrent.futures import ThreadPoolExecutor
 import urllib.request
 
@@ -51,17 +45,15 @@ with ThreadPoolExecutor(max_workers=10) as pool:
 
 ## The GIL Does Not Help CPU-Bound Code
 
-For CPU-intensive work, threads do not run in parallel — only one thread runs at a time even on multi-core systems:
+For CPU-heavy Python code, threads do not give true parallelism:
 
 ```python
-# This is NOT parallelized — 4 threads, but still uses 1 core
 def cpu_task():
     total = 0
     for i in range(10_000_000):
         total += i
     return total
 
-# Use multiprocessing instead — each process has its own GIL
 from concurrent.futures import ProcessPoolExecutor
 
 with ProcessPoolExecutor() as pool:
@@ -70,17 +62,16 @@ with ProcessPoolExecutor() as pool:
 
 ## Python 3.13 — Free-Threading (Experimental)
 
-Python 3.13 introduced an experimental **free-threaded build** (`python3.13t`) with the GIL disabled. See the [Free-Threading](./free-threading) page for details. This is opt-in for now; the standard CPython 3.13 still has the GIL.
+Python 3.13 introduced an experimental free-threaded build, but the normal CPython build still uses the GIL.
 
 ## C Extensions and the GIL
 
-Many C extensions — notably NumPy — release the GIL during heavy computation, allowing genuine parallelism with Python threads:
+Some C extensions such as NumPy release the GIL during heavy work:
 
 ```python
 import numpy as np
 import threading
 
-# NumPy releases the GIL during C-level operations
 def matmul():
     a = np.random.rand(1000, 1000)
     b = np.random.rand(1000, 1000)
@@ -91,7 +82,6 @@ for t in threads:
     t.start()
 for t in threads:
     t.join()
-# These DO run in parallel — NumPy bypasses the GIL
 ```
 
 ## Summary

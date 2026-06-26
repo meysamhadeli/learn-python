@@ -1,24 +1,19 @@
 # Loops
 
-Loops let you express repetition without duplicating code. In Python, the biggest shift for many learners is understanding that `for` usually means "loop over items" rather than "manually control an index."
-
-That design makes Python loops read more directly, but it also means you should pay attention to what object is being iterated and whether the loop is mutating data along the way.
+Python loops are mostly about iterating over values directly, not manually managing indexes.
 
 ## `for` Loops
 
-Python's `for` loop iterates over any **iterable** — lists, strings, ranges, dicts, files, generators, and anything that implements the iterator protocol:
+`for` works with any iterable: lists, strings, ranges, dicts, files, and generators.
 
 ```python
-# Iterate over a list
 fruits = ["apple", "banana", "cherry"]
 for fruit in fruits:
     print(fruit)
 
-# Iterate over a string
 for char in "Python":
     print(char)
 
-# Iterate over a range
 for i in range(5):          # 0, 1, 2, 3, 4
     print(i)
 
@@ -28,27 +23,20 @@ for i in range(2, 10, 2):  # start, stop (exclusive), step
 
 ## `enumerate()` — Index + Value
 
-When you need both the index and the value, use `enumerate()` instead of indexing manually:
+Use `enumerate()` when you need both index and value:
 
 ```python
 fruits = ["apple", "banana", "cherry"]
-
-# Don't do this:
-for i in range(len(fruits)):
-    print(i, fruits[i])
-
-# Do this:
 for i, fruit in enumerate(fruits):
     print(i, fruit)
 
-# Start the counter at a different value
 for i, fruit in enumerate(fruits, start=1):
     print(f"{i}. {fruit}")
 ```
 
 ## `zip()` — Parallel Iteration
 
-`zip()` pairs elements from multiple iterables and stops when the shortest is exhausted:
+`zip()` pairs elements from multiple iterables:
 
 ```python
 names = ["Alice", "Bob", "Charlie"]
@@ -56,30 +44,17 @@ scores = [95, 80, 88]
 
 for name, score in zip(names, scores):
     print(f"{name}: {score}")
-
-# Unzip (transpose)
-pairs = [(1, "a"), (2, "b"), (3, "c")]
-numbers, letters = zip(*pairs)  # (1, 2, 3), ('a', 'b', 'c')
 ```
 
 ## `while` Loops
 
-`while` repeats as long as its condition is truthy:
+`while` repeats while a condition is true:
 
 ```python
 count = 0
 while count < 5:
     print(count)
     count += 1
-
-# Reading until a condition
-total = 0
-while True:
-    value = int(input("Enter number (0 to stop): "))
-    if value == 0:
-        break
-    total += value
-print(f"Total: {total}")
 ```
 
 ## `break`, `continue`, and `else`
@@ -95,17 +70,6 @@ for n in range(10):
     if n == 7:
         break       # stop at 7
     print(n)        # prints 0, 1, 2, 4, 5, 6
-
-# Loop else: useful for search patterns
-def find_prime(numbers):
-    for n in numbers:
-        if n < 2:
-            continue
-        for i in range(2, int(n**0.5) + 1):
-            if n % i == 0:
-                break       # n is not prime
-        else:
-            print(f"{n} is prime")  # only runs if inner loop didn't break
 ```
 
 ## Iterating Over Dictionaries
@@ -118,9 +82,6 @@ for key in person:           # keys (default)
 
 for key, value in person.items():
     print(f"{key}: {value}")
-
-# Modify values (never add/remove keys during iteration)
-person = {k: v * 2 if isinstance(v, int) else v for k, v in person.items()}
 ```
 
 ## `reversed()` and `sorted()`

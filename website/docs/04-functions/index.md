@@ -1,16 +1,23 @@
 # Chapter IV: Functions
 
-Defining and calling functions in Python.
+Function syntax, arguments, return values, and the Python conventions that appear in almost every codebase.
 
-Functions are where small scripts start becoming reusable programs. This chapter teaches you how to package logic into named units, control inputs and outputs, and keep code manageable as it grows.
+If you are coming from another language, functions are familiar. What matters here is Python's calling style and a few common features that show up often.
 
-Focus on three ideas as you read:
+Focus on these ideas:
 
 - a function is a reusable block of behavior
 - parameters describe what a function needs
 - return values describe what a function produces
+- type hints improve readability even in dynamic code
 
-Once these ideas feel natural, later topics like modules, classes, and decorators become much easier.
+Do not spend much time on `lambda` unless you already use functional-style helpers.
+
+## Priority
+
+- Must read: Defining Functions, Parameters & Arguments, Type Hints
+- Read next: Scoping Rules
+- Optional for now: Lambda Functions
 
 ## Sections
 

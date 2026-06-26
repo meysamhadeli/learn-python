@@ -1,16 +1,22 @@
 # Chapter V: Object-Oriented Programming
 
-Classes, inheritance, and Python's OOP toolset.
+Classes, dataclasses, and enough OOP to read framework and application code confidently.
 
-Object-oriented programming in Python is best understood as a way to model state and behavior together. This chapter is not about using classes everywhere; it is about knowing when objects help code become clearer and more maintainable.
+Python supports OOP well, but many Python programs stay simpler than typical Java or C# designs. Use classes when they clarify state and behavior, not by default.
 
 Keep these ideas in mind:
 
 - classes define behavior and data together
 - instances represent concrete objects created from those class definitions
 - inheritance and composition are tools, not goals
+- `dataclass` often replaces a lot of boilerplate
 
-Python supports OOP well, but it also stays flexible, so the real skill is learning where OOP improves design and where simpler code is better.
+For a fast Python ramp-up, prioritize plain classes and dataclasses. Leave deeper inheritance patterns for later.
+
+## Priority
+
+- Read if you build services or framework code: Classes, Dataclasses
+- Optional for now: Inheritance, Abstract Base Classes, Magic Methods
 
 ## Sections
 

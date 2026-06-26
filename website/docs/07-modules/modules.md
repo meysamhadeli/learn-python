@@ -1,17 +1,14 @@
 # Modules
 
-Modules are how Python code stops being a single long file and starts becoming a structured program. They let you group related names together, separate concerns, and reuse logic without copying code.
-
-The core mental model is simple: importing a module runs it once, then gives you access to the names it defines.
+Modules are how Python code is organized into files and reusable namespaces.
 
 ## What is a Module?
 
-A **module** is any Python file (`.py`). When you `import` a module, Python executes its code once and makes its names available under the module's namespace. Subsequent imports of the same module reuse the cached version from `sys.modules` — the code is not re-executed.
+A module is any `.py` file. Importing it runs the file once and makes its names available.
 
 ## Importing Modules
 
 ```python
-# Import the whole module — access names via dot notation
 import math
 import os
 import sys
@@ -25,35 +22,29 @@ print(sys.version)      # Python version string
 ## Selective Imports
 
 ```python
-# Import specific names into the current namespace
 from math import pi, sqrt, ceil
 print(pi)          # 3.14159...
 print(sqrt(25))    # 5.0
 
-# Import all public names (avoid — pollutes namespace, hides where names come from)
 from math import *
 ```
+
+Avoid `from module import *` in real code.
 
 ## Aliases
 
 ```python
-# Give a module a shorter alias
 import numpy as np         # de facto standard
 import pandas as pd
 import matplotlib.pyplot as plt
 
-# Alias an imported name
 from datetime import datetime as dt
 now = dt.now()
 ```
 
 ## Module Search Path
 
-When you `import foo`, Python looks for `foo` in this order:
-
-1. `sys.modules` (already-imported modules)
-2. Built-in modules (compiled into the interpreter)
-3. Directories in `sys.path` — which includes the script's directory, `PYTHONPATH`, and site-packages
+Python looks for imports in `sys.modules`, built-ins, and directories from `sys.path`.
 
 ```python
 import sys
@@ -62,7 +53,7 @@ print(sys.path)   # list of directories Python searches
 
 ## The Standard Library
 
-Python ships with an extensive standard library. Key modules:
+Python ships with a large standard library. Useful modules include:
 
 | Module | Purpose |
 |--------|---------|
@@ -81,7 +72,7 @@ Python ships with an extensive standard library. Key modules:
 
 ## Writing Your Own Module
 
-Any `.py` file is a module. Use the `__name__ == "__main__"` guard to separate code that runs when the file is a script from code that runs when imported:
+Use the `__name__ == "__main__"` guard when a file should be both importable and runnable:
 
 ```python
 # greetings.py
@@ -104,7 +95,7 @@ print(hello("Alice"))
 
 ## `__all__` — Controlling Public API
 
-Define `__all__` in a module to specify which names are exported when someone does `from module import *`:
+`__all__` controls what `from module import *` exports:
 
 ```python
 # utils.py

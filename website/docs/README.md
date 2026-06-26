@@ -4,40 +4,27 @@ title: Learn Python
 
 # Getting Started
 
-## What is Python?
+This guide teaches Python through short lessons, runnable examples, and practical concepts that show up in real projects.
 
-Python is a high-level, general-purpose programming language created by Guido van Rossum and first released in 1991. It is designed around readability — Python code often reads almost like plain English, which makes it an excellent first language and a productive language for experienced developers alike.
+It focuses on the syntax, data structures, standard-library tools, and workflow patterns that matter most when writing Python day to day.
 
-Python is an **interpreted** language, meaning code is executed line by line at runtime rather than compiled ahead of time to machine code. CPython, the reference implementation, compiles your source to bytecode and runs it on the Python Virtual Machine. This makes Python highly portable — the same code runs on Linux, macOS, and Windows without changes.
+## Where This Helps Most
 
-Python is **dynamically typed**: you do not declare variable types. The interpreter determines types at runtime. This speeds up development but puts more responsibility on the programmer (and tools like `mypy`) to catch type errors.
-
-```python
-x = 10        # x is an int
-x = "hello"   # now x is a str — perfectly valid in Python
-```
-
-## Why Learn Python?
-
-Python has become the dominant language in several fields:
-
-- **AI & Machine Learning** — PyTorch, TensorFlow, Hugging Face, LangChain, PydanticAI, and the OpenAI SDK are all Python-first. If you want to work in AI, Python is non-negotiable.
-- **Data Science** — NumPy, pandas, and matplotlib form the foundation of data analysis workflows worldwide.
-- **Web Development** — FastAPI, Django, and Flask power production backends at companies like Instagram, Spotify, and Dropbox.
-- **Automation & Scripting** — Python is the go-to for DevOps scripts, CLI tools, and task automation.
-- **Ecosystem** — PyPI hosts over 500,000 packages covering everything from HTTP clients to computer vision.
+- **AI**: scripts, notebooks, SDK usage, prompt pipelines, data cleanup, and evaluation tooling
+- **Web**: FastAPI, Django, background workers, integrations, and automation
+- **General backend work**: CLIs, cron jobs, ETL, queue consumers, and one-off tooling
 
 ## Installation
 
 ### macOS / Linux
 
-Python 3 is usually pre-installed. Verify with:
+Verify Python 3:
 
 ```bash
 python3 --version
 ```
 
-If missing, install from [python.org/downloads](https://www.python.org/downloads/) or via your package manager:
+If missing, install from [python.org/downloads](https://www.python.org/downloads/) or your package manager:
 
 ```bash
 # Ubuntu / Debian
@@ -50,36 +37,30 @@ brew install python
 ### Windows
 
 1. Download the installer from [python.org/downloads](https://www.python.org/downloads/).
-2. **Tick "Add Python to PATH"** before clicking Install Now.
+2. Check "Add Python to PATH".
 3. Verify in a new terminal:
 
 ```bash
 python --version
 ```
 
-## Running Python
+## Run Code Quickly
 
-There are three ways to run Python code:
+Use whichever loop matches your work:
 
-**Interactive REPL** — great for quick experiments:
+- REPL for tiny experiments
+- `.py` files for scripts and backend code
+- `learn-python.ipynb` for hands-on exploration in VS Code
+
 ```bash
 python3
->>> 1 + 1
-2
->>> exit()
+python3 main.py
 ```
 
-**Run a script directly:**
-```bash
-python3 hello.py
-```
+## VS Code Setup
 
-**Jupyter Notebook** — interactive cells in VS Code or browser. Open `learn-python.ipynb` in this repo to follow along interactively.
+1. Install VS Code from [code.visualstudio.com](https://code.visualstudio.com/).
+2. Install the Microsoft Python extension.
+3. Select your interpreter with `Python: Select Interpreter`.
 
-## Setting Up VS Code
-
-1. Download from [code.visualstudio.com](https://code.visualstudio.com/).
-2. Install the **Python** extension by Microsoft — provides IntelliSense, linting, and the debugger.
-3. Select your Python interpreter: `Ctrl+Shift+P` → *Python: Select Interpreter*.
-
-> 💡 Use the integrated terminal (`Ctrl+\``) and the **Jupyter** extension to run notebook cells directly inside VS Code.
+> Use the integrated terminal and Jupyter support to run examples without leaving the editor.

@@ -186,9 +186,16 @@ def _doc_rel_from_sidebar_link(link: str) -> str:
 
 
 def _first_heading_text(path: Path) -> str | None:
+    in_code_block = False
     for line in path.read_text(encoding='utf-8').splitlines():
-        if line.startswith('# '):
-            return line[2:].strip()
+        if line.startswith('```'):
+            in_code_block = not in_code_block
+            continue
+        if in_code_block:
+            continue
+        match = re.match(r'^#{1,6}\s+(.+?)\s*$', line)
+        if match:
+            return match.group(1).strip()
     return None
 
 
@@ -211,6 +218,34 @@ def _inject_anchor(md_text: str, anchor: str | None) -> str:
     if not anchor:
         return md_text
     return f'<a id="{anchor}"></a>\n\n{md_text}'
+
+
+def _rewrite_root_readme_links(md_text: str, rel_path: str) -> str:
+    base_dir = Path(rel_path).parent
+
+    def replace(match: re.Match[str]) -> str:
+        label = match.group(1)
+        target = match.group(2)
+
+        if target.startswith(('http://', 'https://', '#', 'mailto:')):
+            return match.group(0)
+
+        if target.startswith('./') or target.startswith('../'):
+            candidate = (SOURCE_DOCS_DIR / base_dir / target)
+            if not candidate.suffix:
+                md_candidate = candidate.with_suffix('.md')
+                index_candidate = candidate / 'index.md'
+                if md_candidate.exists():
+                    candidate = md_candidate
+                elif index_candidate.exists():
+                    candidate = index_candidate
+
+            resolved = candidate.resolve().relative_to(SOURCE_DOCS_DIR.resolve())
+            return f'[{label}](./docs/{resolved.as_posix()})'
+
+        return match.group(0)
+
+    return re.sub(r'\[([^\]]+)\]\(([^)]+)\)', replace, md_text)
 
 
 # ---------------------------------------------------------------------------
@@ -368,7 +403,12 @@ Please follow this [contribution guideline](./CONTRIBUTION.md) to submit a pull 
 README_HEADER = """\
 # Learn Python
 
-> Learn Python from scratch with short lessons, clear explanations, and runnable examples.
+> Learn Python with short lessons, clear explanations, and runnable examples.
+
+Practical Python guide for scripting, web development, AI tooling, and day-to-day backend work.
+
+- Learn the language fundamentals, common standard-library tools, and real-world workflow used in Python projects.
+- Use this README as a single long-form guide, or browse the docs site chapter by chapter.
 
 - :page_facing_up: **Documentation site** — the full content is published at **[learn-python-dev.netlify.app](https://learn-python-dev.netlify.app/)** with a sidebar, search, and per-chapter navigation.
 
@@ -405,6 +445,7 @@ def write_root_readme() -> None:
         if not path.exists():
             continue
         content = _bump_headings(path.read_text(encoding='utf-8').strip())
+        content = _rewrite_root_readme_links(content, rel)
         content = _inject_anchor(content, _anchor_for_doc(rel))
         parts.append(content + '\n\n---\n\n')
     parts.append(README_FOOTER)

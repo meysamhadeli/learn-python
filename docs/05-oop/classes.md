@@ -1,21 +1,16 @@
 # Classes
 
-Classes are Python's main tool for bundling related data and behavior into a single abstraction. They are useful when values need associated operations or when many objects share the same structure.
-
-The key beginner shift is to see a class as a definition and an instance as a concrete object created from that definition.
+Classes bundle related data and behavior.
 
 ## Defining a Class
 
-A class is a blueprint for creating objects. It bundles **data** (attributes) and **behavior** (methods) together. The `__init__` method is the initializer — it runs automatically when a new instance is created.
+The class defines the structure. The instance is a concrete object.
 
 ```python
 class Dog:
-    # Class attribute — shared by ALL instances
     species = "Canis familiaris"
 
-    # __init__ is the initializer (not the constructor — __new__ creates the object)
     def __init__(self, name: str, age: int):
-        # Instance attributes — unique to each object
         self.name = name
         self.age = age
 
@@ -36,7 +31,7 @@ print(rex)                  # Dog(name='Rex', age=3)
 
 ## `self` — The Instance Reference
 
-`self` is a reference to the current instance. It is passed automatically when you call a method on an object. The name `self` is a convention — Python does not enforce it — but you should always use it.
+`self` refers to the current instance.
 
 ```python
 class Counter:
@@ -59,7 +54,7 @@ print(c.value)   # 0
 
 ## Class vs Instance Attributes
 
-Class attributes are defined on the class and shared by all instances. Instance attributes are defined on `self` and unique to each instance. **Assigning to an instance attribute always shadows the class attribute** — it does not modify it:
+Class attributes are shared. Instance attributes belong to one object.
 
 ```python
 class Config:
@@ -85,16 +80,13 @@ class Temperature:
     def __init__(self, celsius: float):
         self.celsius = celsius
 
-    # Regular method — receives instance as first arg
     def to_fahrenheit(self) -> float:
         return self.celsius * 9 / 5 + 32
 
-    # Class method — receives the CLASS as first arg (useful for factory methods)
     @classmethod
     def from_fahrenheit(cls, fahrenheit: float) -> "Temperature":
         return cls((fahrenheit - 32) * 5 / 9)
 
-    # Static method — no implicit first argument; a plain function scoped to the class
     @staticmethod
     def is_freezing(celsius: float) -> bool:
         return celsius <= 0
@@ -108,7 +100,7 @@ print(Temperature.is_freezing(-5))          # True
 
 ## Properties
 
-Use `@property` to make a method callable like an attribute — great for computed values or adding validation:
+Use `@property` for computed values or validation:
 
 ```python
 class Circle:
@@ -133,5 +125,6 @@ class Circle:
 c = Circle(5)
 print(c.area)       # 78.53...  — looks like attribute, runs computation
 c.radius = 10       # calls the setter
-# c.radius = -1     # ValueError
 ```
+
+For many real projects, classes plus dataclasses are enough. You do not need deep inheritance to write good Python.

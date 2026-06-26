@@ -1,6 +1,6 @@
 ## Type Hints
 
-Type hints let you document expected types in your code. They're optional - Python doesn't enforce them at runtime - but they help IDEs, type checkers, and other developers understand your code better.
+Type hints document expected types. Python does not enforce them at runtime, but editors and type checkers use them.
 
 ### Basic Syntax
 
@@ -18,15 +18,12 @@ def log(message: str) -> None:  # Returns nothing
 ### Common Types
 
 ```python
-# Basic types
 def process(value: int | str) -> str:  # Python 3.10+ union syntax
     return str(value)
 
-# Optional values (can be None)
 def find_user(id: int) -> dict | None:  # Or Optional[dict]
     return {"id": id} if id > 0 else None
 
-# Collections
 def first(items: list[int]) -> int:
     return items[0]
 
@@ -39,30 +36,7 @@ def coordinates() -> tuple[float, float]:
 
 ### Generics
 
-Generics let you write type-safe code that works with different types while preserving type information.
-
-#### Collection Generics
-
-Specify what types your collections contain:
-
-```python
-# Lists, dicts, tuples, sets
-def process_users(users: list[dict[str, int | str]]) -> list[str]:
-    return [str(user["id"]) for user in users]
-
-def stats(data: list[float]) -> tuple[float, float, float]:
-    return min(data), max(data), sum(data) / len(data)
-
-# Nested collections
-def flatten(matrix: list[list[float]]) -> list[float]:
-    return [x for row in matrix for x in row]
-```
-
-**Note:** Python 3.9+ uses built-in types (`list`, `dict`, `tuple`). Older code may use `List`, `Dict` from `typing`.
-
-#### Type Variables (Generic Parameters)
-
-When the return type relates to the input type:
+Use generics when the return type depends on the input type:
 
 ```python
 from typing import TypeVar
@@ -77,7 +51,7 @@ value = first([1, 2, 3])     # value is int | None
 text = first(["a", "b"])     # text is str | None
 ```
 
-#### Generic Classes
+### Generic Classes
 
 ```python
 from typing import Generic, TypeVar
@@ -104,24 +78,9 @@ str_stack.push("hello")
 text = str_stack.pop()   # text is str
 ```
 
-#### Constraining Generic Types
-
-Restrict what types can be used:
-
-```python
-# T must be int or float
-Number = TypeVar('Number', int, float)
-
-def average(numbers: list[Number]) -> float:
-    return sum(numbers) / len(numbers)
-
-# Works with ints, floats, or mixed
-avg = average([1, 2, 3.5, 4])
-```
-
 ### Type Aliases
 
-Simplify complex or repeated types:
+Use aliases to simplify repeated types:
 
 ```python
 from typing import TypeAlias
@@ -139,7 +98,7 @@ def dot_product(a: Vector, b: Vector) -> float:
 
 ### Function Types (Callable)
 
-When a parameter accepts a function:
+Use `Callable` when a parameter accepts a function:
 
 ```python
 from collections.abc import Callable
@@ -157,7 +116,7 @@ combine(lambda a, b: a + b, "Hello", "World")  # "HelloWorld"
 
 ### Type Checking with mypy
 
-Type hints are validated by tools like `mypy`:
+Validate hints with `mypy`:
 
 ```bash
 pip install mypy
@@ -171,3 +130,5 @@ def add(a: int, b: int) -> int:
 
 add("1", "2")  # mypy will complain: Argument 1 to "add" has incompatible type "str"
 ```
+
+For API clients, AI agents, and backend code, type hints pay off quickly because function boundaries stay clearer.

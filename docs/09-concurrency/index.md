@@ -1,14 +1,15 @@
 # Chapter IX: Concurrency
 
-Python's concurrency model and when to use each tool.
+Python concurrency choices and when they actually matter.
 
-Concurrency is where Python learners often need a decision framework, not just syntax. This chapter explains the major tools Python offers and, more importantly, the tradeoffs between them.
+Do not spend your first hour here unless your immediate work depends on it. Most Python learners need only one idea at the start: choose concurrency based on workload, not fashion.
 
-The central questions are:
+## Decision rules
 
 - are you waiting on I/O or doing CPU-heavy work?
-- do you need shared memory, isolation, or simple coordination?
-- does the Global Interpreter Lock matter for this workload?
+- async is usually for high-concurrency I/O
+- threads are fine for blocking I/O and integration code
+- processes are for CPU-heavy work
 
 By the end of the chapter, you should be able to choose an approach for a problem instead of guessing between `asyncio`, threads, and processes.
 

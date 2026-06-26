@@ -1,0 +1,6 @@
+{
+    "chat.tools.terminal.autoApprove": {
+        "ConvertTo-Csv": true,
+        "Resolve-Path": true
+    }
+}

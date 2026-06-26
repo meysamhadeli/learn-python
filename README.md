@@ -1,8 +1,13 @@
 # Learn Python
 
-> Learn Python from scratch with short lessons, clear explanations, and runnable examples.
+> Learn Python with short lessons, clear explanations, and runnable examples.
 
-- :page_facing_up: **Documentation site** — the full content is published at **[https://learn-python-dev.netlify.app](https://learn-python-dev.netlify.app)** with a sidebar, search, and per-chapter navigation.
+Practical Python guide for scripting, web development, AI tooling, and day-to-day backend work.
+
+- Learn the language fundamentals, common standard-library tools, and real-world workflow used in Python projects.
+- Use this README as a single long-form guide, or browse the docs site chapter by chapter.
+
+- :page_facing_up: **Documentation site** — the full content is published at **[learn-python-dev.netlify.app](https://learn-python-dev.netlify.app/)** with a sidebar, search, and per-chapter navigation.
 
 - :notebook: **Interactive notebook** — [Open learn-python.ipynb in VS Code](https://vscode.dev/github/meysamhadeli/learn-python/blob/main/learn-python.ipynb) to run and edit every code block inline.
 
@@ -49,7 +54,7 @@
 - [VI — Advanced Python Techniques](#chapter-vi-advanced-python-techniques)
   - [Iterators & Generators](#iterators-generators)
   - [itertools & functools](#itertools-functools)
-  - [Decorators](#will-retry-up-to-3-times-if-it-fails)
+  - [Decorators](#decorators)
   - [Context Managers](#context-managers)
   - [Pattern Matching](#pattern-matching-python-3-10)
 - [VII — Modules & Packaging](#chapter-vii-modules-packaging)
@@ -80,29 +85,21 @@
 
 ## Getting Started
 
-### What is Python?
+This guide teaches Python through short lessons, runnable examples, and practical concepts that show up in real projects.
 
-Python is a high-level, interpreted language created by Guido van Rossum in 1991. It reads like plain English, runs everywhere, and is the #1 language for AI, data science, and backend web development.
+### Why Python
 
-### Why learn Python?
-
-**Short answer:** Python is the language of AI — and it's also great for web backends.
-
-- **AI/ML**: PyTorch, TensorFlow, Hugging Face, LangChain, PydanticAI, OpenAI SDK — all Python-first.
-- **Web**: FastAPI (async, high-performance), Django (batteries-included), powers Instagram & Spotify.
-- **Ecosystem**: 300,000+ packages on PyPI for everything from scraping to DevOps.
-- **Jobs**: Python skills are in massive demand and only growing with the AI boom.
+- **AI**: most popular SDKs, notebooks, and automation workflows are Python-first
+- **Web**: FastAPI and Django are strong backend choices
+- **Scripting**: Python is excellent for glue code, CLIs, and data tasks
 
 ### Installation and Setup
-
-#### Download
 
 Install Python from the [official downloads page](https://www.python.org/downloads/).
 
 #### macOS
 
 ```bash
-## Verify installation
 python3 --version
 ```
 
@@ -117,7 +114,7 @@ python3 --version
 #### Windows
 
 1. Open the installer.
-2. **Check "Add Python to PATH"**.
+2. Check "Add Python to PATH".
 3. Click "Install Now".
 
 ```bash
@@ -126,9 +123,9 @@ python --version
 
 #### VS Code
 
-Download from [code.visualstudio.com](https://code.visualstudio.com/) and install the **Python extension** by Microsoft for IntelliSense, linting, and debugging.
+Install VS Code and the Microsoft Python extension for IntelliSense, linting, debugging, and notebook support.
 
-> 💡 Use [learn-python.ipynb](https://github.com/meysamhadeli/learn-python/blob/main/learn-python.ipynb) in VS Code to run and debug code interactively!
+> Use [learn-python.ipynb](https://github.com/meysamhadeli/learn-python/blob/main/learn-python.ipynb) to run examples interactively while reading.
 
 ---
 
@@ -136,26 +133,38 @@ Download from [code.visualstudio.com](https://code.visualstudio.com/) and instal
 
 ## Chapter I: The Basics
 
-The foundation — types, variables, strings, operators, and truthiness.
+The foundation you need before Python starts feeling natural.
 
-This chapter is where Python starts to feel concrete. You are not only learning syntax here; you are building the mental model that the rest of the language depends on:
+Focus on these first:
 
-- how Python stores values
-- how names point to objects
-- how expressions are evaluated
-- how text and numbers behave differently
-- how conditions decide whether code runs
+- assignment and mutability
+- built-in scalar types
+- string formatting with `f"..."`
+- truthy and falsy values
+- basic operators you see in real code
 
-If any page in this chapter feels slower than expected, that is a good sign. These topics look simple, but they explain a large share of beginner mistakes later in the course.
+If you are already an experienced developer, do not over-study this chapter. Learn Python's object model and syntax differences, then move on.
+
+### What to read now
+
+- [Variables](./docs/01-the-basics/variables.md)
+- [Built-in Data Types](./docs/01-the-basics/built-in-data-types.md)
+- [String Formatting](./docs/01-the-basics/string-formatting.md)
+- [Operators](./docs/01-the-basics/operators.md)
+- [Falsy Values](./docs/01-the-basics/falsy-values.md)
+
+### Can skim
+
+- [Hello World](./docs/01-the-basics/hello-world.md) if you already know how to run a script
 
 ### Sections
 
-- [Hello World](#hello-world)
-- [Variables](#variables)
-- [Built-in Data Types](#built-in-data-types)
-- [String Formatting](#string-formatting)
-- [Operators](#operators)
-- [Falsy Values](#falsy-values)
+- [Hello World](./docs/01-the-basics/hello-world.md)
+- [Variables](./docs/01-the-basics/variables.md)
+- [Built-in Data Types](./docs/01-the-basics/built-in-data-types.md)
+- [String Formatting](./docs/01-the-basics/string-formatting.md)
+- [Operators](./docs/01-the-basics/operators.md)
+- [Falsy Values](./docs/01-the-basics/falsy-values.md)
 
 ---
 
@@ -165,16 +174,11 @@ If any page in this chapter feels slower than expected, that is a good sign. The
 
 ### Your First Program
 
-The traditional starting point for any language is printing "Hello, World!" to the screen. In Python this is a single line:
+The first useful Python program is a single line:
 
 ```python
 print("Hello, World!")
 ```
-
-This small example already shows two core ideas from the official Python tutorial:
-
-- Python code is designed to be read almost like plain English.
-- You can write a useful program before learning classes, build steps, or type declarations.
 
 Save this to `main.py` and run it:
 
@@ -184,21 +188,14 @@ python main.py
 py main.py
 ```
 
-Output:
-```
-Hello, World!
-```
-
-If Python is installed correctly, the interpreter reads the file from top to bottom and executes each statement in order. Right now there is only one statement, so the behavior is easy to predict: Python calls `print()`, and the text appears in your terminal.
+Output: `Hello, World!`
 
 ### Script Mode vs Interactive Mode
 
-Python can be used in two common ways:
+You will use Python in two common ways:
 
 - **Script mode**: you run a file like `main.py`.
 - **Interactive mode**: you start Python first, then type commands one at a time.
-
-For example, this opens the interactive interpreter:
 
 ```bash
 python
@@ -213,25 +210,19 @@ You will usually see a prompt like `>>>`. Anything you type after that is execut
 Hello, World!
 ```
 
-Interactive mode is useful for quick experiments. Script mode is better when you want to save, rerun, and share your code.
+Use the REPL for quick checks. Use files for scripts and real projects.
 
 ### How Python Executes Code
 
-When you run `python main.py`, the CPython interpreter reads your source file, compiles it to **bytecode** (a low-level, platform-independent instruction set), and executes that bytecode on the Python Virtual Machine (PVM). You never see the bytecode directly — it is cached in `__pycache__/` as `.pyc` files to speed up future runs.
-
-Unlike compiled languages (C, Go, Rust), there is no separate compilation step you must run manually. The compile-and-run happens transparently each time you invoke the interpreter.
-
-For beginners, the important mental model is simpler than the implementation details:
+The practical mental model is:
 
 1. Python reads your file.
 2. Python checks that the syntax is valid.
 3. Python runs the statements in order.
 
-That mental model will stay useful throughout the course.
-
 ### The `print()` Function
 
-`print()` is a built-in function that writes its arguments to **standard output** (`stdout`), followed by a newline by default. It accepts multiple arguments and several keyword parameters:
+`print()` writes values to standard output:
 
 ```python
 print("Hello", "World")          # Hello World  (space-separated by default)
@@ -240,9 +231,7 @@ print("Hello", end="")           # no newline at the end
 print(42, 3.14, True, None)      # 42 3.14 True None
 ```
 
-The `sep` parameter controls what goes between arguments (default: `" "`). The `end` parameter controls what is appended after the last argument (default: `"\n"`).
-
-This matters because beginners often try to build a long string manually with `+`. In many cases, `print()` can already format simple output cleanly for you:
+It is the fastest way to inspect values while learning.
 
 ```python
 name = "Maya"
@@ -251,68 +240,36 @@ score = 95
 print("Student:", name, "Score:", score)
 ```
 
-Use `print()` to inspect values while learning. It is the fastest way to answer questions like "What is in this variable right now?" or "Did this branch actually run?"
-
 ### The `__main__` Guard
 
-When Python imports a file as a module, it sets the special variable `__name__` to the file's module name. When you run a file directly, Python sets `__name__` to the string `"__main__"`.
-
-This lets you write code that only runs when the file is the entry point — not when it is imported by another module:
+Use `if __name__ == "__main__":` when a file should act as both an importable module and a runnable script:
 
 ```python
 def greet(name):
     return f"Hello, {name}!"
 
 if __name__ == "__main__":
-    # This block runs only when the script is executed directly.
-    # It is skipped when the file is imported as a module.
     print(greet("World"))
 ```
 
-This pattern is standard practice for any Python script that also exposes reusable functions.
-
-If you are just starting out, you do not need this guard in every tiny example. It becomes useful once a file starts doing two jobs at once:
-
-- defining reusable functions
-- acting as a runnable program
-
-That is why you will see it more often in larger examples than in one-line demos.
+You do not need it in every tiny example, but you will see it often in real projects.
 
 ### Reading Input
 
-The built-in `input()` function reads a line from standard input and returns it as a string:
+`input()` reads text from standard input and always returns a string:
 
 ```python
 name = input("Enter your name: ")
 print(f"Hello, {name}!")
-```
-
-`input()` **always returns a string**, even if the user types a number. Convert explicitly when needed:
-
-```python
 age = int(input("Enter your age: "))
 ```
 
-That explicit conversion step is important. Python does not guess whether the user meant an integer, a float, or plain text.
+Convert explicitly when needed:
 
 ```python
-age_text = input("Enter your age: ")
-print(age_text, type(age_text))  # always a str
+age = int(input("Enter your age: "))
+print(age + 1)
 ```
-
-One common beginner mistake is mixing input text with numbers too early:
-
-```python
-age = input("Enter your age: ")
-## print(age + 1)  # TypeError: can't add str and int
-print(int(age) + 1)
-```
-
-As a rule:
-
-- `input()` gets text from the user.
-- conversion functions like `int()` and `float()` turn that text into other types.
-- `print()` shows results back to the user.
 
 ---
 
@@ -322,7 +279,7 @@ As a rule:
 
 ### Assignment and Naming
 
-In Python you create a variable simply by assigning a value to a name — no type declaration is needed. A variable name must start with a letter or underscore, can contain letters, digits, and underscores, and is case-sensitive (`count` and `Count` are different variables).
+In Python, a variable is created by assignment. There is no separate declaration step.
 
 ```python
 name = "Python"
@@ -331,20 +288,11 @@ is_awesome = True
 _private = "convention only"
 ```
 
-Python follows **snake_case** for variable and function names (e.g. `user_name`, `total_price`), as specified in [PEP 8](https://peps.python.org/pep-0008/).
-
-The official tutorial introduces assignment very early because it is one of the main differences beginners notice when coming from other languages: you do not write a declaration like `string name;` or `let name;` first. You simply bind a name to a value.
-
-```python
-language = "Python"
-year = 1991
-```
-
-After that assignment, the names `language` and `year` can be reused anywhere in the current scope.
+Use `snake_case` for variable and function names.
 
 ### Variables Are References
 
-This is one of Python's most important concepts: a variable is **not a box that holds a value** — it is a **label that points to an object** in memory. When you write `x = 42`, Python creates the integer object `42` in memory and makes `x` point to it.
+Variables are references to objects, not typed boxes.
 
 ```python
 x = [1, 2, 3]
@@ -353,15 +301,7 @@ y.append(4)
 print(x)        # [1, 2, 3, 4] — modifying via y also affects x
 ```
 
-Use `id()` to see the memory address an object lives at:
-
-```python
-a = "hello"
-b = "hello"
-print(id(a) == id(b))  # Often True — Python interns short strings
-```
-
-If you want an independent copy of a mutable object, use `copy()` or slicing:
+If you need an independent copy of a mutable object, copy it:
 
 ```python
 y = x.copy()    # or: y = x[:]
@@ -369,25 +309,9 @@ y.append(99)
 print(x)        # unaffected
 ```
 
-This reference model explains a lot of Python behavior:
-
-- assigning one list to another name does **not** make a copy
-- changing a mutable object through one name is visible through every name pointing to it
-- rebinding a name does not change the old object; it only changes what the name points to
-
-```python
-items = [1, 2, 3]
-other = items
-items = [10, 20, 30]
-
-print(other)  # [1, 2, 3]
-```
-
-Here, `other` still points to the original list. Reassigning `items` did not rewrite that old list.
-
 ### Multiple Assignment
 
-Python lets you assign multiple variables in one line using **tuple unpacking**:
+Python supports unpacking:
 
 ```python
 x, y, z = 1, 2.5, "three"  # types can differ
@@ -397,11 +321,9 @@ a = b = c = 0               # all three point to the same object
 x, y = y, x
 ```
 
-This works because Python evaluates the full right-hand side first, then performs the assignments. That is why swapping values is safe and does not overwrite one side too early.
-
 ### Constants
 
-Python has no built-in constant mechanism. The convention is to name constants in **UPPER_CASE** to signal they should not be reassigned:
+Python has no hard constants. Use `UPPER_CASE` by convention:
 
 ```python
 MAX_CONNECTIONS = 100
@@ -409,34 +331,16 @@ PI = 3.14159
 DATABASE_URL = "postgresql://localhost/mydb"
 ```
 
-Nothing prevents another part of the code from reassigning these — it is a social convention, not a language feature. For stricter enforcement, use `typing.Final`:
-
-```python
-from typing import Final
-MAX_RETRIES: Final = 3
-```
-
-For course code and small scripts, the naming convention is usually enough. In larger codebases, `Final` helps readers and type checkers understand your intent.
-
 ### Deleting Variables
 
-Use `del` to remove a variable name from the current scope:
+Use `del` to remove a name:
 
 ```python
 temp = 42
 del temp
 ## print(temp)  # NameError: name 'temp' is not defined
 ```
-
-This does not necessarily destroy the object — Python's garbage collector reclaims memory when an object has no more references pointing to it.
-
-Most beginners do not need `del` often. It appears more in cases like:
-
-- removing items from containers
-- cleaning up names in a narrow scope
-- demonstrating how references work
-
-The main lesson is that names and objects are related, but they are not the same thing.
+Usually you will use it more with container items than simple variables.
 
 ---
 
@@ -444,9 +348,7 @@ The main lesson is that names and objects are related, but they are not the same
 
 ## Built-in Data Types
 
-Python has a small set of built-in types that cover almost every need. They are all objects — even `int` and `bool` — and every value carries its type with it at runtime.
-
-That last point is important: Python is **dynamically typed**, which means values know their own type while the variable name does not permanently lock to one type.
+Python's core built-in types cover most day-one work. Python is dynamically typed, so values carry their type at runtime.
 
 ```python
 value = 10
@@ -456,11 +358,9 @@ value = "ten"
 print(type(value))
 ```
 
-This flexibility is convenient, but it also means you need to pay attention to what kind of value a variable holds at a given moment.
-
 ### int
 
-Python integers have **arbitrary precision** — they grow as large as your memory allows, with no overflow and no need to choose between `int` and `long` as in languages like Java or C.
+`int` has arbitrary precision.
 
 ```python
 count = 42
@@ -469,7 +369,7 @@ binary = 0b1010               # 10 in binary
 hexadecimal = 0xFF            # 255 in hex
 ```
 
-Arithmetic on integers is exact. For floating-point results, use `/`:
+Use `/` for float division and `//` for floor division:
 
 ```python
 print(7 // 2)   # 3   (floor division — always int)
@@ -477,11 +377,9 @@ print(7 / 2)    # 3.5 (true division — always float)
 print(7 % 2)    # 1   (remainder)
 ```
 
-If you are learning from calculator examples, remember this rule from the Python tutorial: `/` means real division, while `//` means floor division. Mixing them up is a very common source of off-by-one style mistakes.
-
 ### float
 
-Floats are **IEEE 754 double-precision** numbers (64-bit). They can represent an enormous range of values but with limited precision — about 15–17 significant decimal digits.
+`float` is fast and common, but it is not exact for decimal fractions.
 
 ```python
 pi = 3.14159
@@ -489,25 +387,23 @@ small = 1.5e-4      # scientific notation: 0.00015
 large = 6.022e23    # Avogadro's number
 ```
 
-**The classic gotcha:**
+Classic gotcha:
 
 ```python
 print(0.1 + 0.2)        # 0.30000000000000004
 print(0.1 + 0.2 == 0.3) # False!
 ```
 
-This is a consequence of binary floating-point, not a Python bug. For exact decimal arithmetic use `decimal.Decimal`:
+For exact decimal arithmetic, use `decimal.Decimal`:
 
 ```python
 from decimal import Decimal
 print(Decimal("0.1") + Decimal("0.2"))  # 0.3 — exact
 ```
 
-This is why equality comparisons with floats should be treated carefully. For many real-world tasks, you compare within a tolerance instead of expecting perfect decimal precision.
-
 ### complex
 
-Python has **native complex number support** — useful in signal processing, scientific computing, and some mathematical algorithms.
+Python also has native `complex` numbers, mostly useful in scientific code:
 
 ```python
 c = 3 + 4j
@@ -517,13 +413,9 @@ print(abs(c))    # 5.0 — Euclidean magnitude: sqrt(3² + 4²)
 print(c * 2)     # (6+8j)
 ```
 
-The `j` suffix (not `i`) denotes the imaginary part. Complex arithmetic follows standard mathematical rules.
-
-If you are not doing math-heavy work, you may rarely use `complex` directly. It is still useful to know that Python includes it natively instead of treating it as a special library-only feature.
-
 ### str
 
-Strings are **immutable sequences of Unicode characters**. "Immutable" means once created, their content cannot change — any operation that appears to modify a string actually creates a new one.
+Strings are immutable Unicode text.
 
 ```python
 text = "Python"
@@ -534,7 +426,7 @@ print(text[::-1])    # 'nohtyP'  — reverse via step
 print(len(text))     # 6
 ```
 
-Strings support many built-in methods:
+Common string methods:
 
 ```python
 s = "  Hello, World!  "
@@ -546,7 +438,7 @@ print("-".join(["a", "b", "c"]))     # "a-b-c"
 print("hello".startswith("he"))      # True
 ```
 
-String literals can be written in several ways:
+Useful literal forms:
 
 ```python
 single = 'Hello'
@@ -554,43 +446,23 @@ double = "Hello"              # identical
 multiline = """Line 1
 Line 2"""
 raw = r"C:\Users\Name"        # backslashes are literal — no escape processing
-byte_str = b"binary data"     # bytes object, not str
 ```
 
-Two details from the Python tutorial matter a lot here:
-
-- strings are sequences, so indexing and slicing work naturally
-- strings are immutable, so operations create new strings instead of changing the old one in place
-
-```python
-word = "Python"
-new_word = "J" + word[1:]
-
-print(word)      # Python
-print(new_word)  # Jython
-```
-
-Beginners often expect `word[0] = "J"` to work, but it fails because strings cannot be modified character by character.
+Strings cannot be changed in place.
 
 ### bool
 
-`bool` is a **subclass of `int`** — `True` equals `1` and `False` equals `0`. This means booleans work in arithmetic:
+`bool` has two values: `True` and `False`.
 
 ```python
 print(True + True)    # 2
 print(True * 5)       # 5
 print(sum([True, False, True, True]))  # 3  — counts Trues
-
-is_adult = age >= 18  # comparison returns a bool
 ```
-
-Boolean values are created by comparisons, `not`, membership tests (`in`), and truthiness checks (`bool(value)`).
-
-In practice, `bool` appears everywhere because `if`, `while`, and logical expressions all depend on it. Even when you do not write `True` or `False` yourself, Python is constantly producing boolean results behind the scenes.
 
 ### None
 
-`None` is Python's null value — the sole instance of `NoneType`. It represents the absence of a value and is what functions return when they have no explicit `return` statement.
+`None` means "no value":
 
 ```python
 result = None
@@ -604,17 +476,7 @@ def find(items, target):
             return item
     # implicitly returns None if not found
 ```
-
-`None` is a **singleton** — there is only one `None` object in any Python process. That is why `is None` is correct and `== None` is discouraged (a custom class could override `__eq__` to return `True` when compared to `None`).
-
-Treat `None` as "no value yet" or "nothing was found". That makes it easier to read functions and conditionals:
-
-```python
-user = None
-
-if user is None:
-    print("Please log in first")
-```
+Use `is None`, not `== None`.
 
 ---
 
@@ -624,7 +486,7 @@ if user is None:
 
 ### f-Strings (Recommended)
 
-Introduced in Python 3.6, **f-strings** (formatted string literals) are the recommended way to embed expressions inside strings. Prefix the string with `f` or `F` and place any valid Python expression inside `{}`:
+Use f-strings for most new code.
 
 ```python
 name = "Alice"
@@ -640,8 +502,6 @@ print(f"Length: {len(name)}")
 print(f"{'even' if age % 2 == 0 else 'odd'}")
 ```
 
-This style is usually the clearest because the variable names stay close to the text they belong to. You read the final sentence almost the same way the user will see it.
-
 ```python
 product = "Keyboard"
 price = 49.99
@@ -649,48 +509,30 @@ price = 49.99
 print(f"{product} costs ${price}")
 ```
 
-Any valid expression can go inside the braces, but do not overdo it. Short expressions are helpful; long expressions can make the string hard to read. When formatting becomes complex, compute values first and format second.
-
 ### Format Specification Mini-Language
 
-After a colon inside `{}` you can specify how the value should be formatted:
+After `:` inside `{}`, specify formatting:
 
 ```python
 pi = 3.14159265
 
-## Decimal places
 print(f"{pi:.2f}")      # 3.14
 print(f"{pi:.4f}")      # 3.1416
 
-## Width and padding
 print(f"{42:10d}")      # '        42'  (right-aligned, width 10)
 print(f"{42:<10d}")     # '42        '  (left-aligned)
 print(f"{42:^10d}")     # '    42    '  (centered)
 print(f"{42:010d}")     # '0000000042' (zero-padded)
 
-## Thousands separator
 print(f"{1000000:,}")   # 1,000,000
 
-## Percentage
 ratio = 0.756
 print(f"{ratio:.1%}")   # 75.6%
-
-## Scientific notation
-print(f"{0.000123:.2e}")  # 1.23e-04
-```
-
-This formatting system is especially useful when output should look aligned or predictable, such as tables, reports, prices, percentages, or scientific values.
-
-```python
-item = "Book"
-price = 12.5
-
-print(f"{item:<10} ${price:>6.2f}")
 ```
 
 ### Debugging with `=`
 
-Python 3.8+ added a handy `=` specifier that prints the expression and its value — great for quick debugging:
+Python 3.8+ added `=` for quick debugging:
 
 ```python
 x = 42
@@ -700,36 +542,25 @@ print(f"{y=}")          # y=[1, 2, 3]
 print(f"{x * 2 + 1=}")  # x * 2 + 1=85
 ```
 
-This is excellent for short investigations because you see both the expression and the result in one place. It reduces the guesswork when debugging small programs.
-
 ### Other Formatting Approaches
 
-While f-strings are preferred for new code, you may encounter older styles in existing codebases:
+You will still see older styles in existing code:
 
 ```python
-## str.format() — Python 2.6+
 print("Hello, {}!".format("World"))
 print("{name} is {age}".format(name="Alice", age=30))
 
-## % formatting — oldest style, still common in logging
 print("Hello, %s! You are %d years old." % ("Alice", 30))
 ```
 
-You will still see these older styles in tutorials, libraries, and legacy code. Knowing them helps you read existing Python even if you choose f-strings for new work.
-
-For **logging**, the `%`-style is intentionally used because `logging` can skip the formatting entirely when the log level is disabled:
+For `logging`, `%` formatting is still common:
 
 ```python
 import logging
 logging.debug("User %s logged in from %s", username, ip_address)
-## String is only formatted if DEBUG level is active
 ```
 
-Practical rule:
-
-- use f-strings for everyday output
-- recognize `.format()` when reading older code
-- keep `%` formatting in mind for logging APIs
+Practical rule: use f-strings in everyday code, recognize `.format()` and `%` in older code.
 
 ---
 
@@ -739,7 +570,7 @@ Practical rule:
 
 ### Arithmetic Operators
 
-Python's arithmetic operators work as expected, with a few worth noting: `/` always produces a float (true division), `//` performs floor division (rounds toward negative infinity), and `**` is the power operator.
+Python arithmetic mostly works as expected. The main rules to remember are `/`, `//`, `%`, and `**`.
 
 ```python
 print(7 + 2)    # 9
@@ -751,18 +582,16 @@ print(7 % 2)    # 1     — modulo (remainder)
 print(7 ** 2)   # 49    — exponentiation
 ```
 
-Floor division rounds toward **negative infinity**, not zero:
+`//` rounds toward negative infinity:
 
 ```python
 print(-7 // 2)   # -4  (not -3)
 print(7 // -2)   # -4
 ```
 
-That "rounds toward negative infinity" detail is easy to miss. If you expected truncation toward zero, negative examples can look surprising at first.
-
 ### Comparison & Logical Operators
 
-Comparison operators return `True` or `False`. Python supports **chained comparisons**, which read naturally and are more efficient than separate `and` comparisons:
+Comparisons return booleans. Python also supports chained comparisons:
 
 ```python
 x = 7
@@ -772,7 +601,7 @@ print(0 < x < 10)     # True  — equivalent to (0 < x) and (x < 10)
 print(1 < 2 < 3 < 4)  # True  — any number of chained comparisons
 ```
 
-Logical operators use English words, not symbols:
+Logical operators use words, not symbols:
 
 ```python
 print(x > 5 and x < 10)   # True
@@ -780,7 +609,7 @@ print(x > 10 or x < 5)    # False
 print(not x == 7)          # False
 ```
 
-**Short-circuit evaluation:** `and` stops at the first falsy value; `or` stops at the first truthy value. They return the actual value that determined the outcome (not just `True`/`False`):
+`and` and `or` short-circuit and return actual values:
 
 ```python
 name = ""
@@ -789,11 +618,9 @@ items = [1, 2, 3]
 first = items and items[0]     # 1 — items is truthy, so evaluates items[0]
 ```
 
-This "return the actual value" behavior is why expressions like `user_name or "Anonymous"` are so common in Python. The operators are not limited to plain booleans; they also help choose between real values.
-
 ### Assignment Operators
 
-Augmented assignment operators update a variable in place. Under the hood, `x += 5` calls `x.__iadd__(5)` if available (which modifies the object in-place for mutable types like lists) or falls back to `x = x + 5`:
+Augmented assignment is common:
 
 ```python
 x = 10
@@ -806,7 +633,7 @@ x **= 3   # x = 27.0
 x %= 5    # x = 2.0
 ```
 
-For immutable types like integers and strings, this usually means rebinding the name to a new value. For mutable types like lists, the operation may update the existing object in place.
+Lists often update in place:
 
 ```python
 numbers = [1, 2]
@@ -816,11 +643,9 @@ numbers += [3]
 print(alias)  # [1, 2, 3]
 ```
 
-That behavior connects directly to the reference model explained in the Variables page.
-
 ### Identity and Membership Operators
 
-`is` tests whether two variables refer to the **same object** in memory (not just equal values). `in` tests for membership in a sequence, set, or dict:
+`is` checks identity. `in` checks membership.
 
 ```python
 a = [1, 2, 3]
@@ -839,49 +664,32 @@ print("banana" in fruits)    # True
 print("grape" not in fruits) # True
 ```
 
-Use `==` when you care about value equality, and `is` when you care about object identity. Beginners often write `x is 5` or `name is "Alice"`, but value comparisons should normally use `==`.
+Use `==` for values and `is` for singletons like `None`.
 
 ### Walrus Operator `:=` (Python 3.8+)
 
-The walrus operator assigns a value **and** returns it as an expression. This is useful for avoiding redundant calls or extra temporary variables:
+The walrus operator assigns and returns a value in one expression:
 
 ```python
 data = [1, 2, 3, 4, 5]
 
-## Without walrus: len() called twice or needs a temp variable
-if len(data) > 3:
-    print(f"List has {len(data)} items")
-
-## With walrus: computed once, used twice
 if (n := len(data)) > 3:
     print(f"List has {n} items")
 ```
 
-It is especially useful in `while` loops that read until a sentinel value:
+Useful in `while` loops:
 
 ```python
 import sys
 
 while line := sys.stdin.readline():
     process(line)
-
-## Reading file in chunks without while True + break:
-with open("large_file.bin", "rb") as f:
-    while chunk := f.read(8192):
-        process(chunk)
 ```
-
-And in comprehensions where you want to compute a value once and filter by it:
-
-```python
-results = [y for x in range(20) if (y := x ** 2) > 50]
-```
-
-Use this operator with restraint. It is most helpful when it removes repeated work and keeps the code easier to read. If it makes the condition harder to understand, a normal assignment is better.
+Use it when it improves clarity, not just to be clever.
 
 ### Bitwise Operators
 
-Python integers support bitwise operations, which operate on the binary representation:
+Bitwise operators matter in lower-level or protocol-heavy code:
 
 ```python
 a = 0b1100   # 12
@@ -895,8 +703,6 @@ print(a << 2)  # 48            (left shift by 2)
 print(a >> 1)  # 6             (right shift by 1)
 ```
 
-These operators are less common in beginner application code, but they appear in low-level programming, flags, permissions, binary protocols, and performance-sensitive logic.
-
 ---
 
 <a id="falsy-values"></a>
@@ -905,9 +711,7 @@ These operators are less common in beginner application code, but they appear in
 
 ### What is Truthiness?
 
-Python's `if` statement and boolean operators do not require an explicit `True` or `False`. Instead, every object has a **truthiness** — it can be evaluated in a boolean context. An object is either **truthy** (behaves like `True`) or **falsy** (behaves like `False`).
-
-This is one of the most Pythonic ideas for beginners to learn early. Instead of writing verbose checks such as `if len(items) > 0`, Python often lets you write the shorter and more natural `if items`.
+In Python, values can be truthy or falsy in `if`, `while`, `and`, and `or` expressions.
 
 ```python
 items = [1, 2, 3]
@@ -916,11 +720,9 @@ if items:
     print("We have data")
 ```
 
-If `items` were empty, that condition would evaluate to `False`.
-
 ### The Complete List of Falsy Values
 
-The following values evaluate to `False` in any boolean context. Everything else is truthy.
+These values are falsy. Most other values are truthy.
 
 | Value | Type |
 |-------|------|
@@ -946,14 +748,11 @@ if []: ...
 if {}: ...
 ```
 
-This explains why the same `if value:` pattern works across many types. Python is not asking "is this literally `True`?" It is asking "should this value count as true in a boolean context?"
-
 ### Practical Patterns
 
-Truthiness enables clean, idiomatic code:
+Truthiness leads to short, idiomatic checks:
 
 ```python
-## Guard against empty collections
 def process(items):
     if not items:
         print("Nothing to process")
@@ -961,18 +760,13 @@ def process(items):
     for item in items:
         ...
 
-## Default values with 'or'
 name = user_input or "Anonymous"  # if user_input is "", use fallback
 port = config.get("port") or 8080
-
-## Count truthy values in a list
-flags = [True, False, True, None, 1, 0, "yes", ""]
-print(sum(bool(f) for f in flags))  # 4
 ```
 
-These patterns are concise, but they must still match your intent. For example, `port = config.get("port") or 8080` treats `0` as missing because `0` is falsy. That may be correct, or it may hide a real value.
+Be careful: `x or default` also treats `0`, `""`, and `[]` as missing.
 
-When `None` specifically means "missing", be explicit:
+When only `None` means missing, be explicit:
 
 ```python
 port = config.get("port")
@@ -982,7 +776,7 @@ if port is None:
 
 ### Custom Truthiness
 
-You can control how your own classes behave in boolean context by implementing `__bool__` (or `__len__` as a fallback — Python calls `len(obj) != 0` if `__bool__` is not defined):
+Custom classes can define truthiness with `__bool__` or `__len__`:
 
 ```python
 class BankAccount:
@@ -1008,14 +802,7 @@ if not q:
     print("Queue is empty")     # This prints
 ```
 
-This works because Python first looks for `__bool__()`. If that method is not defined, it falls back to `__len__()` and treats zero length as falsy.
-
-The practical takeaway is simple:
-
-- empty containers are falsy
-- zero numeric values are falsy
-- `None` is falsy
-- most other values are truthy
+Practical rule: empty containers, zero numbers, and `None` are falsy.
 
 Once that rule feels natural, your conditions become much easier to read.
 
@@ -1025,26 +812,32 @@ Once that rule feels natural, your conditions become much easier to read.
 
 ## Chapter II: Data Structures
 
-Python's core data structures and when to use each.
+Python's built-in containers and when to reach for each one.
 
-This chapter moves from single values to collections of values. The key shift is not just learning new syntax, but learning to choose the right container for the job:
+This chapter matters a lot because Python code leans heavily on built-in collections instead of custom classes for many day-one tasks.
 
 - lists when order and mutation matter
 - tuples when fixed structure matters
 - dictionaries when values need names or keys
 - sets when uniqueness and fast membership checks matter
 
-If Chapter I taught you what Python values are, this chapter teaches you how Python groups and organizes them.
+If you want to write useful Python quickly, get comfortable with lists and dictionaries first, then understand sets and comprehensions.
+
+### Priority
+
+- Must read: Lists, Dictionaries, Comprehensions, Type Conversion
+- Read if needed: Tuples, Sets
+- Optional for now: Collections Module
 
 ### Sections
 
-- [Lists](#lists)
-- [Tuples](#tuples)
-- [Dictionaries](#dictionaries)
-- [Sets](#sets)
-- [Collections Module](#collections-module)
-- [Comprehensions](#comprehensions)
-- [Type Conversion](#type-conversion)
+- [Lists](./docs/02-data-structures/lists.md)
+- [Tuples](./docs/02-data-structures/tuples.md)
+- [Dictionaries](./docs/02-data-structures/dictionaries.md)
+- [Sets](./docs/02-data-structures/sets.md)
+- [Collections Module](./docs/02-data-structures/collections-module.md)
+- [Comprehensions](./docs/02-data-structures/comprehensions.md)
+- [Type Conversion](./docs/02-data-structures/type-conversion.md)
 
 ---
 
@@ -1052,13 +845,11 @@ If Chapter I taught you what Python values are, this chapter teaches you how Pyt
 
 ## Lists
 
-Lists are usually the first real collection Python learners rely on heavily. They are flexible, easy to read, and useful in everyday code, but they also introduce important ideas like mutation, shared references, and performance tradeoffs.
-
-As you read this page, focus on when a list is the right default choice and when another container would express your intent more clearly.
+Lists are ordered, mutable collections and the default sequence type in Python.
 
 ### What is a List?
 
-A list is an **ordered, mutable** sequence of objects. Lists can hold any mix of types and can grow or shrink at runtime. They are Python's most versatile built-in collection.
+A list can hold mixed types and can grow or shrink at runtime.
 
 ```python
 numbers = [1, 2, 3, 4, 5]
@@ -1069,7 +860,7 @@ empty = []
 
 ### Indexing and Slicing
 
-Python lists are zero-indexed. Negative indexes count from the end. Slicing returns a **new** list — it does not modify the original.
+Lists are zero-indexed. Negative indexes count from the end. Slicing returns a new list.
 
 ```python
 fruits = ["apple", "banana", "cherry", "date", "elderberry"]
@@ -1085,23 +876,20 @@ print(fruits[::-1])  # reverse
 
 ### Modifying Lists
 
-Because lists are mutable, you can change them in place:
+Lists can be changed in place:
 
 ```python
 fruits = ["apple", "banana", "cherry"]
 
-## Add elements
 fruits.append("date")            # add to end: O(1) amortized
 fruits.insert(1, "blueberry")    # insert at index: O(n)
 fruits.extend(["elderberry", "fig"])  # add multiple: O(k)
 
-## Remove elements
 fruits.remove("banana")          # remove first occurrence by value: O(n)
 popped = fruits.pop()            # remove and return last: O(1)
 popped2 = fruits.pop(0)         # remove and return at index: O(n)
 del fruits[1]                    # remove at index without returning
 
-## In-place modification
 fruits[0] = "avocado"            # replace by index
 fruits[1:3] = ["kiwi", "mango"] # replace a slice
 ```
@@ -1116,7 +904,6 @@ numbers.sort(reverse=True)        # in-place, descending
 
 sorted_copy = sorted(numbers)     # returns NEW list, original unchanged
 
-## Sort with a custom key
 words = ["banana", "apple", "cherry", "date"]
 words.sort(key=len)               # sort by string length
 words.sort(key=str.lower)         # case-insensitive sort
@@ -1132,21 +919,15 @@ print(items.count(1))      # 3  — how many times 1 appears
 print(items.index(4))      # 2  — index of first occurrence
 items.reverse()            # in-place reverse
 items.clear()              # remove all elements
-
-## Check membership: O(n) — use a set if you need fast lookups
-print(5 in items)          # True/False
 ```
 
 ### Performance Notes
 
-Lists are backed by a dynamic array. This means:
-- **Indexing** and **appending** are O(1) amortized.
-- **Inserting or removing** at the front or middle is O(n) — all elements after the point must shift.
-- For frequent front operations, use `collections.deque` instead.
+Indexing and appending are fast. Inserting or removing near the front is slow. For queue-like behavior, use `collections.deque`.
 
 ### List Copying
 
-Assignment creates a new reference to the **same** list, not a copy:
+Assignment shares the same list object:
 
 ```python
 a = [1, 2, 3]
@@ -1158,10 +939,6 @@ print(a)          # [1, 2, 3, 4]
 c = a.copy()      # or: a[:]  or: list(a)
 c.append(99)
 print(a)          # [1, 2, 3, 4] — unaffected
-
-## Deep copy — recursively copies all nested objects
-import copy
-d = copy.deepcopy(a)
 ```
 
 ---
@@ -1283,13 +1060,11 @@ print(p)           # Point(x=10, y=20)
 
 ## Dictionaries
 
-Dictionaries are one of Python's most important data structures because they let you attach meaning to values through keys. When you need lookup by name, ID, or label, a dictionary is often the most natural fit.
-
-This page is easiest to understand if you think of a dictionary as a mapping from keys to values rather than as a sequence with positions.
+Dictionaries map keys to values and are one of Python's most important data structures.
 
 ### What is a Dictionary?
 
-A dictionary is a **mutable mapping** of unique keys to values. As of Python 3.7+, dictionaries preserve **insertion order**. Lookup by key is O(1) on average (backed by a hash table). Keys must be hashable — strings, numbers, and tuples of hashables all work; lists and dicts cannot be keys.
+A dictionary is a mutable mapping of unique keys to values. Lookups are fast, keys must be hashable, and insertion order is preserved.
 
 ```python
 person = {"name": "Alice", "age": 30, "city": "New York"}
@@ -1303,14 +1078,11 @@ from_kwargs = dict(name="Alice", age=30)
 ```python
 person = {"name": "Alice", "age": 30}
 
-## Direct access — raises KeyError if the key doesn't exist
 print(person["name"])          # "Alice"
 
-## Safe access with a default
 print(person.get("email"))          # None
 print(person.get("email", "N/A"))   # "N/A"
 
-## Check if a key exists before accessing
 if "age" in person:
     print(person["age"])
 ```
@@ -1320,23 +1092,16 @@ if "age" in person:
 ```python
 person = {"name": "Alice", "age": 30}
 
-## Add or update a key
 person["email"] = "alice@example.com"
 person["age"] = 31
 
-## Merge another dict (Python 3.9+ syntax)
 person |= {"city": "Boston", "lang": "Python"}
 
-## update() works in all versions
 person.update({"country": "US"})
 
-## Remove a key
 del person["lang"]                      # raises KeyError if missing
 email = person.pop("email")             # remove and return value
 removed = person.pop("missing", None)   # safe remove with default
-
-## Remove last inserted item (Python 3.7+ order is guaranteed)
-last_key, last_val = person.popitem()
 ```
 
 ### Iterating
@@ -1347,9 +1112,6 @@ person = {"name": "Alice", "age": 30, "city": "NY"}
 for key in person:                 # iterate over keys (default)
     print(key)
 
-for key in person.keys():          # explicit keys view
-    print(key)
-
 for value in person.values():      # values view
     print(value)
 
@@ -1357,20 +1119,14 @@ for key, value in person.items():  # key-value pairs
     print(f"{key}: {value}")
 ```
 
-The views returned by `.keys()`, `.values()`, and `.items()` are **live views** — they reflect changes to the dict without creating a copy.
-
 ### Dict Comprehensions
 
 ```python
 squares = {x: x**2 for x in range(6)}
-## {0: 0, 1: 1, 2: 4, 3: 9, 4: 16, 5: 25}
 
-## Invert a dictionary (assuming unique values)
 original = {"a": 1, "b": 2, "c": 3}
 inverted = {v: k for k, v in original.items()}
-## {1: "a", 2: "b", 3: "c"}
 
-## Filter while building
 even_squares = {x: x**2 for x in range(10) if x % 2 == 0}
 ```
 
@@ -1380,26 +1136,20 @@ even_squares = {x: x**2 for x in range(10) if x % 2 == 0}
 defaults = {"color": "blue", "size": 10, "visible": True}
 overrides = {"size": 20, "opacity": 0.8}
 
-## Python 3.9+ — | operator
 merged = defaults | overrides
-## {"color": "blue", "size": 20, "visible": True, "opacity": 0.8}
-
-## Older style
-merged = {**defaults, **overrides}   # right side wins on conflict
 ```
 
 ### `setdefault` and `defaultdict`
 
-`setdefault` is useful for grouping — it inserts a default value only if the key is missing, then returns the value:
+`setdefault()` is useful for grouping:
 
 ```python
 groups = {}
 for word in ["apple", "ant", "banana", "bear"]:
     groups.setdefault(word[0], []).append(word)
-## {"a": ["apple", "ant"], "b": ["banana", "bear"]}
 ```
 
-For this pattern, `collections.defaultdict` is even cleaner — see the [Collections Module](./collections-module) page.
+For heavy grouping code, `collections.defaultdict` is often cleaner.
 
 ---
 
@@ -1407,18 +1157,11 @@ For this pattern, `collections.defaultdict` is even cleaner — see the [Collect
 
 ## Sets
 
-Sets are designed for uniqueness and fast membership testing. They are less about storing values in order and more about answering questions like "have I seen this before?" or "what values overlap between these groups?"
-
-That is why sets become especially useful in validation, deduplication, and comparison tasks.
+Sets are for uniqueness and fast membership tests.
 
 ### What is a Set?
 
-A set is an **unordered collection of unique, hashable objects**. Sets are backed by a hash table, giving O(1) average-case performance for membership tests, insertion, and deletion. Because sets are unordered, they do not support indexing or slicing.
-
-The primary use cases for sets are:
-- **Deduplication** — removing duplicates from any sequence
-- **Membership testing** — `x in my_set` is O(1) vs O(n) for a list
-- **Set operations** — unions, intersections, and differences
+A set is an unordered collection of unique, hashable objects.
 
 ```python
 colors = {"red", "green", "blue"}
@@ -1442,27 +1185,19 @@ s.clear()         # remove all elements
 
 ### Set Operations
 
-Set algebra is built directly into Python:
+Set algebra is built in:
 
 ```python
 a = {1, 2, 3, 4}
 b = {3, 4, 5, 6}
 
-## Union — all elements from both
 print(a | b)         # {1, 2, 3, 4, 5, 6}
-print(a.union(b))    # same
 
-## Intersection — only elements in both
 print(a & b)              # {3, 4}
-print(a.intersection(b))  # same
 
-## Difference — in a but not in b
 print(a - b)              # {1, 2}
-print(a.difference(b))    # same
 
-## Symmetric difference — in either, but not both
 print(a ^ b)                        # {1, 2, 5, 6}
-print(a.symmetric_difference(b))    # same
 ```
 
 ### Set Comparisons
@@ -1480,32 +1215,23 @@ print(a.isdisjoint({6, 7}))  # True — no elements in common
 ### Practical Uses
 
 ```python
-## Deduplication while preserving order (Python 3.7+)
 def deduplicate(items):
     seen = set()
     return [x for x in items if not (x in seen or seen.add(x))]
 
-## Fast membership test
 VALID_EXTENSIONS = {".py", ".txt", ".json", ".yaml"}
 filename = "script.py"
 if filename.endswith(tuple(VALID_EXTENSIONS)):
     print("Valid file")
-
-## Find common elements between two lists efficiently
-list_a = [1, 2, 3, 4, 5]
-list_b = [3, 4, 5, 6, 7]
-common = set(list_a) & set(list_b)  # {3, 4, 5}
-only_in_a = set(list_a) - set(list_b)  # {1, 2}
 ```
 
 ### Frozensets
 
-A `frozenset` is an **immutable** set — it can be used as a dictionary key or stored in another set:
+A `frozenset` is an immutable set:
 
 ```python
 fs = frozenset([1, 2, 3])
 d = {fs: "value"}       # works because frozenset is hashable
-## fs.add(4)             # AttributeError — frozensets are immutable
 ```
 
 ---
@@ -1585,103 +1311,68 @@ print(history)  # deque([2, 3, 4], maxlen=3) — auto-evicts oldest
 
 ## Comprehensions
 
-Comprehensions are a compact way to build collections from other iterables. They are one of Python's most recognizable idioms, but they work best when they stay readable and focused on a single transformation.
+Comprehensions are a compact way to build collections from other iterables.
 
-The goal here is to understand why comprehensions feel natural in Python, and also where a normal loop is the better choice.
-
-### What Are Comprehensions?
-
-Comprehensions are concise expressions for building new collections by transforming and filtering existing iterables. They replace verbose `for` loops and are generally faster because they are optimized at the bytecode level.
+They work best when the transformation stays simple and readable.
 
 ### List Comprehensions
 
-The general form is `[expression for item in iterable if condition]`. The `if` clause is optional.
+General form: `[expression for item in iterable if condition]`
 
 ```python
-## Basic — square each number
 squares = [x**2 for x in range(10)]
-## [0, 1, 4, 9, 16, 25, 36, 49, 64, 81]
 
-## With filter — only even numbers
 evens = [x for x in range(20) if x % 2 == 0]
 
-## Transform strings
 words = ["hello", "world", "python"]
 upper = [w.upper() for w in words]
-
-## Equivalent for-loop (less idiomatic):
-result = []
-for x in range(10):
-    result.append(x**2)
 ```
 
-**Nested comprehensions** — process 2D data:
+Nested comprehensions are possible, but use them carefully:
 
 ```python
 matrix = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
 
-## Flatten
 flat = [n for row in matrix for n in row]
-## [1, 2, 3, 4, 5, 6, 7, 8, 9]
-
-## Transpose
-transposed = [[row[i] for row in matrix] for i in range(3)]
 ```
 
 ### Dict Comprehensions
 
 ```python
-## Map word → length
 words = ["Python", "is", "great"]
 lengths = {word: len(word) for word in words}
-## {"Python": 6, "is": 2, "great": 5}
 
-## Filter a dict
 prices = {"apple": 1.0, "banana": 0.5, "cherry": 2.0}
 expensive = {k: v for k, v in prices.items() if v > 0.8}
-## {"apple": 1.0, "cherry": 2.0}
 ```
 
 ### Set Comprehensions
 
 ```python
-## Unique squares — duplicates automatically removed
 unique = {x**2 for x in [-2, -1, 0, 1, 2]}
-## {0, 1, 4}
-
-## All unique first letters
 words = ["apple", "ant", "banana", "avocado"]
 first_letters = {w[0] for w in words}  # {"a", "b"}
 ```
 
 ### Generator Expressions
 
-A **generator expression** looks like a list comprehension but uses parentheses `()`. It does **not** build the collection in memory — it produces values lazily, one at a time. Use these when you only need to iterate once or when the collection would be very large.
+A generator expression uses `()` and produces values lazily:
 
 ```python
-## List comprehension — builds all 1M items in memory immediately
 big_list = [x**2 for x in range(1_000_000)]
 
-## Generator expression — computes each value on demand
 gen = (x**2 for x in range(1_000_000))  # barely any memory used
 
-## Works with any function that accepts an iterable
 total = sum(x**2 for x in range(1_000_000))
-maximum = max(len(line) for line in open("file.txt"))
-any_even = any(x % 2 == 0 for x in range(100))
 ```
-
-When you pass a generator expression as the only argument to a function, you can omit the extra parentheses: `sum(x**2 for x in range(10))`.
 
 ### When to Use Comprehensions
 
-Use comprehensions when the logic is simple and readable. If you need side effects (like printing), multiple conditions, or complex logic, a regular `for` loop is clearer:
+Use comprehensions for simple transforms and filters. Use a normal loop when logic becomes hard to read.
 
 ```python
-## Fine as a comprehension
 doubles = [x * 2 for x in data if x > 0]
 
-## Too complex — use a loop instead
 result = []
 for item in data:
     processed = transform(item)
@@ -1779,7 +1470,7 @@ print(bool([]))      # False
 print(bool([0]))     # True  — a list with one element, even if that element is 0
 ```
 
-See the [Falsy Values](../01-the-basics/falsy-values) page for the full rules.
+See the [Falsy Values](./docs/01-the-basics/falsy-values.md) page for the full rules.
 
 ### `isinstance()` vs Type Conversion
 
@@ -1804,21 +1495,26 @@ Use `isinstance()` rather than `type(x) == int` — it correctly handles subclas
 
 ## Chapter III: Control Flow
 
-Conditional logic and loops.
+Conditional logic, iteration, and the small amount of syntax you need to read most Python code.
 
-This chapter is about deciding what code runs and how many times it runs. These tools look simple, but they are the foundation of almost every real program:
+Nothing exotic here. The main Python-specific part is getting comfortable reading clean indentation-based flow.
 
 - `if` and `elif` choose between paths
 - `match` expresses structured branching more clearly in some cases
 - loops let you process repeated data without repeating code by hand
 
-The main skill here is learning to read code as execution flow: what happens first, what gets skipped, and what repeats.
+`match` is useful, but not a blocker for productive Python. Learn `if`, `for`, and loop patterns first.
+
+### Priority
+
+- Must read: If / Else, Loops
+- Optional for now: Match / Case
 
 ### Sections
 
-- [If / Else](#if-else)
-- [Match / Case](#match-case)
-- [Loops](#loops)
+- [If / Else](./docs/03-control-flow/if-else.md)
+- [Match / Case](./docs/03-control-flow/match-case.md)
+- [Loops](./docs/03-control-flow/loops.md)
 
 ---
 
@@ -2067,25 +1763,20 @@ match data:
 
 ## Loops
 
-Loops let you express repetition without duplicating code. In Python, the biggest shift for many learners is understanding that `for` usually means "loop over items" rather than "manually control an index."
-
-That design makes Python loops read more directly, but it also means you should pay attention to what object is being iterated and whether the loop is mutating data along the way.
+Python loops are mostly about iterating over values directly, not manually managing indexes.
 
 ### `for` Loops
 
-Python's `for` loop iterates over any **iterable** — lists, strings, ranges, dicts, files, generators, and anything that implements the iterator protocol:
+`for` works with any iterable: lists, strings, ranges, dicts, files, and generators.
 
 ```python
-## Iterate over a list
 fruits = ["apple", "banana", "cherry"]
 for fruit in fruits:
     print(fruit)
 
-## Iterate over a string
 for char in "Python":
     print(char)
 
-## Iterate over a range
 for i in range(5):          # 0, 1, 2, 3, 4
     print(i)
 
@@ -2095,27 +1786,20 @@ for i in range(2, 10, 2):  # start, stop (exclusive), step
 
 ### `enumerate()` — Index + Value
 
-When you need both the index and the value, use `enumerate()` instead of indexing manually:
+Use `enumerate()` when you need both index and value:
 
 ```python
 fruits = ["apple", "banana", "cherry"]
-
-## Don't do this:
-for i in range(len(fruits)):
-    print(i, fruits[i])
-
-## Do this:
 for i, fruit in enumerate(fruits):
     print(i, fruit)
 
-## Start the counter at a different value
 for i, fruit in enumerate(fruits, start=1):
     print(f"{i}. {fruit}")
 ```
 
 ### `zip()` — Parallel Iteration
 
-`zip()` pairs elements from multiple iterables and stops when the shortest is exhausted:
+`zip()` pairs elements from multiple iterables:
 
 ```python
 names = ["Alice", "Bob", "Charlie"]
@@ -2123,30 +1807,17 @@ scores = [95, 80, 88]
 
 for name, score in zip(names, scores):
     print(f"{name}: {score}")
-
-## Unzip (transpose)
-pairs = [(1, "a"), (2, "b"), (3, "c")]
-numbers, letters = zip(*pairs)  # (1, 2, 3), ('a', 'b', 'c')
 ```
 
 ### `while` Loops
 
-`while` repeats as long as its condition is truthy:
+`while` repeats while a condition is true:
 
 ```python
 count = 0
 while count < 5:
     print(count)
     count += 1
-
-## Reading until a condition
-total = 0
-while True:
-    value = int(input("Enter number (0 to stop): "))
-    if value == 0:
-        break
-    total += value
-print(f"Total: {total}")
 ```
 
 ### `break`, `continue`, and `else`
@@ -2162,17 +1833,6 @@ for n in range(10):
     if n == 7:
         break       # stop at 7
     print(n)        # prints 0, 1, 2, 4, 5, 6
-
-## Loop else: useful for search patterns
-def find_prime(numbers):
-    for n in numbers:
-        if n < 2:
-            continue
-        for i in range(2, int(n**0.5) + 1):
-            if n % i == 0:
-                break       # n is not prime
-        else:
-            print(f"{n} is prime")  # only runs if inner loop didn't break
 ```
 
 ### Iterating Over Dictionaries
@@ -2185,9 +1845,6 @@ for key in person:           # keys (default)
 
 for key, value in person.items():
     print(f"{key}: {value}")
-
-## Modify values (never add/remove keys during iteration)
-person = {k: v * 2 if isinstance(v, int) else v for k, v in person.items()}
 ```
 
 ### `reversed()` and `sorted()`
@@ -2211,25 +1868,32 @@ for x in sorted(items, reverse=True, key=abs):
 
 ## Chapter IV: Functions
 
-Defining and calling functions in Python.
+Function syntax, arguments, return values, and the Python conventions that appear in almost every codebase.
 
-Functions are where small scripts start becoming reusable programs. This chapter teaches you how to package logic into named units, control inputs and outputs, and keep code manageable as it grows.
+If you are coming from another language, functions are familiar. What matters here is Python's calling style and a few common features that show up often.
 
-Focus on three ideas as you read:
+Focus on these ideas:
 
 - a function is a reusable block of behavior
 - parameters describe what a function needs
 - return values describe what a function produces
+- type hints improve readability even in dynamic code
 
-Once these ideas feel natural, later topics like modules, classes, and decorators become much easier.
+Do not spend much time on `lambda` unless you already use functional-style helpers.
+
+### Priority
+
+- Must read: Defining Functions, Parameters & Arguments, Type Hints
+- Read next: Scoping Rules
+- Optional for now: Lambda Functions
 
 ### Sections
 
-- [Defining Functions](#defining-functions)
-- [Parameters & Arguments](#parameters-arguments)
-- [Lambda Functions](#lambda-functions)
-- [Scoping Rules](#scoping-rules)
-- [Type Hints](#type-hints)
+- [Defining Functions](./docs/04-functions/defining-functions.md)
+- [Parameters & Arguments](./docs/04-functions/parameters-arguments.md)
+- [Lambda Functions](./docs/04-functions/lambda-functions.md)
+- [Scoping Rules](./docs/04-functions/scoping-rules.md)
+- [Type Hints](./docs/04-functions/type-hints.md)
 
 ---
 
@@ -2583,13 +2247,11 @@ def square(x):
 
 ## Scoping Rules (LEGB)
 
-Scoping rules explain where Python looks for names and why some assignments behave differently than beginners expect. This is one of the most important mental models in the language because it affects functions, closures, imports, and debugging.
-
-If a name lookup or reassignment has ever felt surprising, LEGB is usually the reason.
+LEGB explains where Python looks up names.
 
 ### The LEGB Rule
 
-When Python encounters a name (variable, function, class), it searches four scopes in order until it finds the name or raises a `NameError`:
+Python searches in this order:
 
 1. **L — Local** — names defined inside the current function
 2. **E — Enclosing** — names in any enclosing functions (for nested functions)
@@ -2615,7 +2277,7 @@ print(x)            # "global"  — G
 
 ### The `global` Keyword
 
-By default, assignment inside a function creates a **new local variable** — it does not modify the global. To modify a global variable, you must declare it with `global`:
+Assignment inside a function creates a local variable unless you declare `global`:
 
 ```python
 counter = 0
@@ -2629,11 +2291,9 @@ increment()
 print(counter)  # 2
 ```
 
-Use `global` sparingly. Shared mutable global state makes code harder to test and reason about. Prefer passing values as arguments and returning updated values.
-
 ### The `nonlocal` Keyword
 
-`nonlocal` allows an inner function to modify a variable in an **enclosing** (but not global) scope. This is the key mechanism behind closures with state:
+`nonlocal` lets an inner function modify a variable from an enclosing function:
 
 ```python
 def make_counter(start=0):
@@ -2660,7 +2320,7 @@ print(inc())    # 11
 
 ### Closures
 
-A **closure** is a function that "closes over" variables from its enclosing scope — those variables continue to exist even after the outer function returns:
+A closure keeps access to variables from an outer function even after that function returns:
 
 ```python
 def make_multiplier(factor):
@@ -2673,22 +2333,17 @@ triple = make_multiplier(3)
 
 print(double(5))   # 10
 print(triple(5))   # 15
-
-## Inspect captured variables
-print(double.__closure__[0].cell_contents)  # 2
 ```
 
 ### A Common Closure Gotcha — Late Binding
 
-Variables in closures are looked up at **call time**, not at definition time. This catches many developers off guard in loops:
+Closures in loops use late binding unless you capture values explicitly:
 
 ```python
-## BUG — all functions print 4
 funcs = [lambda: i for i in range(5)]
 for f in funcs:
     print(f())   # 4, 4, 4, 4, 4
 
-## FIX — capture the current value of i with a default argument
 funcs = [lambda i=i: i for i in range(5)]
 for f in funcs:
     print(f())   # 0, 1, 2, 3, 4
@@ -2696,7 +2351,7 @@ for f in funcs:
 
 ### Variable Scope and the `UnboundLocalError`
 
-If you assign to a name anywhere in a function, Python treats it as local **everywhere** in that function — even before the assignment:
+If a function assigns to a name, Python treats that name as local throughout the function:
 
 ```python
 x = 10
@@ -2716,17 +2371,11 @@ def good():
 
 <a id="type-hints"></a>
 
-You're absolutely right! I was treating them as separate concepts when they're actually the same thing - generics. Let me fix that with a cleaner, more logical structure:
+### Type Hints
 
----
+Type hints document expected types. Python does not enforce them at runtime, but editors and type checkers use them.
 
-<a id="type-hints"></a>
-
-## Type Hints
-
-Type hints let you document expected types in your code. They're optional - Python doesn't enforce them at runtime - but they help IDEs, type checkers, and other developers understand your code better.
-
-### Basic Syntax
+#### Basic Syntax
 
 ```python
 def greet(name: str) -> str:
@@ -2739,18 +2388,15 @@ def log(message: str) -> None:  # Returns nothing
     print(message)
 ```
 
-### Common Types
+#### Common Types
 
 ```python
-# Basic types
 def process(value: int | str) -> str:  # Python 3.10+ union syntax
     return str(value)
 
-# Optional values (can be None)
 def find_user(id: int) -> dict | None:  # Or Optional[dict]
     return {"id": id} if id > 0 else None
 
-# Collections
 def first(items: list[int]) -> int:
     return items[0]
 
@@ -2761,32 +2407,9 @@ def coordinates() -> tuple[float, float]:
     return (10.5, 20.3)
 ```
 
-### Generics
+#### Generics
 
-Generics let you write type-safe code that works with different types while preserving type information.
-
-#### Collection Generics
-
-Specify what types your collections contain:
-
-```python
-# Lists, dicts, tuples, sets
-def process_users(users: list[dict[str, int | str]]) -> list[str]:
-    return [str(user["id"]) for user in users]
-
-def stats(data: list[float]) -> tuple[float, float, float]:
-    return min(data), max(data), sum(data) / len(data)
-
-# Nested collections
-def flatten(matrix: list[list[float]]) -> list[float]:
-    return [x for row in matrix for x in row]
-```
-
-**Note:** Python 3.9+ uses built-in types (`list`, `dict`, `tuple`). Older code may use `List`, `Dict` from `typing`.
-
-#### Type Variables (Generic Parameters)
-
-When the return type relates to the input type:
+Use generics when the return type depends on the input type:
 
 ```python
 from typing import TypeVar
@@ -2796,7 +2419,7 @@ T = TypeVar('T')
 def first(items: list[T]) -> T | None:
     return items[0] if items else None
 
-# Type is preserved
+## Type is preserved
 value = first([1, 2, 3])     # value is int | None
 text = first(["a", "b"])     # text is str | None
 ```
@@ -2818,7 +2441,7 @@ class Stack(Generic[T]):
     def pop(self) -> T | None:
         return self._items.pop() if self._items else None
 
-# Usage - type is preserved
+## Usage - type is preserved
 int_stack = Stack[int]()
 int_stack.push(1)
 value = int_stack.pop()  # value is int
@@ -2828,24 +2451,9 @@ str_stack.push("hello")
 text = str_stack.pop()   # text is str
 ```
 
-#### Constraining Generic Types
+#### Type Aliases
 
-Restrict what types can be used:
-
-```python
-# T must be int or float
-Number = TypeVar('Number', int, float)
-
-def average(numbers: list[Number]) -> float:
-    return sum(numbers) / len(numbers)
-
-# Works with ints, floats, or mixed
-avg = average([1, 2, 3.5, 4])
-```
-
-### Type Aliases
-
-Simplify complex or repeated types:
+Use aliases to simplify repeated types:
 
 ```python
 from typing import TypeAlias
@@ -2861,9 +2469,9 @@ def dot_product(a: Vector, b: Vector) -> float:
     return sum(x * y for x, y in zip(a, b))
 ```
 
-### Function Types (Callable)
+#### Function Types (Callable)
 
-When a parameter accepts a function:
+Use `Callable` when a parameter accepts a function:
 
 ```python
 from collections.abc import Callable
@@ -2871,7 +2479,7 @@ from collections.abc import Callable
 def apply(func: Callable[[int], int], value: int) -> int:
     return func(value)
 
-# Callable that takes two strings and returns a string
+## Callable that takes two strings and returns a string
 def combine(func: Callable[[str, str], str], a: str, b: str) -> str:
     return func(a, b)
 
@@ -2879,9 +2487,9 @@ apply(lambda x: x * 2, 5)        # 10
 combine(lambda a, b: a + b, "Hello", "World")  # "HelloWorld"
 ```
 
-### Type Checking with mypy
+#### Type Checking with mypy
 
-Type hints are validated by tools like `mypy`:
+Validate hints with `mypy`:
 
 ```bash
 pip install mypy
@@ -2895,31 +2503,40 @@ def add(a: int, b: int) -> int:
 
 add("1", "2")  # mypy will complain: Argument 1 to "add" has incompatible type "str"
 ```
+
+For API clients, AI agents, and backend code, type hints pay off quickly because function boundaries stay clearer.
+
 ---
 
 <a id="chapter-v-object-oriented-programming"></a>
 
 ## Chapter V: Object-Oriented Programming
 
-Classes, inheritance, and Python's OOP toolset.
+Classes, dataclasses, and enough OOP to read framework and application code confidently.
 
-Object-oriented programming in Python is best understood as a way to model state and behavior together. This chapter is not about using classes everywhere; it is about knowing when objects help code become clearer and more maintainable.
+Python supports OOP well, but many Python programs stay simpler than typical Java or C# designs. Use classes when they clarify state and behavior, not by default.
 
 Keep these ideas in mind:
 
 - classes define behavior and data together
 - instances represent concrete objects created from those class definitions
 - inheritance and composition are tools, not goals
+- `dataclass` often replaces a lot of boilerplate
 
-Python supports OOP well, but it also stays flexible, so the real skill is learning where OOP improves design and where simpler code is better.
+For a fast Python ramp-up, prioritize plain classes and dataclasses. Leave deeper inheritance patterns for later.
+
+### Priority
+
+- Read if you build services or framework code: Classes, Dataclasses
+- Optional for now: Inheritance, Abstract Base Classes, Magic Methods
 
 ### Sections
 
-- [Classes](#classes)
-- [Inheritance](#inheritance)
-- [Abstract Base Classes](#abstract-base-classes)
-- [Magic Methods](#magic-methods)
-- [Dataclasses](#dataclasses)
+- [Classes](./docs/05-oop/classes.md)
+- [Inheritance](./docs/05-oop/inheritance.md)
+- [Abstract Base Classes](./docs/05-oop/abstract-base-classes.md)
+- [Magic Methods](./docs/05-oop/magic-methods.md)
+- [Dataclasses](./docs/05-oop/dataclasses.md)
 
 ---
 
@@ -2927,22 +2544,17 @@ Python supports OOP well, but it also stays flexible, so the real skill is learn
 
 ## Classes
 
-Classes are Python's main tool for bundling related data and behavior into a single abstraction. They are useful when values need associated operations or when many objects share the same structure.
-
-The key beginner shift is to see a class as a definition and an instance as a concrete object created from that definition.
+Classes bundle related data and behavior.
 
 ### Defining a Class
 
-A class is a blueprint for creating objects. It bundles **data** (attributes) and **behavior** (methods) together. The `__init__` method is the initializer — it runs automatically when a new instance is created.
+The class defines the structure. The instance is a concrete object.
 
 ```python
 class Dog:
-    # Class attribute — shared by ALL instances
     species = "Canis familiaris"
 
-    # __init__ is the initializer (not the constructor — __new__ creates the object)
     def __init__(self, name: str, age: int):
-        # Instance attributes — unique to each object
         self.name = name
         self.age = age
 
@@ -2963,7 +2575,7 @@ print(rex)                  # Dog(name='Rex', age=3)
 
 ### `self` — The Instance Reference
 
-`self` is a reference to the current instance. It is passed automatically when you call a method on an object. The name `self` is a convention — Python does not enforce it — but you should always use it.
+`self` refers to the current instance.
 
 ```python
 class Counter:
@@ -2986,7 +2598,7 @@ print(c.value)   # 0
 
 ### Class vs Instance Attributes
 
-Class attributes are defined on the class and shared by all instances. Instance attributes are defined on `self` and unique to each instance. **Assigning to an instance attribute always shadows the class attribute** — it does not modify it:
+Class attributes are shared. Instance attributes belong to one object.
 
 ```python
 class Config:
@@ -3012,16 +2624,13 @@ class Temperature:
     def __init__(self, celsius: float):
         self.celsius = celsius
 
-    # Regular method — receives instance as first arg
     def to_fahrenheit(self) -> float:
         return self.celsius * 9 / 5 + 32
 
-    # Class method — receives the CLASS as first arg (useful for factory methods)
     @classmethod
     def from_fahrenheit(cls, fahrenheit: float) -> "Temperature":
         return cls((fahrenheit - 32) * 5 / 9)
 
-    # Static method — no implicit first argument; a plain function scoped to the class
     @staticmethod
     def is_freezing(celsius: float) -> bool:
         return celsius <= 0
@@ -3035,7 +2644,7 @@ print(Temperature.is_freezing(-5))          # True
 
 ### Properties
 
-Use `@property` to make a method callable like an attribute — great for computed values or adding validation:
+Use `@property` for computed values or validation:
 
 ```python
 class Circle:
@@ -3060,8 +2669,9 @@ class Circle:
 c = Circle(5)
 print(c.area)       # 78.53...  — looks like attribute, runs computation
 c.radius = 10       # calls the setter
-## c.radius = -1     # ValueError
 ```
+
+For many real projects, classes plus dataclasses are enough. You do not need deep inheritance to write good Python.
 
 ---
 
@@ -3330,12 +2940,6 @@ print(isinstance(MyClass(), Hashable))   # True
 ```
 
 This is useful for integrating third-party code with your ABC hierarchy.
-        return 2 * (self.width + self.height)
-
-## Shape()  # TypeError: can't instantiate abstract class
-c = Circle(5)
-print(c.describe())  # Area: 78.54, Perimeter: 31.42
-```
 
 ---
 
@@ -3343,13 +2947,11 @@ print(c.describe())  # Area: 78.54, Perimeter: 31.42
 
 ## Magic Methods
 
-Magic methods are what let custom classes participate naturally in Python syntax. They are the reason your own objects can work with `print()`, `len()`, operators, iteration, comparisons, and context managers.
-
-The important idea is not memorizing every dunder method. It is understanding that Python syntax often dispatches to these methods under the hood.
+Magic methods let custom classes work with Python syntax such as `print()`, `len()`, operators, iteration, and context managers.
 
 ### What Are Magic Methods?
 
-**Magic methods** (also called dunder methods — "double underscore") are special methods that Python calls automatically in response to built-in operations. By implementing them, your classes integrate seamlessly with Python's syntax and built-in functions.
+Magic methods, or dunder methods, are special methods that Python calls automatically.
 
 ### String Representation
 
@@ -3360,12 +2962,9 @@ class Point:
         self.y = y
 
     def __repr__(self) -> str:
-        # Unambiguous representation — for developers and debugging
-        # Ideally: eval(repr(obj)) == obj
         return f"Point({self.x!r}, {self.y!r})"
 
     def __str__(self) -> str:
-        # Human-readable representation — for print() and str()
         return f"({self.x}, {self.y})"
 
 p = Point(3, 4)
@@ -3373,8 +2972,6 @@ print(repr(p))   # Point(3, 4)
 print(str(p))    # (3, 4)
 print(p)         # (3, 4)  — print() calls __str__
 ```
-
-If only `__repr__` is defined, `str(obj)` falls back to it.
 
 ### Arithmetic Operators
 
@@ -3394,7 +2991,7 @@ class Vector:
         return Vector(self.x * scalar, self.y * scalar)
 
     def __rmul__(self, scalar: float) -> "Vector":
-        return self.__mul__(scalar)    # supports 3 * vector (reversed)
+        return self.__mul__(scalar)
 
     def __neg__(self) -> "Vector":
         return Vector(-self.x, -self.y)
@@ -3415,7 +3012,7 @@ print(-v1)        # Vector(-1, -2)
 ```python
 from functools import total_ordering
 
-@total_ordering   # auto-generates <, <=, >=, > from __eq__ and __lt__
+@total_ordering
 class Temperature:
     def __init__(self, celsius: float):
         self.celsius = celsius
@@ -3431,7 +3028,7 @@ class Temperature:
 t1 = Temperature(20)
 t2 = Temperature(30)
 print(t1 < t2)    # True
-print(t2 >= t1)   # True  — generated by @total_ordering
+print(t2 >= t1)   # True
 ```
 
 ### Container Protocol
@@ -3479,7 +3076,7 @@ print(callable(double))  # True
 
 ### `__enter__` and `__exit__` — Context Manager Protocol
 
-See the [Context Managers](../06-advanced-python-techniques/context-managers) page for a full explanation.
+These power the `with` statement.
 
 ```python
 class Timer:
@@ -3491,12 +3088,14 @@ class Timer:
     def __exit__(self, exc_type, exc_val, exc_tb):
         import time
         self.elapsed = time.time() - self.start
-        return False   # don't suppress exceptions
+        return False
 
 with Timer() as t:
     sum(range(1_000_000))
 print(f"Elapsed: {t.elapsed:.4f}s")
 ```
+
+You do not need to memorize every magic method. Focus on the common ones: `__init__`, `__repr__`, `__str__`, comparison methods, iterator methods, and context-manager methods.
 
 ---
 
@@ -3626,24 +3225,31 @@ Use `@dataclass` for most new code. Use `namedtuple` for lightweight read-only r
 
 ## Chapter VI: Advanced Python Techniques
 
-Language features and standard-library techniques that make Python code more expressive and efficient.
+Useful Python features that appear in real codebases, but are not all required on day one.
 
-This chapter focuses on advanced techniques that show up across the Python language and standard library. These topics are not just about style. They are practical tools for iteration, abstraction, resource management, and cleaner control over how code behaves.
+Treat this chapter as selective reading. Learn the parts that unblock framework code or make common patterns clearer.
 
-As you read, ask two questions:
+Start with:
 
-- what problem does this pattern solve?
-- when is it clearer than a more explicit alternative?
+- context managers because `with` is everywhere
+- decorators because frameworks use them heavily
+- generators because they explain lazy iteration
 
-Advanced Python is not about writing the shortest code possible. It is about choosing features and tools that fit the language naturally and make the design clearer.
+You do not need every helper in `itertools` or every functional pattern before writing useful Python.
+
+### Priority
+
+- Must know soon: Context Managers, Decorators
+- Read when useful: Iterators & Generators, Pattern Matching
+- Optional for now: itertools & functools
 
 ### Sections
 
-- [Iterators & Generators](#iterators-generators)
-- [itertools & functools](#itertools-functools)
-- [Decorators](#decorators)
-- [Context Managers](#context-managers)
-- [Pattern Matching](#pattern-matching)
+- [Iterators & Generators](./docs/06-advanced-python-techniques/iterators-generators.md)
+- [itertools & functools](./docs/06-advanced-python-techniques/itertools-functools.md)
+- [Decorators](./docs/06-advanced-python-techniques/decorators.md)
+- [Context Managers](./docs/06-advanced-python-techniques/context-managers.md)
+- [Pattern Matching](./docs/06-advanced-python-techniques/pattern-matching.md)
 
 ---
 
@@ -3651,15 +3257,11 @@ Advanced Python is not about writing the shortest code possible. It is about cho
 
 ## Iterators & Generators
 
-Iterators and generators explain why Python can process data lazily instead of building every result in memory upfront. They are central to how loops, comprehensions, files, and many library tools work.
-
-If you understand this page well, a lot of Python's "it just works in a for loop" behavior becomes much less magical.
+Iterators and generators explain how Python processes data lazily instead of building everything in memory first.
 
 ### The Iterator Protocol
 
-An **iterable** is any object you can loop over — lists, tuples, strings, files, ranges. An **iterator** is an object with a `__next__()` method that returns the next value and raises `StopIteration` when exhausted.
-
-`iter()` converts an iterable into an iterator; `next()` retrieves the next value:
+An iterable can be looped over. An iterator produces one item at a time.
 
 ```python
 lst = [1, 2, 3]
@@ -3668,12 +3270,6 @@ print(next(it))   # 1
 print(next(it))   # 2
 print(next(it))   # 3
 ## next(it)        # StopIteration
-
-## A for loop is just:
-## it = iter(lst)
-## while True:
-##     try: value = next(it)
-##     except StopIteration: break
 ```
 
 ### Implementing a Custom Iterator
@@ -3699,23 +3295,21 @@ for n in Countdown(3):
 
 ### Generator Functions
 
-Writing the full iterator class above is verbose. A **generator function** using `yield` does the same in far fewer lines:
+Generator functions use `yield` and are usually easier than writing iterator classes:
 
 ```python
 def countdown(start: int):
     while start >= 0:
-        yield start   # suspends here, returns value; resumes on next()
+        yield start
         start -= 1
 
 for n in countdown(3):
     print(n)    # 3, 2, 1, 0
 ```
 
-When Python sees `yield` in a function, calling that function returns a **generator object** — it does not execute the body immediately. The body runs step-by-step as `next()` is called on the generator.
-
 ### Generators are Lazy
 
-Generators produce values on demand. They do not compute the whole sequence upfront, making them ideal for large or infinite sequences:
+Generators produce values on demand, which is useful for large or infinite sequences:
 
 ```python
 def fibonacci():
@@ -3731,63 +3325,32 @@ for _ in range(8):
 
 ### Generator Expressions
 
-A generator expression is the lazy equivalent of a list comprehension. Use `()` instead of `[]`:
+A generator expression is the lazy version of a list comprehension:
 
 ```python
 numbers = range(1_000_000)
 
-## List comprehension — creates full list in memory immediately
 squares_list = [x**2 for x in numbers]
 
-## Generator expression — lazy, one value at a time
 squares_gen = (x**2 for x in numbers)
 
-## Useful in function calls — no double parentheses needed in sum()
 total = sum(x**2 for x in range(1_000))
 ```
 
 ### `yield from`
 
-`yield from` delegates to another iterable or generator — flattening or chaining:
+`yield from` delegates to another iterable:
 
 ```python
 def chain(*iterables):
     for it in iterables:
-        yield from it    # same as: for item in it: yield item
+        yield from it
 
 list(chain([1, 2], "abc", range(3)))
 ## [1, 2, 'a', 'b', 'c', 0, 1, 2]
-
-def flatten(nested):
-    for item in nested:
-        if isinstance(item, list):
-            yield from flatten(item)   # recursive
-        else:
-            yield item
-
-list(flatten([1, [2, [3, 4]], 5]))
-## [1, 2, 3, 4, 5]
 ```
 
-### `send()` — Coroutines
-
-Generators can receive values via `send()`. This enables cooperative coroutines (though `async`/`await` is now preferred for that):
-
-```python
-def running_average():
-    total = 0.0
-    count = 0
-    while True:
-        value = yield (total / count if count else None)
-        total += value
-        count += 1
-
-avg = running_average()
-next(avg)               # prime the generator (advance to first yield)
-avg.send(10)            # total=10, count=1
-avg.send(20)            # total=30, count=2
-print(avg.send(30))     # 20.0  — (10+20+30)/3
-```
+In practice, generators matter most for streaming data, reading files, paging API results, and memory-efficient pipelines.
 
 ---
 
@@ -3795,84 +3358,33 @@ print(avg.send(30))     # 20.0  — (10+20+30)/3
 
 ## itertools & functools
 
-These two modules are full of tools that make existing Python code more composable. They are not required for everyday beginner code, but they become extremely valuable once you start combining iterables, caching results, or passing functions around.
-
-The best way to read this page is as a toolbox: learn the shape of the problems these modules solve, then revisit the specific functions when needed.
+These modules are small toolboxes for iteration, caching, and function composition.
 
 ### `itertools` — Efficient Iteration
 
-`itertools` provides composable, lazy iterators for common looping patterns. All functions return iterators — they produce values on demand without creating intermediate lists.
+`itertools` gives you lazy iterator helpers.
 
-#### Combining Iterables
+#### Common Helpers
 
 ```python
 import itertools
 
-## chain — concatenate multiple iterables
 list(itertools.chain([1, 2], [3, 4], [5]))   # [1, 2, 3, 4, 5]
 
-## chain.from_iterable — flatten one level of nesting
 nested = [[1, 2], [3, 4], [5]]
 list(itertools.chain.from_iterable(nested))  # [1, 2, 3, 4, 5]
 
-## zip_longest — zip but pad shorter iterables
 list(itertools.zip_longest([1, 2, 3], ["a", "b"], fillvalue="-"))
-## [(1, 'a'), (2, 'b'), (3, '-')]
-```
-
-#### Slicing and Filtering
-
-```python
-## islice — lazy slice of any iterable (no index required)
 first_five = list(itertools.islice(range(1_000_000), 5))   # [0, 1, 2, 3, 4]
 
-## takewhile / dropwhile
 list(itertools.takewhile(lambda x: x < 5, range(10)))  # [0, 1, 2, 3, 4]
 list(itertools.dropwhile(lambda x: x < 5, range(10)))  # [5, 6, 7, 8, 9]
 
-## filterfalse — opposite of filter()
-list(itertools.filterfalse(str.isdigit, "a1b2c3"))  # ['a', 'b', 'c']
-```
-
-#### Combinatorics
-
-```python
-## product — Cartesian product
 list(itertools.product([1, 2], ["a", "b"]))
-## [(1,'a'), (1,'b'), (2,'a'), (2,'b')]
 
-## combinations — unique pairs without repetition
 list(itertools.combinations([1, 2, 3], 2))
-## [(1, 2), (1, 3), (2, 3)]
-
-## permutations — ordered arrangements
-list(itertools.permutations([1, 2, 3], 2))
-## [(1,2), (1,3), (2,1), (2,3), (3,1), (3,2)]
-
-## combinations_with_replacement
-list(itertools.combinations_with_replacement("AB", 2))
-## [('A','A'), ('A','B'), ('B','B')]
-```
-
-#### Grouping
-
-```python
-## groupby — groups consecutive items with the same key (sort first!)
-data = [("Alice", "Eng"), ("Bob", "Eng"), ("Carol", "HR"), ("Dave", "HR")]
-data.sort(key=lambda x: x[1])
-
-for dept, members in itertools.groupby(data, key=lambda x: x[1]):
-    print(dept, [m[0] for m in members])
-## Eng ['Alice', 'Bob']
-## HR  ['Carol', 'Dave']
-```
-
-#### Batching (Python 3.12+)
-
-```python
-## batched — split iterable into fixed-size chunks
 for batch in itertools.batched(range(10), 3):
-    print(batch)   # (0,1,2) then (3,4,5) then (6,7,8) then (9,)
+    print(batch)
 ```
 
 ### `functools` — Higher-Order Functions
@@ -3913,13 +3425,6 @@ cube   = partial(power, exponent=3)
 
 print(square(5))    # 25.0
 print(cube(3))      # 27.0
-
-## Useful with map/sorted
-from functools import partial
-import operator
-
-multiply_by_3 = partial(operator.mul, 3)
-list(map(multiply_by_3, [1, 2, 3, 4]))   # [3, 6, 9, 12]
 ```
 
 #### `reduce` — Fold Over a Sequence
@@ -3931,56 +3436,22 @@ import operator
 ## Sum — same as sum([1,2,3,4,5])
 reduce(operator.add, [1, 2, 3, 4, 5])    # 15
 
-## Product of list
 reduce(operator.mul, [1, 2, 3, 4, 5])    # 120
-
-## Max — same as max([3,1,4,1,5,9])
-reduce(lambda a, b: a if a > b else b, [3, 1, 4, 1, 5, 9])  # 9
 ```
 
 Prefer built-in `sum()`, `max()`, `min()` where possible — `reduce` is for custom fold operations.
 
-#### `total_ordering`
-
-See the [Magic Methods](../05-oop/magic-methods) page — `@total_ordering` generates comparison methods from `__eq__` and `__lt__`.
-```
-
-```python
-import functools
-
-## lru_cache — memoize function results
-@functools.lru_cache(maxsize=128)
-def fib(n):
-    if n < 2:
-        return n
-    return fib(n - 1) + fib(n - 2)
-
-## cache (Python 3.9+) — unbounded lru_cache
-@functools.cache
-def expensive(x):
-    return x ** 2
-
-## reduce — fold a sequence into a single value
-from functools import reduce
-product = reduce(lambda acc, x: acc * x, [1, 2, 3, 4, 5])  # 120
-
-## partial — pre-fill arguments
-from functools import partial
-power_of_two = partial(pow, 2)
-print(power_of_two(10))  # 1024
-```
-
 ---
 
-<a id="will-retry-up-to-3-times-if-it-fails"></a>
+<a id="decorators"></a>
 
 ### Decorators
 
-Decorators let you modify or enhance functions without changing their actual code. 
+Decorators wrap functions to add behavior without changing the original function body.
 
 #### What is a Decorator?
 
-A decorator is a function that takes another function as input and returns a new function that wraps the original. The `@decorator` syntax is just syntactic sugar — this:
+A decorator is a function that takes a function and returns another function.
 
 ```python
 @log_time
@@ -3988,7 +3459,7 @@ def process_data(data):
     return [x * 2 for x in data]
 ```
 
-Is exactly the same as:
+This is equivalent to:
 
 ```python
 def process_data(data):
@@ -4012,21 +3483,15 @@ def log_time(func):
 
 @log_time
 def get_users():
-    # Simulate API call
     time.sleep(0.5)
     return ["Alice", "Bob"]
 
 users = get_users()  # Output: get_users took 0.5012s
 ```
 
-**What's happening:**
-1. `log_time` receives `get_users` as an argument
-2. `wrapper` is created with the timing logic
-3. `wrapper` replaces the original `get_users`
-
 #### Decorators with Parameters
 
-When you see decorators with `()` like `@retry(times=3)`, it's a decorator factory:
+When a decorator takes arguments like `@retry(times=3)`, it is a decorator factory:
 
 ```python
 def retry(times=3):
@@ -4048,9 +3513,6 @@ def fetch_user_data(user_id):
     if random.random() < 0.7:
         raise ConnectionError("API timeout")
     return {"id": user_id, "name": f"User{user_id}"}
-
-## Will retry up to 3 times if it fails
-user = fetch_user_data(123)
 ```
 
 #### Multiple Decorators
@@ -4070,9 +3532,9 @@ def fetch_data():
 
 #### Common Use Cases
 
-The decorators you'll actually use in production:
+The most common production use cases are logging, auth, caching, retry logic, and framework hooks.
 
-##### 1. Logging/Tracing
+##### Logging
 
 ```python
 import logging
@@ -4091,17 +3553,14 @@ def process_order(order_id, customer_id):
     return {"order_id": order_id, "status": "processed"}
 
 result = process_order(123, 456)
-## Logs: Called process_order with args=(123, 456), kwargs={}
-## Logs: process_order returned {'order_id': 123, 'status': 'processed'}
 ```
 
-##### 2. Authentication/Authorization
+##### Auth
 
 ```python
 def require_role(required_role):
     def decorator(func):
         def wrapper(*args, **kwargs):
-            # Simulate getting current user from session/token
             current_user = get_current_user()  # hypothetical function
             if current_user.get("role") != required_role:
                 raise PermissionError(f"Requires {required_role} role")
@@ -4112,17 +3571,10 @@ def require_role(required_role):
 @require_role("admin")
 def delete_user(user_id):
     print(f"Deleting user {user_id} from database")
-    # Delete logic here
     return {"status": "deleted", "user_id": user_id}
-
-## This would work for admin users
-try:
-    delete_user(42)
-except PermissionError as e:
-    print(f"Access denied: {e}")
 ```
 
-##### 3. Caching Results
+##### Caching
 
 ```python
 from functools import cache
@@ -4132,15 +3584,9 @@ def expensive_calculation(n):
     print(f"Calculating for {n}...")
     result = sum(i * i for i in range(n))
     return result
-
-## First call - calculates
-result1 = expensive_calculation(1000)  # Prints: Calculating for 1000...
-## Second call - uses cache
-result2 = expensive_calculation(1000)  # No print, returns cached result
-result3 = expensive_calculation(2000)  # Calculates new value
 ```
 
-##### 4. Retry Logic with Backoff
+##### Retry
 
 ```python
 def retry_with_backoff(max_attempts=3, base_delay=1):
@@ -4166,65 +3612,7 @@ def call_external_api(endpoint):
     return {"data": "successful response"}
 ```
 
-##### 5. Input Validation
-
-```python
-def validate_types(types):
-    def decorator(func):
-        def wrapper(*args, **kwargs):
-            # Validate positional args
-            for i, (arg, expected_type) in enumerate(zip(args, types)):
-                if not isinstance(arg, expected_type):
-                    raise TypeError(f"Argument {i} expected {expected_type.__name__}, got {type(arg).__name__}")
-            return func(*args, **kwargs)
-        return wrapper
-    return decorator
-
-@validate_types([int, str, float])
-def create_product(product_id, name, price):
-    print(f"Creating product: {product_id} - {name} (${price})")
-    return {"id": product_id, "name": name, "price": price}
-
-## Works correctly
-product = create_product(101, "Laptop", 999.99)
-
-## Raises TypeError
-try:
-    product = create_product("101", "Laptop", 999.99)  # First arg should be int
-except TypeError as e:
-    print(f"Validation failed: {e}")
-```
-
-##### 6. Rate Limiting
-
-```python
-def rate_limit(calls_per_minute=10):
-    def decorator(func):
-        last_called = [0.0]  # Use list for mutable state
-        interval = 60.0 / calls_per_minute
-        def wrapper(*args, **kwargs):
-            now = time.time()
-            if now - last_called[0] < interval:
-                wait = interval - (now - last_called[0])
-                print(f"Rate limited, waiting {wait:.2f}s...")
-                time.sleep(wait)
-            last_called[0] = time.time()
-            return func(*args, **kwargs)
-        return wrapper
-    return decorator
-
-@rate_limit(calls_per_minute=2)
-def make_api_request(endpoint):
-    print(f"Making API request to {endpoint}")
-    return {"status": "success"}
-
-## Trying to call too quickly will be throttled
-result1 = make_api_request("/users")
-result2 = make_api_request("/orders")
-result3 = make_api_request("/products")  # This one will be rate limited
-```
-
-`@functools.wraps` is good practice for production code but not required to understand the concept.
+Use `@functools.wraps` in production so wrapped functions keep their original name and metadata.
 
 ---
 
@@ -4347,33 +3735,12 @@ A common use of `with` for safe concurrent access:
 import threading
 
 lock = threading.Lock()
+
 shared_data = []
 
 def append_safely(value):
-    with lock:  # __enter__ acquires, __exit__ releases
+    with lock:           # __enter__ acquires, __exit__ releases
         shared_data.append(value)
-```
-
-### Database Connection Example
-
-```python
-class DatabaseConnection:
-    def __init__(self, url: str):
-        self.url = url
-        self.conn = None
-
-    def __enter__(self):
-        print(f"Connecting to {self.url}")
-        self.conn = "connection"
-        return self.conn
-
-    def __exit__(self, exc_type, exc_val, exc_tb):
-        print("Closing connection")
-        self.conn = None
-        return False  # Re-raise any exceptions
-
-with DatabaseConnection("db://localhost") as conn:
-    print(f"Using {conn}")
 ```
 
 ---
@@ -4382,11 +3749,14 @@ with DatabaseConnection("db://localhost") as conn:
 
 ## Pattern Matching (Python 3.10+)
 
-Pattern matching lets you branch code based on the **shape** and **structure** of data, not just its value. It goes beyond a simple `switch` statement by extracting values while matching.
+This page focuses on pattern matching as a Pythonic technique rather than just as syntax. The value of `match` is not only branching on values, but also expressing shape, structure, and extraction in one place.
 
-### Matching Class Instances
+It overlaps with Chapter III's `match` introduction, but the emphasis here is on writing patterns idiomatically once the basic syntax already makes sense.
+
+`match`/`case` goes beyond `switch` — it can destructure objects, sequences, and mappings.
 
 ```python
+## Match on class instances
 from dataclasses import dataclass
 
 @dataclass
@@ -4410,11 +3780,8 @@ def classify(point):
 print(classify(Point(0, 0)))    # Origin
 print(classify(Point(3, 3)))    # Diagonal at 3
 print(classify(Point(1, 2)))    # Point (1, 2)
-```
 
-### Matching Sequences
-
-```python
+## Match on sequences
 def handle_command(command):
     match command.split():
         case ["quit"]:
@@ -4428,58 +3795,17 @@ def handle_command(command):
 
 print(handle_command("go north"))        # Going north
 print(handle_command("go south fast"))   # Going south at fast
-print(handle_command("quit"))            # Quitting
 ```
 
-### Matching Dictionaries
-
-```python
-def handle_event(event):
-    match event:
-        case {"type": "click", "x": x, "y": y}:
-            return f"Click at ({x}, {y})"
-        case {"type": "keypress", "key": key}:
-            return f"Key pressed: {key}"
-        case {"type": type}:
-            return f"Unknown event type: {type}"
-        case _:
-            return "Invalid event"
-
-print(handle_event({"type": "click", "x": 10, "y": 20}))
-print(handle_event({"type": "keypress", "key": "a"}))
-```
-
-### OR Patterns and Guards
-
-```python
-def classify_value(value):
-    match value:
-        case 0 | False | None:
-            return "Falsy value"
-        case int(n) | float(n) if n < 0:
-            return f"Negative number: {n}"
-        case int(n) | float(n):
-            return f"Positive number: {n}"
-        case str(s) if len(s) > 10:
-            return "Long string"
-        case str(s):
-            return f"String: {s}"
-        case _:
-            return "Unknown type"
-
-print(classify_value(-5))    # Negative number: -5
-print(classify_value(42))    # Positive number: 42
-print(classify_value("hi"))  # String: hi
-```
 ---
 
 <a id="chapter-vii-modules-packaging"></a>
 
 ## Chapter VII: Modules & Packaging
 
-Organizing code into modules, packages, and distributable projects.
+How Python projects are structured in practice: files, imports, packages, environments, and basic tooling.
 
-This chapter explains how Python code grows beyond a single file. It covers both the practical side of splitting code into modules and the ecosystem side of installing, structuring, and shipping Python projects.
+This chapter matters early because productive Python is not only syntax. You also need to know how imports work, how to isolate dependencies, and where code should live.
 
 The main progression is:
 
@@ -4488,16 +3814,22 @@ The main progression is:
 - projects gain virtual environments and dependency management
 - reusable code can be built and distributed
 
-That structure matters because maintainable Python is not just about syntax; it is also about layout, imports, and clear boundaries between parts of a project.
+For a fast start, focus on modules, file I/O, virtual environments, and a small set of useful commands. Packaging can wait unless you are publishing a library.
+
+### Priority
+
+- Must read: Modules, File I/O & JSON, Virtual Environments, Useful Commands
+- Read if needed: Packages
+- Optional for now: Build & Packaging
 
 ### Sections
 
-- [Modules](#modules)
-- [File I/O & JSON](#file-io-json)
-- [Packages](#packages)
-- [Virtual Environments](#virtual-environments)
-- [Useful Commands](#useful-commands)
-- [Build & Packaging](#build-packaging)
+- [Modules](./docs/07-modules/modules.md)
+- [File I/O & JSON](./docs/07-modules/file-io-json.md)
+- [Packages](./docs/07-modules/packages.md)
+- [Virtual Environments](./docs/07-modules/virtual-environments.md)
+- [Useful Commands](./docs/07-modules/useful-commands.md)
+- [Build & Packaging](./docs/07-modules/build-packaging.md)
 
 ---
 
@@ -4505,18 +3837,15 @@ That structure matters because maintainable Python is not just about syntax; it 
 
 ## Modules
 
-Modules are how Python code stops being a single long file and starts becoming a structured program. They let you group related names together, separate concerns, and reuse logic without copying code.
-
-The core mental model is simple: importing a module runs it once, then gives you access to the names it defines.
+Modules are how Python code is organized into files and reusable namespaces.
 
 ### What is a Module?
 
-A **module** is any Python file (`.py`). When you `import` a module, Python executes its code once and makes its names available under the module's namespace. Subsequent imports of the same module reuse the cached version from `sys.modules` — the code is not re-executed.
+A module is any `.py` file. Importing it runs the file once and makes its names available.
 
 ### Importing Modules
 
 ```python
-## Import the whole module — access names via dot notation
 import math
 import os
 import sys
@@ -4530,35 +3859,29 @@ print(sys.version)      # Python version string
 ### Selective Imports
 
 ```python
-## Import specific names into the current namespace
 from math import pi, sqrt, ceil
 print(pi)          # 3.14159...
 print(sqrt(25))    # 5.0
 
-## Import all public names (avoid — pollutes namespace, hides where names come from)
 from math import *
 ```
+
+Avoid `from module import *` in real code.
 
 ### Aliases
 
 ```python
-## Give a module a shorter alias
 import numpy as np         # de facto standard
 import pandas as pd
 import matplotlib.pyplot as plt
 
-## Alias an imported name
 from datetime import datetime as dt
 now = dt.now()
 ```
 
 ### Module Search Path
 
-When you `import foo`, Python looks for `foo` in this order:
-
-1. `sys.modules` (already-imported modules)
-2. Built-in modules (compiled into the interpreter)
-3. Directories in `sys.path` — which includes the script's directory, `PYTHONPATH`, and site-packages
+Python looks for imports in `sys.modules`, built-ins, and directories from `sys.path`.
 
 ```python
 import sys
@@ -4567,7 +3890,7 @@ print(sys.path)   # list of directories Python searches
 
 ### The Standard Library
 
-Python ships with an extensive standard library. Key modules:
+Python ships with a large standard library. Useful modules include:
 
 | Module | Purpose |
 |--------|---------|
@@ -4586,7 +3909,7 @@ Python ships with an extensive standard library. Key modules:
 
 ### Writing Your Own Module
 
-Any `.py` file is a module. Use the `__name__ == "__main__"` guard to separate code that runs when the file is a script from code that runs when imported:
+Use the `__name__ == "__main__"` guard when a file should be both importable and runnable:
 
 ```python
 ## greetings.py
@@ -4609,7 +3932,7 @@ print(hello("Alice"))
 
 ### `__all__` — Controlling Public API
 
-Define `__all__` in a module to specify which names are exported when someone does `from module import *`:
+`__all__` controls what `from module import *` exports:
 
 ```python
 ## utils.py
@@ -4628,18 +3951,15 @@ def _internal():    # _ prefix also signals non-public, but __all__ is authorita
 
 ## File I/O & JSON
 
-File handling is where Python programs start interacting with the outside world. That also means mistakes matter more here: wrong paths, wrong modes, wrong encodings, and missing files are all common real-world issues.
-
-This page is easiest to read if you keep two concerns separate: how to read and write files safely, and how JSON turns Python data into a portable text format.
+File I/O and JSON are core tools for scripts, APIs, configs, and AI workflows.
 
 ### Opening Files
 
-Use the built-in `open()` function to open a file. The `with` statement is the correct way to do so — it guarantees the file is closed when the block exits, even if an exception is raised:
+Use `with open(...)` so the file always closes:
 
 ```python
 with open("data.txt", "r") as f:
     content = f.read()
-## File is automatically closed here
 ```
 
 Common mode strings:
@@ -4653,7 +3973,7 @@ Common mode strings:
 | `"rb"` | Read binary |
 | `"wb"` | Write binary |
 
-Always specify `encoding="utf-8"` explicitly on text files to avoid platform-dependent behavior:
+For text files, specify UTF-8:
 
 ```python
 with open("data.txt", "r", encoding="utf-8") as f:
@@ -4663,44 +3983,34 @@ with open("data.txt", "r", encoding="utf-8") as f:
 ### Reading Files
 
 ```python
-## Read entire file as a single string
 with open("data.txt", encoding="utf-8") as f:
     content = f.read()
 
-## Read all lines into a list (includes newline characters)
 with open("data.txt", encoding="utf-8") as f:
     lines = f.readlines()
 
-## Iterate line by line — best for large files (no memory spike)
 with open("data.txt", encoding="utf-8") as f:
     for line in f:
-        print(line.strip())   # strip() removes the trailing newline
-
-## Read a fixed number of characters
-with open("data.txt", encoding="utf-8") as f:
-    chunk = f.read(1024)
+        print(line.strip())
 ```
 
 ### Writing Files
 
 ```python
-## Write a single string ("w" truncates if file exists)
 with open("output.txt", "w", encoding="utf-8") as f:
     f.write("Hello, World!\n")
 
-## Write multiple lines
 lines = ["Line 1\n", "Line 2\n", "Line 3\n"]
 with open("output.txt", "w", encoding="utf-8") as f:
     f.writelines(lines)
 
-## Append without overwriting
 with open("log.txt", "a", encoding="utf-8") as f:
     f.write("New log entry\n")
 ```
 
 ### Working with Paths — `pathlib`
 
-The modern way to handle file paths is `pathlib.Path` — it is cross-platform and object-oriented:
+`pathlib.Path` is the modern way to handle paths:
 
 ```python
 from pathlib import Path
@@ -4711,18 +4021,13 @@ print(p.suffix)      # ".json"
 print(p.stem)        # "config"
 print(p.parent)      # Path("data")
 
-## Read and write directly
 text = p.read_text(encoding="utf-8")
 p.write_text("new content", encoding="utf-8")
-
-## Iterate over directory contents
-for file in Path(".").glob("*.py"):
-    print(file)
 ```
 
 ### JSON
 
-Python's `json` module serializes Python objects to JSON strings and back. The mapping is:
+Python's `json` module maps Python data to JSON and back:
 
 | Python | JSON |
 |--------|------|
@@ -4761,7 +4066,7 @@ with open("data.json", encoding="utf-8") as f:
     loaded = json.load(f)
 ```
 
-**`json.dumps()`** = "dump to string", **`json.dump()`** = "dump to file". Same distinction for `json.loads()` / `json.load()`.
+`json.dumps()` writes to a string. `json.dump()` writes to a file.
 
 ### Handling Missing Files Gracefully
 
@@ -4779,6 +4084,8 @@ except json.JSONDecodeError as e:
     print(f"Invalid JSON in config: {e}")
     data = {}
 ```
+
+This pattern matters a lot for config files, cached model outputs, prompts, and API payloads.
 
 ---
 
@@ -5183,187 +4490,73 @@ my-package/
 
 ## Chapter VIII: Errors & Exceptions
 
-Errors are part of normal Python programming, not just something that happens when code is "bad." This chapter explains how Python reports problems, how you can handle expected failures, and how to raise clear exceptions of your own.
+This chapter is about writing Python that fails clearly and handles expected problems without hiding bugs.
 
-The big goal is to separate two ideas:
+For a 1-2 hour ramp-up, focus on these ideas:
 
 - bugs you should fix
 - runtime problems your code should handle deliberately
+- catch specific exceptions, not everything
+- use `raise` when invalid input or state should stop execution
 
-Good exception handling makes programs more predictable, easier to debug, and safer to use.
+You do not need the full exception hierarchy memorized. You need a clean mental model for `try`, `except`, `else`, `finally`, and custom exceptions.
 
-### The Exception Hierarchy
+### Priority
 
-Python's exceptions are classes organized in a hierarchy. All exceptions inherit from `BaseException`. The ones you normally handle inherit from `Exception`:
-
-```
-BaseException
-├── SystemExit
-├── KeyboardInterrupt
-├── GeneratorExit
-└── Exception
-    ├── TypeError
-    ├── ValueError
-    ├── NameError
-    ├── AttributeError
-    ├── IndexError
-    ├── KeyError
-    ├── FileNotFoundError
-    ├── ZeroDivisionError
-    ├── RuntimeError
-    └── ...
-```
+- Must read now: Basic `try` / `except`, Raising Exceptions
+- Read next: `else` and `finally`, Custom Exceptions
+- Optional for now: Exception Chaining
 
 ### Basic `try` / `except`
 
 ```python
 try:
     result = 10 / 0
-except ZeroDivisionError as e:
-    print(f"Error: {e}")    # Error: division by zero
+except ZeroDivisionError as exc:
+    print(f"Error: {exc}")
 ```
 
-The `as e` clause binds the exception object — it has a `args` attribute and a string representation. Handle the **most specific** exception type you expect; catching `Exception` broadly can hide bugs.
-
-### Multiple Except Clauses
-
-```python
-def parse_config(path: str) -> dict:
-    try:
-        with open(path) as f:
-            import json
-            return json.load(f)
-    except FileNotFoundError:
-        print(f"Config file not found: {path}")
-        return {}
-    except json.JSONDecodeError as e:
-        print(f"Invalid JSON at line {e.lineno}: {e.msg}")
-        return {}
-    except PermissionError:
-        print(f"Permission denied: {path}")
-        raise   # re-raise — we can't recover from this
-```
-
-To catch multiple types in one clause, use a tuple:
-
-```python
-try:
-    value = int(user_input)
-except (ValueError, TypeError) as e:
-    print(f"Conversion error: {e}")
-```
+Handle the most specific exception type you expect. Catching `Exception` too early can hide real bugs.
 
 ### `else` and `finally`
 
 ```python
 try:
     result = compute(data)
-except ValueError as e:
-    print(f"Bad input: {e}")
+except ValueError as exc:
+    print(f"Bad input: {exc}")
 else:
-    # Runs only if NO exception was raised in the try block
     save_result(result)
 finally:
-    # ALWAYS runs — even if an exception was raised and not caught
     cleanup()
 ```
 
-Use `finally` for cleanup that must happen regardless: closing connections, releasing locks, writing logs.
-
 ### Raising Exceptions
-
-Use `raise` to signal an error condition:
 
 ```python
 def set_age(age: int):
     if not isinstance(age, int):
-        raise TypeError(f"age must be int, got {type(age).__name__}")
-    if age < 0 or age > 150:
-        raise ValueError(f"age must be 0-150, got {age}")
-    return age
-
-## Re-raise the current exception (preserve original traceback)
-try:
-    risky()
-except ValueError:
-    log_error()
-    raise   # re-raises the same ValueError with original traceback
+        raise TypeError("age must be int")
+    if age < 0:
+        raise ValueError("age must be non-negative")
 ```
-
-### Exception Chaining
-
-When you raise an exception inside an `except` block, Python links them together with `__cause__` or `__context__`:
-
-```python
-try:
-    data = json.loads(raw)
-except json.JSONDecodeError as e:
-    raise ValueError("Could not parse response") from e
-    # "The above exception was the direct cause of the following exception"
-```
-
-Use `raise ... from None` to suppress the chaining (hide the original exception from the traceback).
 
 ### Custom Exceptions
 
-Define custom exception classes to provide richer error information and allow callers to catch specific errors from your library:
-
 ```python
 class AppError(Exception):
-    """Base class for all application errors."""
-
-class InsufficientFundsError(AppError):
-    def __init__(self, requested: float, available: float):
-        self.requested = requested
-        self.available = available
-        super().__init__(
-            f"Requested {requested:.2f} but only {available:.2f} available"
-        )
-
-class AccountLockedError(AppError):
     pass
 
 
-class BankAccount:
-    def __init__(self, balance: float):
-        self.balance = balance
-        self.locked = False
-
-    def withdraw(self, amount: float) -> float:
-        if self.locked:
-            raise AccountLockedError("Account is locked")
-        if amount > self.balance:
-            raise InsufficientFundsError(amount, self.balance)
-        self.balance -= amount
-        return amount
-
-
-account = BankAccount(100.0)
-try:
-    account.withdraw(150.0)
-except InsufficientFundsError as e:
-    print(e)                      # Requested 150.00 but only 100.00 available
-    print(f"Short by: {e.requested - e.available:.2f}")
-except AppError as e:
-    print(f"App error: {e}")      # catches any other AppError subclass
+class AccountLockedError(AppError):
+    pass
 ```
 
-### Context Managers for Safe Cleanup
+Create custom exceptions when your app or library has domain-specific failure cases that callers may want to handle explicitly.
 
-Many cleanup scenarios are better expressed with a `with` statement than with `try`/`finally`. See the [Context Managers](../06-advanced-python-techniques/context-managers) page.
+### Related Topic
 
-```python
-## Instead of:
-lock.acquire()
-try:
-    critical_section()
-finally:
-    lock.release()
-
-## Do this:
-with lock:
-    critical_section()
-```
+Many cleanup scenarios are better expressed with a `with` statement than with `try`/`finally`. See the [Context Managers](./docs/06-advanced-python-techniques/context-managers.md) page when you continue into advanced topics.
 
 ---
 
@@ -5371,26 +4564,27 @@ with lock:
 
 ## Chapter IX: Concurrency
 
-Python's concurrency model and when to use each tool.
+Python concurrency choices and when they actually matter.
 
-Concurrency is where Python learners often need a decision framework, not just syntax. This chapter explains the major tools Python offers and, more importantly, the tradeoffs between them.
+Do not spend your first hour here unless your immediate work depends on it. Most Python learners need only one idea at the start: choose concurrency based on workload, not fashion.
 
-The central questions are:
+### Decision rules
 
 - are you waiting on I/O or doing CPU-heavy work?
-- do you need shared memory, isolation, or simple coordination?
-- does the Global Interpreter Lock matter for this workload?
+- async is usually for high-concurrency I/O
+- threads are fine for blocking I/O and integration code
+- processes are for CPU-heavy work
 
 By the end of the chapter, you should be able to choose an approach for a problem instead of guessing between `asyncio`, threads, and processes.
 
 ### Sections
 
-- [The GIL](#the-gil)
-- [Async / Await](#async-await)
-- [Threading](#threading)
-- [Multiprocessing](#multiprocessing)
-- [Free-Threading](#free-threading)
-- [Decision Matrix](#decision-matrix)
+- [The GIL](./docs/09-concurrency/the-gil.md)
+- [Async / Await](./docs/09-concurrency/async-await.md)
+- [Threading](./docs/09-concurrency/threading.md)
+- [Multiprocessing](./docs/09-concurrency/multiprocessing.md)
+- [Free-Threading](./docs/09-concurrency/free-threading.md)
+- [Decision Matrix](./docs/09-concurrency/decision-matrix.md)
 
 ---
 
@@ -5398,15 +4592,11 @@ By the end of the chapter, you should be able to choose an approach for a proble
 
 ## The GIL
 
-The GIL is one of the most discussed parts of Python concurrency, but it is often explained too vaguely. The important question is not simply whether the GIL exists, but what kinds of workloads it limits and what kinds it does not.
-
-Read this page as a decision aid: it helps explain why threads behave differently for CPU-bound work and I/O-bound work in CPython.
+The GIL matters mainly when choosing between threads, processes, and async code.
 
 ### What is the GIL?
 
-The **Global Interpreter Lock (GIL)** is a mutex in CPython — the standard Python interpreter — that allows only one thread to execute Python bytecode at a time. It exists to protect CPython's internal data structures (reference counts, memory allocator) from concurrent modification, which would otherwise cause crashes and memory corruption.
-
-The GIL is a **CPython implementation detail**, not a language requirement. Other implementations — Jython (JVM), IronPython (.NET), PyPy-STM — do not have a GIL.
+The **Global Interpreter Lock (GIL)** in CPython allows only one thread to execute Python bytecode at a time.
 
 ### What the GIL Prevents
 
@@ -5426,16 +4616,14 @@ for t in threads:
 for t in threads:
     t.join()
 
-## counter may not be 4_000_000 — the GIL does NOT make compound operations atomic!
-## counter += 1 is three bytecodes: LOAD, ADD, STORE — threads can interleave between them
+## counter may not be 4_000_000
 ```
 
 ### The GIL is Released During I/O
 
-CPython releases the GIL whenever a thread performs I/O — network reads, file reads, `time.sleep()`. This is why threading works well for I/O-bound tasks: while one thread waits for a network response, other threads can execute Python code.
+CPython releases the GIL during I/O, so threads work well for network and file operations.
 
 ```python
-## Threads work well here — GIL is released during urlopen
 from concurrent.futures import ThreadPoolExecutor
 import urllib.request
 
@@ -5449,17 +4637,15 @@ with ThreadPoolExecutor(max_workers=10) as pool:
 
 ### The GIL Does Not Help CPU-Bound Code
 
-For CPU-intensive work, threads do not run in parallel — only one thread runs at a time even on multi-core systems:
+For CPU-heavy Python code, threads do not give true parallelism:
 
 ```python
-## This is NOT parallelized — 4 threads, but still uses 1 core
 def cpu_task():
     total = 0
     for i in range(10_000_000):
         total += i
     return total
 
-## Use multiprocessing instead — each process has its own GIL
 from concurrent.futures import ProcessPoolExecutor
 
 with ProcessPoolExecutor() as pool:
@@ -5468,17 +4654,16 @@ with ProcessPoolExecutor() as pool:
 
 ### Python 3.13 — Free-Threading (Experimental)
 
-Python 3.13 introduced an experimental **free-threaded build** (`python3.13t`) with the GIL disabled. See the [Free-Threading](./free-threading) page for details. This is opt-in for now; the standard CPython 3.13 still has the GIL.
+Python 3.13 introduced an experimental free-threaded build, but the normal CPython build still uses the GIL.
 
 ### C Extensions and the GIL
 
-Many C extensions — notably NumPy — release the GIL during heavy computation, allowing genuine parallelism with Python threads:
+Some C extensions such as NumPy release the GIL during heavy work:
 
 ```python
 import numpy as np
 import threading
 
-## NumPy releases the GIL during C-level operations
 def matmul():
     a = np.random.rand(1000, 1000)
     b = np.random.rand(1000, 1000)
@@ -5489,7 +4674,6 @@ for t in threads:
     t.start()
 for t in threads:
     t.join()
-## These DO run in parallel — NumPy bypasses the GIL
 ```
 
 ### Summary
@@ -5507,15 +4691,11 @@ for t in threads:
 
 ## Async / Await
 
-`async` and `await` are best understood as a model for cooperative I/O concurrency, not as a universal speed feature. They help when many tasks spend time waiting, but they do not automatically improve CPU-heavy work.
-
-This page is mainly about learning the event-loop mental model so that coroutine behavior feels predictable instead of mysterious.
+`async` and `await` are mainly for I/O-heavy concurrency, not CPU-heavy speedups.
 
 ### How asyncio Works
 
-Python's `asyncio` library provides a single-threaded **event loop** that runs cooperative coroutines. A **coroutine** is a function defined with `async def` — it can `await` other coroutines, pausing execution without blocking the thread. When a coroutine awaits I/O, the event loop runs other ready coroutines instead of sitting idle.
-
-This makes `asyncio` ideal for **I/O-bound** workloads: thousands of simultaneous HTTP requests, database queries, WebSocket connections — all in a single thread.
+`asyncio` uses a single-threaded event loop. Coroutines pause at `await` so other work can run.
 
 ### Basic Coroutine
 
@@ -5533,11 +4713,11 @@ async def main():
 asyncio.run(main())   # Entry point — creates and runs the event loop
 ```
 
-`asyncio.run()` is the correct entry point for top-level code. Never call it from inside a running event loop (e.g., in Jupyter use `await main()` instead).
+Use `asyncio.run()` at top level. In notebooks, usually use `await` directly.
 
 ### Concurrency with `asyncio.gather()`
 
-To run multiple coroutines **concurrently**, use `asyncio.gather()` — it starts all of them and waits until all complete:
+Use `asyncio.gather()` to run multiple coroutines concurrently:
 
 ```python
 import asyncio
@@ -5549,12 +4729,6 @@ async def fetch(url: str) -> str:
 
 async def main():
     start = time.perf_counter()
-
-    # Sequential — total ~2s
-    r1 = await fetch("https://api.example.com/users")
-    r2 = await fetch("https://api.example.com/posts")
-
-    # Concurrent — total ~1s
     r1, r2 = await asyncio.gather(
         fetch("https://api.example.com/users"),
         fetch("https://api.example.com/posts"),
@@ -5566,13 +4740,12 @@ asyncio.run(main())
 
 ### Tasks
 
-`asyncio.create_task()` schedules a coroutine to run on the event loop immediately — it does not block until the `await`:
+`asyncio.create_task()` schedules a coroutine immediately:
 
 ```python
 async def main():
     task1 = asyncio.create_task(fetch("url1"))
     task2 = asyncio.create_task(fetch("url2"))
-    # Both are now scheduled. Do other work...
     result1 = await task1
     result2 = await task2
 ```
@@ -5601,23 +4774,6 @@ async def main():
 asyncio.run(main())
 ```
 
-### Async Generators and Context Managers
-
-```python
-async def async_range(n: int):
-    for i in range(n):
-        await asyncio.sleep(0)   # yield control to event loop
-        yield i
-
-async def main():
-    async for value in async_range(5):
-        print(value)
-
-    # Async context manager
-    async with httpx.AsyncClient() as client:
-        ...
-```
-
 ### Common Pitfalls
 
 - **Blocking calls inside coroutines** — `time.sleep()`, file reads, CPU work block the entire event loop. Use `await asyncio.sleep()`, async libraries, or `loop.run_in_executor()` to offload.
@@ -5628,17 +4784,17 @@ async def main():
 
 <a id="threading"></a>
 
-## Threading
+### Threading
 
 Threads are useful when a program spends much of its time waiting on external work such as network I/O, file I/O, or blocking library calls. They are less useful when pure Python code is trying to saturate CPU cores.
 
 This page should be read together with the GIL page, because thread behavior makes the most sense once that runtime constraint is clear.
 
-### When to Use Threads
+#### When to Use Threads
 
 Python threads are best for **I/O-bound** work — network requests, database queries, file reads — where the program spends most of its time waiting. Because of the GIL, threads do **not** parallelize CPU-bound computation; use `multiprocessing` for that.
 
-### `ThreadPoolExecutor` — Recommended
+#### `ThreadPoolExecutor` — Recommended
 
 `concurrent.futures.ThreadPoolExecutor` is the high-level API. Prefer it over manual `threading.Thread` management:
 
@@ -5672,7 +4828,7 @@ with ThreadPoolExecutor(max_workers=3) as executor:
             print(f"{url} failed: {e}")
 ```
 
-### Manual Threads
+#### Manual Threads
 
 Use `threading.Thread` when you need fine-grained control:
 
@@ -5698,7 +4854,7 @@ for t in threads:
 print(results)
 ```
 
-### Thread Safety with Locks
+#### Thread Safety with Locks
 
 When multiple threads write to shared data, use a `Lock` to prevent race conditions:
 
@@ -5725,7 +4881,7 @@ print(counter)   # Always 50000 — safe with lock
 
 Without the lock, threads would read and write `counter` simultaneously, causing lost updates (the count would be unpredictably less than 50000).
 
-### Thread-Safe Queues
+#### Thread-Safe Queues
 
 `queue.Queue` is the recommended way to communicate between threads — it is internally thread-safe:
 
@@ -5754,7 +4910,7 @@ t1.start(); t2.start()
 t1.join(); t2.join()
 ```
 
-### `threading.local()` — Thread-Local Storage
+#### `threading.local()` — Thread-Local Storage
 
 `threading.local()` creates an object where each thread has its own isolated attribute values:
 
@@ -5778,19 +4934,19 @@ for t in threads:
 
 <a id="multiprocessing"></a>
 
-## Multiprocessing
+### Multiprocessing
 
 Multiprocessing trades simplicity of shared memory for real parallel execution across CPU cores. That tradeoff matters because it changes both performance and program design.
 
 The main lesson here is when the extra process overhead is justified by CPU-bound workloads.
 
-### When to Use Multiprocessing
+#### When to Use Multiprocessing
 
 `multiprocessing` creates separate OS processes — each has its own Python interpreter and its own GIL. This enables **true CPU parallelism** across multiple cores, which is impossible with threads due to the GIL.
 
 Use `multiprocessing` for **CPU-bound** tasks: numerical computation, image processing, data parsing, compression.
 
-### `ProcessPoolExecutor` — Recommended
+#### `ProcessPoolExecutor` — Recommended
 
 ```python
 from concurrent.futures import ProcessPoolExecutor
@@ -5812,7 +4968,7 @@ if __name__ == "__main__":   # Required on Windows — guards against infinite s
 
 The `if __name__ == "__main__":` guard is **mandatory** on Windows. Without it, each spawned process re-imports the main module and recursively spawns more processes.
 
-### Low-Level `multiprocessing.Pool`
+#### Low-Level `multiprocessing.Pool`
 
 ```python
 from multiprocessing import Pool
@@ -5830,7 +4986,7 @@ if __name__ == "__main__":
     print(sum(partial_sums))   # 499999500000
 ```
 
-### Sharing State Between Processes
+#### Sharing State Between Processes
 
 Processes do **not** share memory by default — data is pickled and copied when passed to workers. Avoid shared state; prefer returning results. When you truly need shared state, use `multiprocessing.Value` and `multiprocessing.Array`:
 
@@ -5855,7 +5011,7 @@ if __name__ == "__main__":
     print(counter.value)   # 40000
 ```
 
-### `multiprocessing.Queue` for Communication
+#### `multiprocessing.Queue` for Communication
 
 For producer-consumer patterns between processes:
 
@@ -5882,7 +5038,7 @@ if __name__ == "__main__":
     p1.join(); p2.join()
 ```
 
-### Performance Considerations
+#### Performance Considerations
 
 - **Startup cost** — spawning a process is expensive (tens of milliseconds). Only worth it for tasks that take seconds, not microseconds.
 - **Serialization cost** — all arguments and results are pickled. Large data (big NumPy arrays) can negate the parallelism benefit. Use `shared_memory` (Python 3.8+) for large arrays.
@@ -5892,25 +5048,25 @@ if __name__ == "__main__":
 
 <a id="free-threading-python-3-13"></a>
 
-## Free-Threading (Python 3.13+)
+### Free-Threading (Python 3.13+)
 
 Free-threading is one of the biggest recent changes in CPython, but it should be approached as an evolving runtime option, not as a blanket replacement for every concurrency strategy. The model is promising, but the ecosystem is still adapting.
 
 This page is meant to help you understand what changes conceptually once the GIL is removed and what practical cautions still remain.
 
-### The Experimental GIL-Free Build
+#### The Experimental GIL-Free Build
 
 Python 3.13 ships with an **experimental free-threaded build** that removes the GIL, allowing Python threads to execute genuinely in parallel on multiple CPU cores. This is the most significant change to CPython's threading model in its history.
 
 The free-threaded build is opt-in: download `python3.13t` (the `t` suffix means free-threaded). The standard `python3.13` still has the GIL.
 
 ```bash
-## Check if running in free-threaded mode
+### Check if running in free-threaded mode
 python3.13t -c "import sys; print(sys._is_gil_enabled())"   # False
 python3.13  -c "import sys; print(sys._is_gil_enabled())"   # True
 ```
 
-### CPU Parallelism with Threads
+#### CPU Parallelism with Threads
 
 Without the GIL, CPU-bound threads genuinely run in parallel:
 
@@ -5921,8 +5077,8 @@ import time
 def cpu_task(n: int) -> int:
     return sum(i * i for i in range(n))
 
-## In standard CPython: ~4x slower than single thread (GIL overhead)
-## In free-threaded 3.13t: ~4x faster than single thread (true parallelism)
+### In standard CPython: ~4x slower than single thread (GIL overhead)
+### In free-threaded 3.13t: ~4x faster than single thread (true parallelism)
 start = time.perf_counter()
 results = []
 lock = threading.Lock()
@@ -5941,19 +5097,19 @@ for t in threads:
 print(f"{time.perf_counter() - start:.2f}s")
 ```
 
-### Thread Safety Implications
+#### Thread Safety Implications
 
 Removing the GIL does **not** make Python thread-safe. It means you must now be more careful about concurrent access to shared data structures, because the GIL previously provided implicit synchronization for many operations.
 
 ```python
-## UNSAFE in free-threaded mode — concurrent list mutation
+### UNSAFE in free-threaded mode — concurrent list mutation
 shared = []
 
 def appender():
     for i in range(10_000):
         shared.append(i)   # not atomic without GIL
 
-## SAFE — use a lock
+### SAFE — use a lock
 lock = threading.Lock()
 
 def safe_appender():
@@ -5964,13 +5120,13 @@ def safe_appender():
 
 Python's built-in types (`dict`, `list`, `set`) are being made internally thread-safe for 3.13+, but complex compound operations (read-modify-write) still require explicit synchronization.
 
-### Compatibility Status
+#### Compatibility Status
 
 - **Pure Python code** works as-is in free-threaded mode.
 - **C extensions** must be explicitly marked as supporting free-threading (`Py_TPFLAGS_DEFAULT` → `Py_GIL_DISABLED`). Many popular packages (NumPy, Cython) are working on compatibility.
 - Check https://py-free-threading.github.io/ for a compatibility matrix of popular packages.
 
-### When to Use Free-Threading
+#### When to Use Free-Threading
 
 Free-threading is experimental in 3.13 and will stabilize over the 3.14-3.15 cycle. For production workloads now, prefer `multiprocessing` for CPU parallelism. Follow free-threading for projects targeting future Python versions where it becomes stable.
 
@@ -5980,11 +5136,11 @@ Free-threading is experimental in 3.13 and will stabilize over the 3.14-3.15 cyc
 
 <a id="concurrency-decision-matrix"></a>
 
-## Concurrency Decision Matrix
+### Concurrency Decision Matrix
 
 This page helps you choose the right concurrency tool based on your workload.
 
-### Which Tool for Which Problem?
+#### Which Tool for Which Problem?
 
 | Workload Type | Recommended Tool | Reason |
 |---------------|-----------------|--------|
@@ -5994,7 +5150,7 @@ This page helps you choose the right concurrency tool based on your workload.
 | CPU-bound, Python 3.13+ | free-threading (`python3.13t`) | True parallelism without process overhead |
 | Mixed: async event loop + CPU work | `asyncio` + `run_in_executor` | Offloads blocking code without freezing the event loop |
 
-### The `run_in_executor` Pattern
+#### The `run_in_executor` Pattern
 
 The most common pattern for mixing `asyncio` with blocking code:
 
@@ -6026,7 +5182,7 @@ async def main():
 asyncio.run(main())
 ```
 
-### Flow Chart
+#### Flow Chart
 
 Use this decision flow when choosing a concurrency strategy:
 
@@ -6041,10 +5197,10 @@ Use this decision flow when choosing a concurrency strategy:
 3. **Do you need to mix async with CPU work?**
    - Use `loop.run_in_executor(ProcessPoolExecutor(), ...)` to offload from the event loop
 
-### Quick Reference
+#### Quick Reference
 
 ```python
-## asyncio — 1000 concurrent I/O tasks
+### asyncio — 1000 concurrent I/O tasks
 import asyncio, httpx
 
 async def main():
@@ -6053,21 +5209,21 @@ async def main():
             *[client.get(url) for url in urls]
         )
 
-## ThreadPoolExecutor — blocking I/O
+### ThreadPoolExecutor — blocking I/O
 from concurrent.futures import ThreadPoolExecutor
 import requests
 
 with ThreadPoolExecutor(max_workers=10) as pool:
     results = list(pool.map(requests.get, urls))
 
-## ProcessPoolExecutor — CPU
+### ProcessPoolExecutor — CPU
 from concurrent.futures import ProcessPoolExecutor
 
 with ProcessPoolExecutor() as pool:
     results = list(pool.map(compute, data_chunks))
 ```
 
-### Performance Expectations
+#### Performance Expectations
 
 | Approach | Overhead | Scales to |
 |----------|---------|-----------|
@@ -6081,12 +5237,18 @@ with ProcessPoolExecutor() as pool:
 
 ## Appendix
 
-Additional Python ecosystems for specialized domains.
+Short pointers for the two domains most readers of this repo care about.
+
+Use this chapter after the core path when you want to map Python concepts to actual work.
+
+### Priority
+
+- Must read after core path: AI & Data Science, Web Development
 
 ### Sections
 
-- [AI & Data Science](#ai-data-science)
-- [Web Development](#web-development)
+- [AI & Data Science](./docs/appendix/ai-data-science.md)
+- [Web Development](./docs/appendix/web-development.md)
 
 ---
 
@@ -6096,7 +5258,7 @@ Additional Python ecosystems for specialized domains.
 
 ### The Ecosystem
 
-Python dominates AI, machine learning, and data science. The core libraries are:
+Python dominates AI and data tooling. A few libraries matter most early:
 
 | Library | Purpose |
 |---------|---------|
@@ -6107,7 +5269,7 @@ Python dominates AI, machine learning, and data science. The core libraries are:
 | `langchain` | Build LLM workflows, retrieval pipelines, and agent-style applications |
 | `pydantic-ai` | Build AI agents with typed inputs, outputs, and validation |
 
-Install the essentials:
+Install only what you need:
 
 ```bash
 pip install numpy pandas langchain pydantic-ai
@@ -6115,46 +5277,33 @@ pip install numpy pandas langchain pydantic-ai
 
 ### NumPy — Fast Arrays
 
-NumPy's `ndarray` is the foundation of scientific Python. Operations run in C, making them orders of magnitude faster than Python loops:
+NumPy arrays are the foundation of scientific Python and vectorized math.
 
 ```python
 import numpy as np
 
-## Create arrays
 arr = np.array([1, 2, 3, 4, 5])
 matrix = np.zeros((3, 4))          # 3x4 matrix of zeros
-identity = np.eye(3)               # 3x3 identity matrix
-rand = np.random.rand(100, 100)    # random floats
 
-## Vectorized operations — no loop needed
 print(arr * 2)          # array([2, 4, 6, 8, 10])
 print(arr ** 2)         # array([ 1,  4,  9, 16, 25])
 print(arr[arr > 2])     # array([3, 4, 5])  — boolean indexing
 
-## Statistics
 print(arr.mean())       # 3.0
-print(arr.std())        # 1.4142...
 print(arr.sum())        # 15
 
-## Matrix operations
 a = np.array([[1, 2], [3, 4]])
 b = np.array([[5, 6], [7, 8]])
 print(a @ b)            # matrix multiply: [[19, 22], [43, 50]]
-print(a.T)              # transpose
-
-## Reshape
-flat = np.arange(12)
-grid = flat.reshape(3, 4)   # shape (3, 4) — same data, different view
 ```
 
 ### Pandas — DataFrames
 
-Pandas provides the `DataFrame` — a table with labeled rows and columns:
+Pandas is the default tool for tabular data:
 
 ```python
 import pandas as pd
 
-## Create a DataFrame
 df = pd.DataFrame({
     "name":   ["Alice", "Bob", "Carol", "Dave"],
     "dept":   ["Eng",   "HR",  "Eng",   "HR"],
@@ -6162,38 +5311,19 @@ df = pd.DataFrame({
     "years":  [3, 7, 5, 2],
 })
 
-## Inspect
 print(df.head())            # first 5 rows
-print(df.dtypes)            # column types
-print(df.describe())        # summary statistics
-
-## Selecting
 print(df["name"])           # column → Series
 print(df[["name", "salary"]])  # multiple columns → DataFrame
 print(df[df["salary"] > 70_000])  # filter rows
 
-## Transforming
 df["bonus"] = df["salary"] * 0.1     # new column
-df["salary_k"] = df["salary"] / 1000
-
-## Grouping
 dept_stats = df.groupby("dept")["salary"].agg(["mean", "max", "count"])
 print(dept_stats)
-
-## Sorting
-print(df.sort_values("salary", ascending=False))
-
-## Reading / writing data
-df.to_csv("employees.csv", index=False)
-df2 = pd.read_csv("employees.csv")
-
-df.to_json("employees.json", orient="records")
-df3 = pd.read_json("employees.json")
 ```
 
 ### LangChain — LLM Workflows
 
-LangChain helps you connect prompts, models, tools, and retrieved documents into larger LLM-powered workflows. It is commonly used for chatbots, retrieval-augmented generation (RAG), and agent-style applications.
+LangChain helps connect prompts, models, tools, and retrieval into larger LLM workflows.
 
 ```python
 from langchain_core.prompts import ChatPromptTemplate
@@ -6211,11 +5341,9 @@ response = chain.invoke({"topic": "Python decorators"})
 print(response.content)
 ```
 
-The value of LangChain is composition: you can add memory, retrieval, tools, and output parsing without rewriting your whole application.
-
 ### PydanticAI — Typed AI Agents
 
-PydanticAI focuses on building AI agents with strong typing and validation. That makes it a good fit when you want model output to match a Python schema instead of returning loose text.
+PydanticAI is useful when you want model output to match a Python schema.
 
 ```python
 from dataclasses import dataclass
@@ -6238,7 +5366,7 @@ result = agent.run_sync("Create a beginner study plan for list comprehensions.")
 print(result.output)
 ```
 
-This style is useful when you want predictable, structured outputs that can be passed directly into Python code, APIs, or UIs.
+For AI work, the practical Python stack is usually: JSON, HTTP clients, type hints, async basics, and one or two AI libraries rather than every data-science tool at once.
 
 ---
 
@@ -6248,7 +5376,7 @@ This style is useful when you want predictable, structured outputs that can be p
 
 ### The Landscape
 
-Python has mature web frameworks for every use case:
+Python has mature frameworks for APIs and full web apps:
 
 | Framework | Best For |
 |-----------|---------|
@@ -6260,10 +5388,7 @@ Python has mature web frameworks for every use case:
 
 ### FastAPI — Modern APIs
 
-FastAPI is the recommended choice for new REST APIs. It uses Python type annotations to:
-- Validate request/response data automatically (via Pydantic)
-- Generate interactive API docs at `/docs` (Swagger UI) and `/redoc`
-- Run async handlers natively
+FastAPI is a strong default for new APIs because it uses type hints, validates data, and generates docs automatically.
 
 ```bash
 pip install fastapi uvicorn[standard]
@@ -6278,7 +5403,6 @@ from typing import Optional
 
 app = FastAPI(title="My API", version="1.0.0")
 
-## In-memory store (use a real database in production)
 users: dict[int, dict] = {}
 next_id = 1
 
@@ -6315,11 +5439,11 @@ def delete_user(user_id: int):
     del users[user_id]
 ```
 
-Visit `http://localhost:8000/docs` for an interactive browser-based API explorer.
+Open `/docs` to use the generated API explorer.
 
 ### Flask — Minimal Web
 
-Flask is a micro-framework — it gives you routing and request/response handling, and leaves everything else (database, auth) up to you:
+Flask is minimal and easy to start with:
 
 ```bash
 pip install flask
@@ -6356,7 +5480,7 @@ if __name__ == "__main__":
 
 ### Django — Full Stack
 
-Django follows the "batteries included" philosophy — it ships with an ORM, admin panel, auth, form handling, and templating out of the box:
+Django is full-stack and includes an ORM, admin panel, auth, and templating.
 
 ```bash
 pip install django
@@ -6388,8 +5512,6 @@ def post_list(request):
     posts = list(Post.objects.values("id", "title", "published"))
     return JsonResponse(posts, safe=False)
 ```
-
-Django's admin panel (`/admin/`) can give you a full CRUD-style interface for your models with very little extra setup.
 
 ### Choosing a Framework
 

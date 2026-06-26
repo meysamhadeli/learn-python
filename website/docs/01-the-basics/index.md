@@ -1,16 +1,28 @@
 # Chapter I: The Basics
 
-The foundation — types, variables, strings, operators, and truthiness.
+The foundation you need before Python starts feeling natural.
 
-This chapter is where Python starts to feel concrete. You are not only learning syntax here; you are building the mental model that the rest of the language depends on:
+Focus on these first:
 
-- how Python stores values
-- how names point to objects
-- how expressions are evaluated
-- how text and numbers behave differently
-- how conditions decide whether code runs
+- assignment and mutability
+- built-in scalar types
+- string formatting with `f"..."`
+- truthy and falsy values
+- basic operators you see in real code
 
-If any page in this chapter feels slower than expected, that is a good sign. These topics look simple, but they explain a large share of beginner mistakes later in the course.
+If you are already an experienced developer, do not over-study this chapter. Learn Python's object model and syntax differences, then move on.
+
+## What to read now
+
+- [Variables](./variables)
+- [Built-in Data Types](./built-in-data-types)
+- [String Formatting](./string-formatting)
+- [Operators](./operators)
+- [Falsy Values](./falsy-values)
+
+## Can skim
+
+- [Hello World](./hello-world) if you already know how to run a script
 
 ## Sections
 

@@ -132,9 +132,3 @@ print(isinstance(MyClass(), Hashable))   # True
 ```
 
 This is useful for integrating third-party code with your ABC hierarchy.
-        return 2 * (self.width + self.height)
-
-# Shape()  # TypeError: can't instantiate abstract class
-c = Circle(5)
-print(c.describe())  # Area: 78.54, Perimeter: 31.42
-```

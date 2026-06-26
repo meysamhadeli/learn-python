@@ -1,12 +1,10 @@
 # Scoping Rules (LEGB)
 
-Scoping rules explain where Python looks for names and why some assignments behave differently than beginners expect. This is one of the most important mental models in the language because it affects functions, closures, imports, and debugging.
-
-If a name lookup or reassignment has ever felt surprising, LEGB is usually the reason.
+LEGB explains where Python looks up names.
 
 ## The LEGB Rule
 
-When Python encounters a name (variable, function, class), it searches four scopes in order until it finds the name or raises a `NameError`:
+Python searches in this order:
 
 1. **L — Local** — names defined inside the current function
 2. **E — Enclosing** — names in any enclosing functions (for nested functions)
@@ -32,7 +30,7 @@ print(x)            # "global"  — G
 
 ## The `global` Keyword
 
-By default, assignment inside a function creates a **new local variable** — it does not modify the global. To modify a global variable, you must declare it with `global`:
+Assignment inside a function creates a local variable unless you declare `global`:
 
 ```python
 counter = 0
@@ -46,11 +44,9 @@ increment()
 print(counter)  # 2
 ```
 
-Use `global` sparingly. Shared mutable global state makes code harder to test and reason about. Prefer passing values as arguments and returning updated values.
-
 ## The `nonlocal` Keyword
 
-`nonlocal` allows an inner function to modify a variable in an **enclosing** (but not global) scope. This is the key mechanism behind closures with state:
+`nonlocal` lets an inner function modify a variable from an enclosing function:
 
 ```python
 def make_counter(start=0):
@@ -77,7 +73,7 @@ print(inc())    # 11
 
 ## Closures
 
-A **closure** is a function that "closes over" variables from its enclosing scope — those variables continue to exist even after the outer function returns:
+A closure keeps access to variables from an outer function even after that function returns:
 
 ```python
 def make_multiplier(factor):
@@ -90,22 +86,17 @@ triple = make_multiplier(3)
 
 print(double(5))   # 10
 print(triple(5))   # 15
-
-# Inspect captured variables
-print(double.__closure__[0].cell_contents)  # 2
 ```
 
 ## A Common Closure Gotcha — Late Binding
 
-Variables in closures are looked up at **call time**, not at definition time. This catches many developers off guard in loops:
+Closures in loops use late binding unless you capture values explicitly:
 
 ```python
-# BUG — all functions print 4
 funcs = [lambda: i for i in range(5)]
 for f in funcs:
     print(f())   # 4, 4, 4, 4, 4
 
-# FIX — capture the current value of i with a default argument
 funcs = [lambda i=i: i for i in range(5)]
 for f in funcs:
     print(f())   # 0, 1, 2, 3, 4
@@ -113,7 +104,7 @@ for f in funcs:
 
 ## Variable Scope and the `UnboundLocalError`
 
-If you assign to a name anywhere in a function, Python treats it as local **everywhere** in that function — even before the assignment:
+If a function assigns to a name, Python treats that name as local throughout the function:
 
 ```python
 x = 10

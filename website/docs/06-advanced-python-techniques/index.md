@@ -1,15 +1,22 @@
 # Chapter VI: Advanced Python Techniques
 
-Language features and standard-library techniques that make Python code more expressive and efficient.
+Useful Python features that appear in real codebases, but are not all required on day one.
 
-This chapter focuses on advanced techniques that show up across the Python language and standard library. These topics are not just about style. They are practical tools for iteration, abstraction, resource management, and cleaner control over how code behaves.
+Treat this chapter as selective reading. Learn the parts that unblock framework code or make common patterns clearer.
 
-As you read, ask two questions:
+Start with:
 
-- what problem does this pattern solve?
-- when is it clearer than a more explicit alternative?
+- context managers because `with` is everywhere
+- decorators because frameworks use them heavily
+- generators because they explain lazy iteration
 
-Advanced Python is not about writing the shortest code possible. It is about choosing features and tools that fit the language naturally and make the design clearer.
+You do not need every helper in `itertools` or every functional pattern before writing useful Python.
+
+## Priority
+
+- Must know soon: Context Managers, Decorators
+- Read when useful: Iterators & Generators, Pattern Matching
+- Optional for now: itertools & functools
 
 ## Sections
 

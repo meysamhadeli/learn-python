@@ -1,83 +1,32 @@
 # itertools & functools
 
-These two modules are full of tools that make existing Python code more composable. They are not required for everyday beginner code, but they become extremely valuable once you start combining iterables, caching results, or passing functions around.
-
-The best way to read this page is as a toolbox: learn the shape of the problems these modules solve, then revisit the specific functions when needed.
+These modules are small toolboxes for iteration, caching, and function composition.
 
 ## `itertools` — Efficient Iteration
 
-`itertools` provides composable, lazy iterators for common looping patterns. All functions return iterators — they produce values on demand without creating intermediate lists.
+`itertools` gives you lazy iterator helpers.
 
-### Combining Iterables
+### Common Helpers
 
 ```python
 import itertools
 
-# chain — concatenate multiple iterables
 list(itertools.chain([1, 2], [3, 4], [5]))   # [1, 2, 3, 4, 5]
 
-# chain.from_iterable — flatten one level of nesting
 nested = [[1, 2], [3, 4], [5]]
 list(itertools.chain.from_iterable(nested))  # [1, 2, 3, 4, 5]
 
-# zip_longest — zip but pad shorter iterables
 list(itertools.zip_longest([1, 2, 3], ["a", "b"], fillvalue="-"))
-# [(1, 'a'), (2, 'b'), (3, '-')]
-```
-
-### Slicing and Filtering
-
-```python
-# islice — lazy slice of any iterable (no index required)
 first_five = list(itertools.islice(range(1_000_000), 5))   # [0, 1, 2, 3, 4]
 
-# takewhile / dropwhile
 list(itertools.takewhile(lambda x: x < 5, range(10)))  # [0, 1, 2, 3, 4]
 list(itertools.dropwhile(lambda x: x < 5, range(10)))  # [5, 6, 7, 8, 9]
 
-# filterfalse — opposite of filter()
-list(itertools.filterfalse(str.isdigit, "a1b2c3"))  # ['a', 'b', 'c']
-```
-
-### Combinatorics
-
-```python
-# product — Cartesian product
 list(itertools.product([1, 2], ["a", "b"]))
-# [(1,'a'), (1,'b'), (2,'a'), (2,'b')]
 
-# combinations — unique pairs without repetition
 list(itertools.combinations([1, 2, 3], 2))
-# [(1, 2), (1, 3), (2, 3)]
-
-# permutations — ordered arrangements
-list(itertools.permutations([1, 2, 3], 2))
-# [(1,2), (1,3), (2,1), (2,3), (3,1), (3,2)]
-
-# combinations_with_replacement
-list(itertools.combinations_with_replacement("AB", 2))
-# [('A','A'), ('A','B'), ('B','B')]
-```
-
-### Grouping
-
-```python
-# groupby — groups consecutive items with the same key (sort first!)
-data = [("Alice", "Eng"), ("Bob", "Eng"), ("Carol", "HR"), ("Dave", "HR")]
-data.sort(key=lambda x: x[1])
-
-for dept, members in itertools.groupby(data, key=lambda x: x[1]):
-    print(dept, [m[0] for m in members])
-# Eng ['Alice', 'Bob']
-# HR  ['Carol', 'Dave']
-```
-
-### Batching (Python 3.12+)
-
-```python
-# batched — split iterable into fixed-size chunks
 for batch in itertools.batched(range(10), 3):
-    print(batch)   # (0,1,2) then (3,4,5) then (6,7,8) then (9,)
+    print(batch)
 ```
 
 ## `functools` — Higher-Order Functions
@@ -118,13 +67,6 @@ cube   = partial(power, exponent=3)
 
 print(square(5))    # 25.0
 print(cube(3))      # 27.0
-
-# Useful with map/sorted
-from functools import partial
-import operator
-
-multiply_by_3 = partial(operator.mul, 3)
-list(map(multiply_by_3, [1, 2, 3, 4]))   # [3, 6, 9, 12]
 ```
 
 ### `reduce` — Fold Over a Sequence
@@ -136,41 +78,7 @@ import operator
 # Sum — same as sum([1,2,3,4,5])
 reduce(operator.add, [1, 2, 3, 4, 5])    # 15
 
-# Product of list
 reduce(operator.mul, [1, 2, 3, 4, 5])    # 120
-
-# Max — same as max([3,1,4,1,5,9])
-reduce(lambda a, b: a if a > b else b, [3, 1, 4, 1, 5, 9])  # 9
 ```
 
 Prefer built-in `sum()`, `max()`, `min()` where possible — `reduce` is for custom fold operations.
-
-### `total_ordering`
-
-See the [Magic Methods](../05-oop/magic-methods) page — `@total_ordering` generates comparison methods from `__eq__` and `__lt__`.
-```
-
-```python
-import functools
-
-# lru_cache — memoize function results
-@functools.lru_cache(maxsize=128)
-def fib(n):
-    if n < 2:
-        return n
-    return fib(n - 1) + fib(n - 2)
-
-# cache (Python 3.9+) — unbounded lru_cache
-@functools.cache
-def expensive(x):
-    return x ** 2
-
-# reduce — fold a sequence into a single value
-from functools import reduce
-product = reduce(lambda acc, x: acc * x, [1, 2, 3, 4, 5])  # 120
-
-# partial — pre-fill arguments
-from functools import partial
-power_of_two = partial(pow, 2)
-print(power_of_two(10))  # 1024
-```

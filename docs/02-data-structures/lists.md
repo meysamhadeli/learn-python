@@ -1,12 +1,10 @@
 # Lists
 
-Lists are usually the first real collection Python learners rely on heavily. They are flexible, easy to read, and useful in everyday code, but they also introduce important ideas like mutation, shared references, and performance tradeoffs.
-
-As you read this page, focus on when a list is the right default choice and when another container would express your intent more clearly.
+Lists are ordered, mutable collections and the default sequence type in Python.
 
 ## What is a List?
 
-A list is an **ordered, mutable** sequence of objects. Lists can hold any mix of types and can grow or shrink at runtime. They are Python's most versatile built-in collection.
+A list can hold mixed types and can grow or shrink at runtime.
 
 ```python
 numbers = [1, 2, 3, 4, 5]
@@ -17,7 +15,7 @@ empty = []
 
 ## Indexing and Slicing
 
-Python lists are zero-indexed. Negative indexes count from the end. Slicing returns a **new** list — it does not modify the original.
+Lists are zero-indexed. Negative indexes count from the end. Slicing returns a new list.
 
 ```python
 fruits = ["apple", "banana", "cherry", "date", "elderberry"]
@@ -33,23 +31,20 @@ print(fruits[::-1])  # reverse
 
 ## Modifying Lists
 
-Because lists are mutable, you can change them in place:
+Lists can be changed in place:
 
 ```python
 fruits = ["apple", "banana", "cherry"]
 
-# Add elements
 fruits.append("date")            # add to end: O(1) amortized
 fruits.insert(1, "blueberry")    # insert at index: O(n)
 fruits.extend(["elderberry", "fig"])  # add multiple: O(k)
 
-# Remove elements
 fruits.remove("banana")          # remove first occurrence by value: O(n)
 popped = fruits.pop()            # remove and return last: O(1)
 popped2 = fruits.pop(0)         # remove and return at index: O(n)
 del fruits[1]                    # remove at index without returning
 
-# In-place modification
 fruits[0] = "avocado"            # replace by index
 fruits[1:3] = ["kiwi", "mango"] # replace a slice
 ```
@@ -64,7 +59,6 @@ numbers.sort(reverse=True)        # in-place, descending
 
 sorted_copy = sorted(numbers)     # returns NEW list, original unchanged
 
-# Sort with a custom key
 words = ["banana", "apple", "cherry", "date"]
 words.sort(key=len)               # sort by string length
 words.sort(key=str.lower)         # case-insensitive sort
@@ -80,21 +74,15 @@ print(items.count(1))      # 3  — how many times 1 appears
 print(items.index(4))      # 2  — index of first occurrence
 items.reverse()            # in-place reverse
 items.clear()              # remove all elements
-
-# Check membership: O(n) — use a set if you need fast lookups
-print(5 in items)          # True/False
 ```
 
 ## Performance Notes
 
-Lists are backed by a dynamic array. This means:
-- **Indexing** and **appending** are O(1) amortized.
-- **Inserting or removing** at the front or middle is O(n) — all elements after the point must shift.
-- For frequent front operations, use `collections.deque` instead.
+Indexing and appending are fast. Inserting or removing near the front is slow. For queue-like behavior, use `collections.deque`.
 
 ## List Copying
 
-Assignment creates a new reference to the **same** list, not a copy:
+Assignment shares the same list object:
 
 ```python
 a = [1, 2, 3]
@@ -106,8 +94,4 @@ print(a)          # [1, 2, 3, 4]
 c = a.copy()      # or: a[:]  or: list(a)
 c.append(99)
 print(a)          # [1, 2, 3, 4] — unaffected
-
-# Deep copy — recursively copies all nested objects
-import copy
-d = copy.deepcopy(a)
 ```

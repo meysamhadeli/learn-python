@@ -1,8 +1,8 @@
 # Chapter VII: Modules & Packaging
 
-Organizing code into modules, packages, and distributable projects.
+How Python projects are structured in practice: files, imports, packages, environments, and basic tooling.
 
-This chapter explains how Python code grows beyond a single file. It covers both the practical side of splitting code into modules and the ecosystem side of installing, structuring, and shipping Python projects.
+This chapter matters early because productive Python is not only syntax. You also need to know how imports work, how to isolate dependencies, and where code should live.
 
 The main progression is:
 
@@ -11,7 +11,13 @@ The main progression is:
 - projects gain virtual environments and dependency management
 - reusable code can be built and distributed
 
-That structure matters because maintainable Python is not just about syntax; it is also about layout, imports, and clear boundaries between parts of a project.
+For a fast start, focus on modules, file I/O, virtual environments, and a small set of useful commands. Packaging can wait unless you are publishing a library.
+
+## Priority
+
+- Must read: Modules, File I/O & JSON, Virtual Environments, Useful Commands
+- Read if needed: Packages
+- Optional for now: Build & Packaging
 
 ## Sections
 

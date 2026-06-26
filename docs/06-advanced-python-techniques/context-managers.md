@@ -122,17 +122,3 @@ def append_safely(value):
     with lock:           # __enter__ acquires, __exit__ releases
         shared_data.append(value)
 ```
-
-    def __enter__(self):
-        print(f"Connecting to {self.url}")
-        self.conn = "connection"
-        return self.conn
-
-    def __exit__(self, exc_type, exc_val, exc_tb):
-        print("Closing connection")
-        self.conn = None
-        return False  # Re-raise any exceptions
-
-with DatabaseConnection("db://localhost") as conn:
-    print(f"Using {conn}")
-```

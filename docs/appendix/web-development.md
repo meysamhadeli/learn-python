@@ -2,7 +2,7 @@
 
 ## The Landscape
 
-Python has mature web frameworks for every use case:
+Python has mature frameworks for APIs and full web apps:
 
 | Framework | Best For |
 |-----------|---------|
@@ -14,10 +14,7 @@ Python has mature web frameworks for every use case:
 
 ## FastAPI — Modern APIs
 
-FastAPI is the recommended choice for new REST APIs. It uses Python type annotations to:
-- Validate request/response data automatically (via Pydantic)
-- Generate interactive API docs at `/docs` (Swagger UI) and `/redoc`
-- Run async handlers natively
+FastAPI is a strong default for new APIs because it uses type hints, validates data, and generates docs automatically.
 
 ```bash
 pip install fastapi uvicorn[standard]
@@ -32,7 +29,6 @@ from typing import Optional
 
 app = FastAPI(title="My API", version="1.0.0")
 
-# In-memory store (use a real database in production)
 users: dict[int, dict] = {}
 next_id = 1
 
@@ -69,11 +65,11 @@ def delete_user(user_id: int):
     del users[user_id]
 ```
 
-Visit `http://localhost:8000/docs` for an interactive browser-based API explorer.
+Open `/docs` to use the generated API explorer.
 
 ## Flask — Minimal Web
 
-Flask is a micro-framework — it gives you routing and request/response handling, and leaves everything else (database, auth) up to you:
+Flask is minimal and easy to start with:
 
 ```bash
 pip install flask
@@ -110,7 +106,7 @@ if __name__ == "__main__":
 
 ## Django — Full Stack
 
-Django follows the "batteries included" philosophy — it ships with an ORM, admin panel, auth, form handling, and templating out of the box:
+Django is full-stack and includes an ORM, admin panel, auth, and templating.
 
 ```bash
 pip install django
@@ -142,8 +138,6 @@ def post_list(request):
     posts = list(Post.objects.values("id", "title", "published"))
     return JsonResponse(posts, safe=False)
 ```
-
-Django's admin panel (`/admin/`) can give you a full CRUD-style interface for your models with very little extra setup.
 
 ## Choosing a Framework
 
