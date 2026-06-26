@@ -2,11 +2,6 @@
 
 > Learn Python with short lessons, clear explanations, and runnable examples.
 
-Practical Python guide for scripting, web development, AI tooling, and day-to-day backend work.
-
-- Learn the language fundamentals, common standard-library tools, and real-world workflow used in Python projects.
-- Use this README as a single long-form guide, or browse the docs site chapter by chapter.
-
 - :page_facing_up: **Documentation site** — the full content is published at **[learn-python-dev.netlify.app](https://learn-python-dev.netlify.app/)** with a sidebar, search, and per-chapter navigation.
 
 - :notebook: **Interactive notebook** — [Open learn-python.ipynb in VS Code](https://vscode.dev/github/meysamhadeli/learn-python/blob/main/learn-python.ipynb) to run and edit every code block inline.
